@@ -1,0 +1,249 @@
+Reto de Aprendizaje Experiencial 
+Dirección de Alumni – Jefatura de Desarrollo Profesional 
+
+1. Pregunta orientadora 
+
+¿Cómo podríamos diseñar un observatorio laboral automatizado que garantice la integración, actualización y auditoría de múltiples fuentes de información del mercado laboral, y que transforme estos datos en insights y visualizaciones estratégicas para la toma de decisiones académicas en la Universidad de La Sabana? 
+Contexto: 
+Actualmente contamos con archivos planeos de Excel que incluyen información de reportes internacionales y nacionales y nos gustaría que exista un sistema automatizado, editable y visual, capaz de monitorear de manera continua. 
+
+Las instituciones de educación superior en Colombia requieren comprender de manera constante los cambios en el mercado laboral para ajustar su oferta académica. Estos cambios incluyen: 
+
+Tendencias de empleabilidad.  
+
+Evolución de competencias requeridas.  
+
+Variaciones en rangos salariales.  
+
+Aparición de nuevas profesiones.  
+
+Transformación o desaparición de programas académicos.  
+
+Actualmente: 
+
+No existe un observatorio formal para a la Universidad de La Sabana.  
+
+La información se encuentra en archivos Excel, construidos manualmente o con IA.  
+
+No hay:  
+
+Visualización estructurada.  
+
+Sistema de automatización.  
+
+Auditoría y revisión periódica de fuentes (Identificar nuevas y las que desaparecen).  
+
+Estandarización de variables.  
+
+El proceso depende de la búsqueda manual o con IA en fuentes como:  
+
+World Economic Forum  
+
+McKinsey & Company 
+
+Hays  
+
+Banco de la República  
+
+Ministerio del Trabajo  
+
+Servicio Público de Empleo  
+
+Ocupacol  
+
+Estas fuentes publican información con diferentes frecuencias (mensual, trimestral, anual), lo que dificulta el seguimiento sistemático. 
+
+ 
+Algunas variables de empleabilidad: Competencias técnicas y profesionales (powerskills), salarios, ofertas laborales, programas académicos más solicitados, garantizando cobertura de fuentes y generación de insights para la toma de decisiones. 
+¿Cuáles variables o indicadores de empleabilidad podrías añadir para mejorar la empleabilidad? 
+
+2. Objetivo del reto: 
+
+Diseñar una solución integral, estructurada y ejecutable que permita: 
+
+Construir un observatorio laboral/ monitoreo del entorno laboral. 
+
+Transformar datos históricos en Excel (actualmente contamos con un miniagente en claude, que hace el proceso más rápido y genera el excel con la documentación únicamente para revisión) en un sistema estructurado y escalable.  
+
+Garantizar la identificación, cobertura y auditoría de fuentes clave del mercado laboral.  
+
+Automatizar progresivamente la captura y actualización de información.  
+
+Desarrollar un sistema de visualización que facilite el análisis estratégico.  
+
+Generar insights accionables para la toma de decisiones sobre programas de pregrado y posgrado.  
+
+Problema central: 
+La universidad no cuenta con un sistema que garantice: 
+
+Que ninguna fuente relevante quede por fuera.  
+
+Que la información se actualice de forma continua y automática  
+
+Que los datos se conviertan en decisiones estratégicas.  
+
+4. Formato esperado de respuesta 
+
+El grupo debe entregar una propuesta estructurada, operativa y ejecutable, organizada en los siguientes componentes: 
+
+1. Plan de implementación (paso a paso) 
+
+Definir cómo se construye, incluyendo: 
+
+Fase 0: Diagnóstico  
+
+Inventario de Excel existentes.  
+
+Evaluación de calidad de datos.  
+
+Identificación de variables actuales.  
+
+Fase 1: Estructuración  
+
+Diseño del modelo de datos.  
+
+Limpieza y estandarización de información.  
+
+Definición de variables de empleabilidad comparables:  
+
+Competencias (Mínimo) 
+
+Salarios  
+
+Programas académicos  
+
+Sectores económicos  
+
+Fase 2: Integración de fuentes  
+
+Construcción de un inventario maestro de fuentes.  
+
+Clasificación por frecuencia, tipo y confiabilidad.  
+
+Definición de mecanismos de captura (manual y automatizado).  
+
+Fase 3: Desarrollo del sistema  
+
+Arquitectura tecnológica (almacenamiento, procesamiento, visualización).  
+
+Construcción de un dashboard inicial (MVP).  
+
+Fase 4: Validación y despliegue  
+
+Pruebas de calidad de datos.  
+
+Puesta en funcionamiento.  
+
+2. Funcionamiento del observatorio 
+
+Explicar cómo operará el sistema: 
+
+Flujo de datos: captura → transformación → almacenamiento → visualización → automatización 
+
+Frecuencia de actualización por tipo de fuente.  
+
+Generación de reportes e informes.  
+
+Producción de insights para decisiones académicas.  
+
+3. Sistema de auditoría de fuentes 
+
+Definir cómo se garantiza la cobertura y calidad: 
+
+Inventario maestro de fuentes (principales y complementarias).  
+
+Criterios de inclusión/exclusión.  
+
+Monitoreo de actualización de fuentes.  
+
+Indicadores de cobertura del sistema.  
+
+Estrategia para identificar nuevas fuentes.  
+
+4. Propuesta de visualización (dashboard) 
+
+Diseñar un sistema de visualización que incluya: 
+
+Panel ejecutivo (visión estratégica).  
+
+Panel por programa académico, sector laboral y ubicación (local, nacional e internacional) 
+
+Tendencias en:  
+
+Competencias  
+
+Empleabilidad  
+
+Salarios  
+
+Comparativos históricos.  
+
+Alertas:  
+
+Nuevas competencias  
+
+Cambios relevantes en demanda laboral  
+
+5. Estrategia de mantenimiento 
+
+Definir: 
+
+Roles y responsables.  
+
+Procesos de control de calidad y documentación.  
+
+Gestión de errores (fallas en fuentes, datos incompletos).  
+
+Actualización de dashboards.  
+
+6. Estrategia de actualización y mejora continua 
+
+Incluir: 
+
+Monitoreo de nuevas fuentes.  
+
+Auditoría periódica de cobertura.  
+
+Evolución del modelo de datos.  
+
+Plan de automatización progresiva.  
+
+7. Generación de insights estratégicos 
+
+Proponer al menos 5 insights derivados del sistema, tales como: 
+
+Brechas entre oferta académica y demanda laboral.  
+
+Programas en riesgo de obsolescencia.  
+
+Nuevas oportunidades de programas académicos.  
+
+Competencias blandas y técnicas emergentes no cubiertas.  
+
+Sectores con mayor crecimiento.  
+
+8. Soporte técnico y visual (obligatorio) 
+
+El entregable debe incluir: 
+
+Diagrama de arquitectura del sistema.  
+
+Ejemplo de dashboard (mockup o esquema) - MVP (producto mínimo viable). 
+
+Estructura de base de datos o tablas.  
+
+Herramientas tecnológicas sugeridas.  
+
+Cronograma de implementación (corto, mediano y largo plazo).  
+
+Nota final: 
+
+La propuesta debe demostrar: 
+
+Viabilidad en el contexto de la Universidad de La Sabana. 
+
+Capacidad de implementación real.  
+
+Enfoque en toma de decisiones académicas.  
+
+Equilibrio entre automatización, calidad de datos y sostenibilidad. 
