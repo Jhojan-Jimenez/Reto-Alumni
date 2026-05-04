@@ -27,6 +27,8 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+st.cache_data.clear()
+
 # ── Paleta de colores institucionales ─────────────────────────────────────────
 # Sidebar / barra:  #0d2769   Fondo principal: #f7f6eb   Filtros/acento: #2130cf
 C_NAVY   = "#0d2769"   # barra lateral
@@ -250,57 +252,57 @@ PROCESSED = Path("data/processed")
 # LOADERS CON CACHÉ
 # ══════════════════════════════════════════════════════════════════════════════
 
-@st.cache_data
+@st.cache_data(ttl=60)(ttl=60)
 def load_skills():
     df = pd.read_excel(ONET / "Skills.xlsx")
     return df[~df["Recommend Suppress"].eq("Y")]
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_knowledge():
     df = pd.read_excel(ONET / "Knowledge.xlsx")
     return df[~df["Recommend Suppress"].eq("Y")]
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_tech():
     return pd.read_excel(ONET / "Technology Skills.xlsx")
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_job_zones():
     return pd.read_excel(ONET / "Job Zones.xlsx")
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_interests():
     return pd.read_excel(ONET / "Interests.xlsx")
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_work_styles():
     return pd.read_excel(ONET / "Work Styles.xlsx")
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_emerging():
     return pd.read_excel(ONET / "Emerging Tasks.xlsx")
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_related():
     return pd.read_excel(ONET / "Related Occupations.xlsx")
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_work_activities():
     df = pd.read_excel(ONET / "Work Activities.xlsx")
     return df[~df["Recommend Suppress"].eq("Y")]
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_occ_data():
     return pd.read_excel(ONET / "Occupation Data.xlsx")
 
 # ── Fuentes nuevas ─────────────────────────────────────────────────────────
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_freq(nombre: str):
     p = PROCESSED / nombre
     return pd.read_csv(p, encoding="utf-8-sig") if p.exists() else None
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_tendencias():
     p = PROCESSED / "skills_tendencias.json"
     
@@ -309,7 +311,7 @@ def load_tendencias():
     with open(p, encoding="utf-8") as f:
         return json.load(f)
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_all_freq_sources():
     """Carga todos los CSVs de frecuencia disponibles y los unifica con columna 'fuente'."""
     frames = []
@@ -322,7 +324,7 @@ def load_all_freq_sources():
             pass
     return pd.concat(frames, ignore_index=True) if frames else None
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_pdf_reports():
     """Carga todos los JSONs generados por load_pdf_report.py."""
     reportes = []
