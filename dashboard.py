@@ -303,6 +303,7 @@ def load_freq(nombre: str):
 @st.cache_data
 def load_tendencias():
     p = PROCESSED / "skills_tendencias.json"
+    st.write("DEBUG existe:", p.exists())  # temporal
     if not p.exists():
         return None
     with open(p, encoding="utf-8") as f:
