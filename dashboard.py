@@ -801,21 +801,29 @@ with tab_tendencias_tab:
 
         # ── Tabla detallada ────────────────────────────────────────────────
         st.markdown("#### Detalle completo de skills con tendencia")
-        tabla_tend = pd.DataFrame([
-            {
-                "Skill":       s,
-                "Categoría":   v["categoria"],
-                "Tendencia":   v["tendencia"].capitalize(),
-                "Score":       round(v["score_tendencia"], 2),
-                "Menciones":   v["total_menciones"],
-                "Fuentes":     ", ".join(v["fuentes"]),
-                "1ª aparición": v["primera_aparicion"],
-                "Última":      v["ultima_aparicion"],
-            }
-            for s, v in skills_filtradas.items()
-        ]).sort_values("Score", ascending=False)
 
-        st.dataframe(tabla_tend, use_container_width=True, height=380)
+        if not skills_filtradas:
+            st.warning("No hay datos con los filtros seleccionados.")
+            st.info("Prueba ajustar los filtros para ver resultados.")
+        else:
+            tabla_tend = pd.DataFrame([
+                {
+                    "Skill": s,
+                    "Categoría": v["categoria"],
+                    "Tendencia": v["tendencia"].capitalize(),
+                    "Score": round(v["score_tendencia"], 2),
+                    "Menciones": v["total_menciones"],
+                    "Fuentes": ", ".join(v["fuentes"]),
+                    "1ª aparición": v["primera_aparicion"],
+                    "Última": v["ultima_aparicion"],
+                }
+                for s, v in skills_filtradas.items()
+            ])
+
+            if not tabla_tend.empty:
+                tabla_tend = tabla_tend.sort_values("Score", ascending=False)
+
+            st.dataframe(tabla_tend, use_container_width=True, height=380)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
