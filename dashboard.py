@@ -325,6 +325,19 @@ def load_all_freq_sources():
     return pd.concat(frames, ignore_index=True) if frames else None
 
 @st.cache_data(ttl=60)
+def load_pdf_reports():
+    """Carga todos los JSONs de skills extraídos de PDFs."""
+    pdf_reports = []
+    for json_file in PROCESSED.glob("pdf_skills_*.json"):
+        try:
+            with open(json_file, encoding="utf-8") as f:
+                data = json.load(f)
+                pdf_reports.append(data)
+        except Exception:
+            pass
+    return pdf_reports
+
+@st.cache_data(ttl=60)
 def load_adzuna_raw() -> pd.DataFrame | None:
     """Carga todos los CSVs de Adzuna (adzuna_*.csv) que tengan columnas salariales."""
     frames = []
