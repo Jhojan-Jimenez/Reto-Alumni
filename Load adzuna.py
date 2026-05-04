@@ -46,8 +46,8 @@ warnings.filterwarnings("ignore")
 # Configuración — edita aquí o usa variables de entorno
 # ─────────────────────────────────────────────────────────────────────────────
 
-APP_ID  = os.environ.get("aa178fc6")
-APP_KEY = os.environ.get("abba0bd969a03f00b96926ceef86152a")
+APP_ID  = os.environ.get("ADZUNA_APP_ID",  "aa178fc6")
+APP_KEY = os.environ.get("ADZUNA_APP_KEY", "abba0bd969a03f00b96926ceef86152a")
 
 BASE_URL          = "https://api.adzuna.com/v1/api/jobs"
 RESULTS_POR_PAGINA = 50          # Máximo permitido por Adzuna

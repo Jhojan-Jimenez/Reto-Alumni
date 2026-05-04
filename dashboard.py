@@ -4,6 +4,12 @@ Dashboard interactivo: O*NET · SPE Colombia · Adzuna · PDF Reports · Tendenc
 """
 
 import json
+import sys
+import subprocess
+import threading
+import queue
+import tempfile
+import time
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -21,140 +27,211 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# CSS global — tema oscuro teal/dorado inspirado en el dashboard de alumni
-st.markdown("""
-<style>
-  /* ── Fuentes ── */
-  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
-
-  /* ── Fondo general ── */
-  html, body, [data-testid="stAppViewContainer"] {
-    background: #050e1a !important;
-    color: #e0f0f8 !important;
-    font-family: 'DM Sans', sans-serif;
-  }
-
-  /* ── Sidebar ── */
-  [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #061828 0%, #0a2540 100%) !important;
-    border-right: 1px solid #0e4060;
-  }
-  [data-testid="stSidebar"] * { color: #c8e6f5 !important; }
-
-  /* ── Títulos ── */
-  h1, h2, h3 {
-    font-family: 'Rajdhani', sans-serif !important;
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Métricas ── */
-  [data-testid="stMetric"] {
-    background: linear-gradient(135deg, #0b2d45 0%, #0d3a55 100%);
-    border: 1px solid #1a5f7a;
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 4px 20px rgba(0,180,220,0.12);
-  }
-  [data-testid="stMetricLabel"] { color: #7ec8e3 !important; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; }
-  [data-testid="stMetricValue"] { color: #f0c040 !important; font-family: 'Rajdhani', sans-serif !important; font-size: 2.1rem !important; }
-  [data-testid="stMetricDelta"] { color: #4ddbaa !important; }
-
-  /* ── Tabs ── */
-  [data-testid="stTabs"] button {
-    font-family: 'Rajdhani', sans-serif !important;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    color: #7ec8e3 !important;
-    border-bottom: 2px solid transparent;
-    padding: 8px 18px;
-  }
-  [data-testid="stTabs"] button[aria-selected="true"] {
-    color: #f0c040 !important;
-    border-bottom: 2px solid #f0c040 !important;
-    background: transparent !important;
-  }
-
-  /* ── Selectbox / multiselect ── */
-  [data-testid="stSelectbox"] > div, [data-testid="stMultiSelect"] > div {
-    background: #0b2d45 !important;
-    border: 1px solid #1a5f7a !important;
-    border-radius: 8px;
-    color: #e0f0f8 !important;
-  }
-
-  /* ── Slider ── */
-  [data-testid="stSlider"] .rc-slider-track { background: #f0c040; }
-  [data-testid="stSlider"] .rc-slider-handle { border-color: #f0c040; background: #f0c040; }
-
-  /* ── Divider ── */
-  hr { border-color: #1a5f7a !important; }
-
-  /* ── Dataframes ── */
-  [data-testid="stDataFrame"] { border: 1px solid #1a5f7a; border-radius: 8px; }
-
-  /* ── Badges de KPI ── */
-  .kpi-banner {
-    background: linear-gradient(90deg, #061828 0%, #0a3050 50%, #061828 100%);
-    border: 1px solid #1a5f7a;
-    border-radius: 14px;
-    padding: 24px 32px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 40px;
-  }
-  .kpi-banner h1 {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1.6rem;
-    color: #f0c040;
-    margin: 0;
-    line-height: 1.2;
-  }
-  .kpi-banner p { color: #7ec8e3; margin: 4px 0 0; font-size: 0.85rem; }
-
-  /* ── Trend badge ── */
-  .badge-up   { background:#0d3a25; color:#4ddbaa; border:1px solid #4ddbaa; border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
-  .badge-down { background:#3a0d0d; color:#ff6b6b; border:1px solid #ff6b6b; border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
-  .badge-flat { background:#1a2a3a; color:#7ec8e3; border:1px solid #7ec8e3;  border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
-
-  /* ── Warning / info boxes ── */
-  [data-testid="stAlert"] {
-    background: #0b2d45 !important;
-    border: 1px solid #1a5f7a !important;
-    border-radius: 10px;
-    color: #c8e6f5 !important;
-  }
-
-  /* ── Plotly chart backgrounds ── */
-  .js-plotly-plot .plotly { background: transparent !important; }
-</style>
-""", unsafe_allow_html=True)
-
-# Paletas coherentes con el tema
-C_TEAL   = "#00b4d8"
-C_GOLD   = "#f0c040"
-C_GREEN  = "#4ddbaa"
-C_RED    = "#ff6b6b"
-C_PURPLE = "#a78bfa"
-PALETTE  = [C_TEAL, C_GOLD, C_GREEN, C_RED, C_PURPLE, "#fb923c", "#38bdf8", "#e879f9"]
+# ── Paleta de colores institucionales ─────────────────────────────────────────
+# Sidebar / barra:  #0d2769   Fondo principal: #f7f6eb   Filtros/acento: #2130cf
+C_NAVY   = "#0d2769"   # barra lateral
+C_BLUE   = "#2130cf"   # acento filtros, tabs activos, botones
+C_BG     = "#f7f6eb"   # fondo general
+C_TEAL   = "#00b4d8"   # charts secundarios
+C_GOLD   = "#f0c040"   # valores en KPIs
+C_GREEN  = "#22c55e"   # positivo / creciente (accesible)
+C_RED    = "#ef4444"   # negativo / decreciente
+C_PURPLE = "#7c3aed"   # destreza
+C_TEXT   = "#1a1a2e"   # texto principal sobre fondo claro
+C_MUTED  = "#4a5568"   # texto secundario
+PALETTE  = [C_BLUE, C_NAVY, C_TEAL, C_GOLD, C_GREEN, C_RED, C_PURPLE, "#fb923c"]
 CAT_COLORS = {
-    "técnica":      C_TEAL,
-    "blanda":       C_GOLD,
+    "técnica":      C_BLUE,
+    "blanda":       C_NAVY,
     "conocimiento": C_GREEN,
     "destreza":     C_PURPLE,
 }
 
 PLOTLY_LAYOUT = dict(
     paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(color="#c8e6f5", family="DM Sans"),
-    title_font=dict(family="Rajdhani", size=16, color="#f0c040"),
-    legend=dict(bgcolor="rgba(0,0,0,0)", bordercolor="#1a5f7a", borderwidth=1),
-    coloraxis_colorbar=dict(tickfont=dict(color="#c8e6f5")),
-    xaxis=dict(gridcolor="#0e2d40", zerolinecolor="#0e2d40", color="#7ec8e3"),
-    yaxis=dict(gridcolor="#0e2d40", zerolinecolor="#0e2d40", color="#7ec8e3"),
+    plot_bgcolor="rgba(247,246,235,0.0)",
+    font=dict(color=C_TEXT, family="DM Sans"),
+    title_font=dict(family="Rajdhani", size=16, color=C_NAVY),
+    legend=dict(bgcolor="rgba(255,255,255,0.7)", bordercolor="#d1d5db", borderwidth=1),
+    coloraxis_colorbar=dict(tickfont=dict(color=C_TEXT)),
+    xaxis=dict(gridcolor="#e5e7eb", zerolinecolor="#e5e7eb", color=C_MUTED),
+    yaxis=dict(gridcolor="#e5e7eb", zerolinecolor="#e5e7eb", color=C_MUTED),
 )
+
+# CSS global — tema institucional claro UniSabana
+st.markdown("""
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  /* ── Fondo general ── */
+  html, body,
+  [data-testid="stAppViewContainer"],
+  [data-testid="stMain"] > div {
+    background: #f7f6eb !important;
+    color: #1a1a2e !important;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* ── Sidebar / barra ── */
+  [data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0d2769 0%, #091d52 100%) !important;
+    border-right: none;
+  }
+  [data-testid="stSidebar"] * { color: #e8eeff !important; }
+  [data-testid="stSidebar"] h3 { color: #ffffff !important; font-family: 'Rajdhani', sans-serif !important; }
+  [data-testid="stSidebar"] .stButton > button {
+    background: #2130cf !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 600;
+  }
+  [data-testid="stSidebar"] .stButton > button:hover {
+    background: #1a27b0 !important;
+  }
+  [data-testid="stSidebar"] hr { border-color: rgba(255,255,255,0.15) !important; }
+
+  /* ── Títulos ── */
+  h1, h2, h3 {
+    font-family: 'Rajdhani', sans-serif !important;
+    letter-spacing: 0.04em;
+    color: #0d2769 !important;
+  }
+
+  /* ── KPI cards ── */
+  [data-testid="stMetric"] {
+    background: #ffffff;
+    border: 1px solid #dde3f5;
+    border-left: 4px solid #2130cf;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 12px rgba(33,48,207,0.08);
+  }
+  [data-testid="stMetricLabel"] {
+    color: #4a5568 !important;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  [data-testid="stMetricValue"] {
+    color: #0d2769 !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 2.1rem !important;
+    font-weight: 700;
+  }
+  [data-testid="stMetricDelta"] { color: #22c55e !important; }
+
+  /* ── Tabs ── */
+  [data-testid="stTabs"] {
+    background: #ffffff;
+    border-radius: 12px 12px 0 0;
+    border-bottom: 2px solid #dde3f5;
+    padding: 0 8px;
+  }
+  [data-testid="stTabs"] button {
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #4a5568 !important;
+    border-bottom: 3px solid transparent;
+    padding: 10px 18px;
+    transition: color 0.2s;
+  }
+  [data-testid="stTabs"] button:hover { color: #2130cf !important; }
+  [data-testid="stTabs"] button[aria-selected="true"] {
+    color: #2130cf !important;
+    border-bottom: 3px solid #2130cf !important;
+    background: transparent !important;
+  }
+
+  /* ── Filtros: selectbox / multiselect / slider ── */
+  [data-testid="stSelectbox"] > div,
+  [data-testid="stMultiSelect"] > div {
+    background: #ffffff !important;
+    border: 2px solid #2130cf !important;
+    border-radius: 8px;
+    color: #1a1a2e !important;
+  }
+  [data-testid="stSelectbox"] label,
+  [data-testid="stMultiSelect"] label,
+  [data-testid="stSlider"] label {
+    color: #0d2769 !important;
+    font-weight: 600 !important;
+    font-size: 0.82rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  [data-testid="stSlider"] > div > div > div { background: #2130cf !important; }
+  [data-testid="stSlider"] > div > div > div > div { background: #2130cf !important; border-color: #2130cf !important; }
+
+  /* ── Divider ── */
+  hr { border-color: #dde3f5 !important; }
+
+  /* ── Dataframes ── */
+  [data-testid="stDataFrame"] {
+    border: 1px solid #dde3f5;
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  /* ── Alertas ── */
+  [data-testid="stAlert"] {
+    background: #eef2ff !important;
+    border: 1px solid #c7d2fe !important;
+    border-radius: 10px;
+    color: #1a1a2e !important;
+  }
+
+  /* ── Badges de tendencia ── */
+  .badge-up   { background:#dcfce7; color:#166534; border:1px solid #86efac; border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
+  .badge-down { background:#fee2e2; color:#991b1b; border:1px solid #fca5a5; border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
+  .badge-flat { background:#f1f5f9; color:#475569; border:1px solid #cbd5e1;  border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
+
+  /* ── Alerta emergente ── */
+  .alert-emergente {
+    background: #fff7ed;
+    border-left: 4px solid #f97316;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    color: #7c2d12;
+    margin-bottom: 8px;
+  }
+
+  /* ── KPI insight card ── */
+  .insight-card {
+    background: #ffffff;
+    border: 1px solid #dde3f5;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(13,39,105,0.06);
+  }
+  .insight-card .ic-title { font-family: 'Rajdhani',sans-serif; font-size:1rem; font-weight:700; color:#0d2769; }
+  .insight-card .ic-body  { font-size:0.85rem; color:#4a5568; margin-top:4px; }
+
+  /* ── Ocupación description box ── */
+  .occ-desc-box {
+    background: #ffffff;
+    border: 1px solid #dde3f5;
+    border-left: 4px solid #0d2769;
+    border-radius: 10px;
+    padding: 16px;
+    color: #1a1a2e;
+  }
+
+  /* ── Plotly charts ── */
+  .js-plotly-plot .plotly { background: transparent !important; }
+
+  /* ── Expanders ── */
+  [data-testid="stExpander"] {
+    border: 1px solid #dde3f5 !important;
+    border-radius: 10px !important;
+    background: #ffffff !important;
+  }
+</style>
+""", unsafe_allow_html=True)
 
 def apply_theme(fig, height=480):
     fig.update_layout(height=height, **PLOTLY_LAYOUT)
@@ -264,10 +341,10 @@ def load_pdf_reports():
 with st.sidebar:
     st.markdown("""
     <div style='text-align:center; padding: 10px 0 20px'>
-      <div style='font-family:Rajdhani,sans-serif; font-size:1.5rem; font-weight:700; color:#f0c040; line-height:1.2'>
+      <div style='font-family:Rajdhani,sans-serif; font-size:1.5rem; font-weight:700; color:#ffffff; line-height:1.2'>
         🎓 OBSERVATORIO<br>LABORAL
       </div>
-      <div style='font-size:0.75rem; color:#7ec8e3; margin-top:6px'>Universidad de La Sabana · 2026</div>
+      <div style='font-size:0.75rem; color:#a5b4fc; margin-top:6px'>Universidad de La Sabana · 2026</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -300,9 +377,111 @@ with st.sidebar:
         p_csv = PROCESSED / f"{src.lower().replace(' ','_')}_frecuencia_skills.csv"
         p_json = list(PROCESSED.glob(f"pdf_skills_{src.lower()}*.json"))
         ok = p_csv.exists() or bool(p_json) or src == "O*NET"
-        color = "#4ddbaa" if ok else "#ff6b6b"
+        color = "#86efac" if ok else "#fca5a5"
         dot   = "●" if ok else "○"
         st.markdown(f"<span style='color:{color}'>{dot}</span> {src}", unsafe_allow_html=True)
+
+    st.divider()
+
+    # ── Botón actualizar pipeline ─────────────────────────────────────────
+    st.markdown("### ⚙️ Pipeline de datos")
+
+    # Estado compartido entre reruns usando session_state
+    if "pipeline_running"  not in st.session_state:
+        st.session_state.pipeline_running  = False
+    if "pipeline_log"      not in st.session_state:
+        st.session_state.pipeline_log      = []
+    if "pipeline_result"   not in st.session_state:
+        st.session_state.pipeline_result   = None   # None | "ok" | "error"
+
+    PIPELINE_STEPS = [
+        ("Diccionario de skills",       f"{sys.executable} build_dictionary.py"),
+        ("Descarga Adzuna",             f"{sys.executable} load_adzuna.py"),
+        ("Extracción skills Adzuna",    f"{sys.executable} extract_skills.py data/processed/adzuna_sample.csv descripcion id_oferta"),
+        ("Descarga LinkedIn",           f"{sys.executable} load_linkedin.py"),
+        ("Extracción skills LinkedIn",  f"{sys.executable} extract_skills.py data/processed/linkedin_sample.csv descripcion id_oferta --idioma en"),
+        ("Cálculo de tendencias",       f"{sys.executable} build_tendencias.py"),
+    ]
+
+    def _run_pipeline_bg(steps, log_list, result_holder):
+        """Corre el pipeline en un hilo background y escribe al log compartido."""
+        for nombre, cmd in steps:
+            log_list.append(f"▶ {nombre}...")
+            try:
+                proc = subprocess.run(
+                    cmd, shell=True, capture_output=True, text=True, timeout=600
+                )
+                if proc.returncode == 0:
+                    log_list.append(f"  ✓ Completado")
+                else:
+                    log_list.append(f"  ✗ Error (código {proc.returncode})")
+                    if proc.stderr.strip():
+                        for ln in proc.stderr.strip().splitlines()[-5:]:
+                            log_list.append(f"    {ln}")
+                    result_holder["status"] = "error"
+                    return
+            except subprocess.TimeoutExpired:
+                log_list.append(f"  ✗ Timeout (>10 min)")
+                result_holder["status"] = "error"
+                return
+            except Exception as e:
+                log_list.append(f"  ✗ Excepción: {e}")
+                result_holder["status"] = "error"
+                return
+        result_holder["status"] = "ok"
+
+    btn_disabled = st.session_state.pipeline_running
+
+    if st.button(
+        "🔄 Actualizar todos los datos",
+        disabled=btn_disabled,
+        use_container_width=True,
+        help="Ejecuta: diccionario → Adzuna → LinkedIn → tendencias",
+    ):
+        st.session_state.pipeline_running = True
+        st.session_state.pipeline_log     = []
+        st.session_state.pipeline_result  = None
+
+        result_holder = {"status": None}
+
+        t = threading.Thread(
+            target=_run_pipeline_bg,
+            args=(PIPELINE_STEPS, st.session_state.pipeline_log, result_holder),
+            daemon=True,
+        )
+        t.start()
+
+        # Espera activa con rerun periódico para mostrar el log en vivo
+        progress_placeholder = st.empty()
+        while t.is_alive():
+            log_text = "\n".join(st.session_state.pipeline_log)
+            progress_placeholder.code(log_text or "Iniciando...", language="bash")
+            time.sleep(1.5)
+            st.rerun()
+
+        # Hilo terminó
+        log_text = "\n".join(st.session_state.pipeline_log)
+        progress_placeholder.code(log_text, language="bash")
+        st.session_state.pipeline_running = False
+        st.session_state.pipeline_result  = result_holder["status"]
+
+        # Limpiar caché para que el dashboard muestre datos frescos
+        st.cache_data.clear()
+        st.rerun()
+
+    # Mostrar log persistente si hay uno del último run
+    if st.session_state.pipeline_running:
+        log_text = "\n".join(st.session_state.pipeline_log)
+        st.code(log_text or "Iniciando...", language="bash")
+
+    if st.session_state.pipeline_result == "ok":
+        st.success("Pipeline completado. Datos actualizados.")
+        if st.button("Limpiar log", key="clear_log"):
+            st.session_state.pipeline_log    = []
+            st.session_state.pipeline_result = None
+            st.rerun()
+    elif st.session_state.pipeline_result == "error":
+        st.error("El pipeline encontró un error. Revisa el log.")
 
     st.divider()
     st.caption("build_dictionary · extract_skills · load_adzuna · load_pdf_report · build_tendencias")
@@ -316,23 +495,80 @@ tend_data = load_tendencias()
 all_freq2 = load_all_freq_sources()
 pdf_reps  = load_pdf_reports()
 
-total_skills  = len(tend_data["skills"]) if tend_data else (len(all_freq2) if all_freq2 is not None else "–")
-total_fuentes = len(fuentes_disponibles) + len(pdf_reps) + 2   # +2: O*NET, Ocupacol
-total_crecientes = tend_data["meta"]["crecientes"] if tend_data else "–"
-años_cubiertos = sorted(set(
-    str(v["primera_aparicion"]) + "–" + str(v["ultima_aparicion"])
-    for v in (tend_data["skills"].values() if tend_data else [])
-    if v.get("anios_cubiertos", 0) > 1
-))
-rango_anios = f"{min(v['primera_aparicion'] for v in tend_data['skills'].values())}–{max(v['ultima_aparicion'] for v in tend_data['skills'].values())}" if tend_data else "2022–2025"
+from datetime import datetime as _dt
+_fecha_act = _dt.now().strftime("%B %Y")
 
-col_h1, col_h2, col_h3, col_h4 = st.columns(4)
-col_h1.metric("Skills identificadas",  f"{total_skills:,}" if isinstance(total_skills, int) else total_skills)
-col_h2.metric("Fuentes integradas",    total_fuentes)
-col_h3.metric("Skills en crecimiento", f"{total_crecientes:,}" if isinstance(total_crecientes, int) else total_crecientes)
-col_h4.metric("Rango temporal",        rango_anios)
+total_skills     = len(tend_data["skills"]) if tend_data else (len(all_freq2) if all_freq2 is not None else "–")
+total_fuentes    = len(fuentes_disponibles) + len(pdf_reps) + 2
+total_crecientes = tend_data["meta"]["crecientes"] if tend_data else "–"
+total_ocupaciones = (
+    len(load_occ_data()) if (ONET / "Occupation Data.xlsx").exists() else "–"
+)
+rango_anios = (
+    f"{min(v['primera_aparicion'] for v in tend_data['skills'].values())}–"
+    f"{max(v['ultima_aparicion'] for v in tend_data['skills'].values())}"
+    if tend_data else "2022–2026"
+)
+
+# Header título + fecha
+st.markdown(f"""
+<div style='display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px;'>
+  <div>
+    <div style='font-family:Rajdhani,sans-serif; font-size:1.6rem; font-weight:700; color:#0d2769; line-height:1.1;'>
+      Observatorio Laboral — Universidad de La Sabana
+    </div>
+    <div style='font-size:0.82rem; color:#4a5568; margin-top:2px;'>
+      Inteligencia de mercado laboral basada en O*NET · SPE · Adzuna · LinkedIn · Reportes globales
+    </div>
+  </div>
+  <div style='font-size:0.78rem; color:#6b7280; text-align:right; white-space:nowrap;'>
+    🕐 Actualizado: <strong>{_fecha_act}</strong>
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+col_h1, col_h2, col_h3, col_h4, col_h5, col_h6 = st.columns(6)
+col_h1.metric("Skills identificadas",   f"{total_skills:,}" if isinstance(total_skills, int) else total_skills)
+col_h2.metric("Fuentes integradas",     total_fuentes)
+col_h3.metric("Skills en crecimiento",  f"{total_crecientes:,}" if isinstance(total_crecientes, int) else total_crecientes,
+              delta="↑ tendencia")
+col_h4.metric("Ocupaciones analizadas", f"{total_ocupaciones:,}" if isinstance(total_ocupaciones, int) else total_ocupaciones)
+col_h5.metric("Rango temporal",         rango_anios)
+col_h6.metric("PDFs procesados",        len(pdf_reps))
 
 st.markdown("---")
+
+# ── Panel de insights destacados ─────────────────────────────────────────────
+if tend_data:
+    top_creciente = sorted(
+        [(s, v) for s, v in tend_data["skills"].items() if v["tendencia"] == "creciente"],
+        key=lambda x: -x[1]["score_tendencia"]
+    )
+    top_skill_nombre = top_creciente[0][0] if top_creciente else "–"
+    top_skill_score  = round(top_creciente[0][1]["score_tendencia"] * 100) if top_creciente else 0
+
+    emergentes = [s for s, v in tend_data["skills"].items()
+                  if v["tendencia"] == "creciente" and v["score_tendencia"] > 0.7]
+
+    ic1, ic2, ic3 = st.columns(3)
+    with ic1:
+        st.markdown(f"""<div class='insight-card'>
+          <div class='ic-title'>📈 Skill más dinámica</div>
+          <div class='ic-body'><strong>{top_skill_nombre}</strong> lidera el crecimiento con un score de tendencia de {top_skill_score}%.</div>
+        </div>""", unsafe_allow_html=True)
+    with ic2:
+        st.markdown(f"""<div class='insight-card'>
+          <div class='ic-title'>⚠️ Competencias emergentes</div>
+          <div class='ic-body'><strong>{len(emergentes)} skills</strong> muestran señal de crecimiento fuerte (score &gt;70%). Considera revisarlas en el pensum.</div>
+        </div>""", unsafe_allow_html=True)
+    with ic3:
+        decrecientes = tend_data["meta"].get("decrecientes", 0)
+        st.markdown(f"""<div class='insight-card'>
+          <div class='ic-title'>📉 Skills a monitorear</div>
+          <div class='ic-body'><strong>{decrecientes} skills</strong> muestran tendencia decreciente en el mercado laboral actual.</div>
+        </div>""", unsafe_allow_html=True)
+
+    st.markdown("---")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -391,7 +627,7 @@ with tab_mercado:
                 color="categoria", color_discrete_map=CAT_COLORS,
                 labels={"menciones": "Menciones totales", "skill": ""},
             )
-            fig.update_layout(yaxis={"categoryorder": "total ascending"})
+            fig.update_layout(yaxis={"categoryorder": "total ascending"}, margin=dict(l=220))
             st.plotly_chart(apply_theme(fig, 560), use_container_width=True)
 
         with col_b:
@@ -402,10 +638,7 @@ with tab_mercado:
                 hole=0.5, color="categoria", color_discrete_map=CAT_COLORS,
             )
             fig2.update_traces(textposition="outside", textinfo="percent+label",
-                               textfont=dict(color="#c8e6f5"))
-            st.plotly_chart(apply_theme(fig2, 320), use_container_width=True)
-
-            st.markdown("#### Skills técnicas más demandadas")
+                               textfont=dict(color="#1a1a2e"))
             tech_agg = (
                 df_src[df_src["categoria"] == "técnica"]
                 .groupby("skill")["menciones"].sum()
@@ -496,7 +729,7 @@ with tab_tendencias_tab:
                 color_discrete_map=color_map_tend,
                 labels={"score": "Score tendencia (0–1)", "skill": ""},
             )
-            fig.update_layout(yaxis={"categoryorder": "total ascending"})
+            fig.update_layout(yaxis={"categoryorder": "total ascending"}, margin=dict(l=220))
             st.plotly_chart(apply_theme(fig, 560), use_container_width=True)
 
         with col_tb:
@@ -512,7 +745,7 @@ with tab_tendencias_tab:
                 color_discrete_map={"Creciente": C_GREEN, "Estable": C_TEAL, "Decreciente": C_RED},
             )
             fig2.update_traces(textposition="outside", textinfo="percent+label",
-                               textfont=dict(color="#c8e6f5"))
+                               textfont=dict(color="#1a1a2e"))
             st.plotly_chart(apply_theme(fig2, 340), use_container_width=True)
 
             # ── Categorías más crecientes ──────────────────────────────────
@@ -588,13 +821,98 @@ with tab_tendencias_tab:
 with tab_pdfs:
     st.markdown("### Reportes internacionales procesados con Document AI")
 
+    # ── Subida y procesamiento de PDF ──────────────────────────────────────
+    with st.expander("📤 Subir nuevo reporte PDF", expanded=not bool(pdf_reps)):
+        uploaded_pdf = st.file_uploader(
+            "Selecciona un PDF (WEF, Coursera, McKinsey, OCDE, etc.)",
+            type=["pdf"],
+            help="El archivo se procesará con load_pdf_report.py para extraer skills.",
+        )
+
+        if uploaded_pdf is not None:
+            col_u1, col_u2, col_u3 = st.columns(3)
+            fuente_input = col_u1.text_input(
+                "Fuente / nombre corto",
+                value=uploaded_pdf.name.split(".")[0][:20],
+                placeholder="Ej: WEF, Coursera, McKinsey",
+            )
+            anio_input = col_u2.number_input(
+                "Año del reporte",
+                min_value=2010,
+                max_value=2030,
+                value=2024,
+                step=1,
+            )
+            idioma_input = col_u3.selectbox(
+                "Idioma del reporte",
+                options=["en", "es"],
+                index=0,
+                format_func=lambda x: "🇬🇧 Inglés (en)" if x == "en" else "🇨🇴 Español (es)",
+            )
+
+            if st.button("🚀 Procesar PDF", type="primary", use_container_width=True):
+                with st.status("Procesando PDF...", expanded=True) as status_pdf:
+                    try:
+                        # Guardar el PDF subido en un archivo temporal
+                        with tempfile.NamedTemporaryFile(
+                            delete=False, suffix=".pdf",
+                            prefix=f"{fuente_input}_"
+                        ) as tmp:
+                            tmp.write(uploaded_pdf.getbuffer())
+                            tmp_path = tmp.name
+
+                        st.write(f"📄 Archivo guardado: `{tmp_path}`")
+                        st.write("⚙️ Extrayendo texto y skills...")
+
+                        salida_json = str(
+                            PROCESSED / f"pdf_skills_{fuente_input.lower()}_{anio_input}.json"
+                        )
+                        cmd = (
+                            f'{sys.executable} Load_PDF_report.py "{tmp_path}"'
+                            f' --fuente "{fuente_input}"'
+                            f' --anio {anio_input}'
+                            f' --idioma {idioma_input}'
+                            f' --salida "{salida_json}"'
+                        )
+
+                        proc = subprocess.run(
+                            cmd, shell=True, capture_output=True,
+                            text=True, timeout=300
+                        )
+
+                        # Limpiar archivo temporal
+                        Path(tmp_path).unlink(missing_ok=True)
+
+                        if proc.returncode == 0:
+                            status_pdf.update(label="✅ PDF procesado correctamente", state="complete")
+                            st.success(f"Skills extraídas y guardadas en `{salida_json}`")
+                            if proc.stdout.strip():
+                                with st.expander("Ver log de extracción"):
+                                    st.code(proc.stdout, language="bash")
+                            # Refrescar datos sin caché
+                            st.cache_data.clear()
+                            st.rerun()
+                        else:
+                            status_pdf.update(label="❌ Error al procesar el PDF", state="error")
+                            st.error("El script encontró un error. Revisa el log:")
+                            st.code(proc.stderr or proc.stdout, language="bash")
+
+                    except subprocess.TimeoutExpired:
+                        status_pdf.update(label="❌ Timeout", state="error")
+                        st.error("El procesamiento tardó más de 5 minutos y fue cancelado.")
+                    except Exception as e:
+                        status_pdf.update(label="❌ Error inesperado", state="error")
+                        st.error(f"Error: {e}")
+
+    st.markdown("---")
+
+    # ── Visualización de reportes ya procesados ────────────────────────────
     if not pdf_reps:
-        st.info("No se encontraron reportes PDF procesados. Ejecuta `load_pdf_report.py` para agregar reportes como el de Coursera, WEF, McKinsey, etc.")
+        st.info("No se encontraron reportes PDF procesados. Usa el panel de arriba para subir tu primer PDF.")
         st.markdown("""
         ```bash
-        # Ejemplo:
-        python3 load_pdf_report.py "Job-Skills-Report-2025.pdf" --fuente Coursera --idioma en
-        python3 load_pdf_report.py "WEF_Future_of_Jobs_2024.pdf" --fuente WEF --idioma en
+        # O desde la terminal:
+        python3 Load_PDF_report.py "WEF_Future_of_Jobs_2024.pdf" --fuente WEF --idioma en
         ```
         """)
     else:
@@ -652,7 +970,7 @@ with tab_pdfs:
                 color="categoria", color_discrete_map=CAT_COLORS,
             )
             fig2.update_traces(textposition="outside", textinfo="percent+label",
-                               textfont=dict(color="#c8e6f5"))
+                               textfont=dict(color="#1a1a2e"))
             st.plotly_chart(apply_theme(fig2, 320), use_container_width=True)
 
             # Metadatos nativos del PDF
@@ -710,7 +1028,7 @@ with tab_skills_tab:
         )
         fig = px.bar(
             tech_top, x="ocupaciones", y="Example", orientation="h",
-            color="ocupaciones", color_continuous_scale=["#0a3050", C_TEAL],
+            color="ocupaciones", color_continuous_scale=["#eef2ff", C_BLUE],
             labels={"ocupaciones": "N° ocupaciones", "Example": ""},
         )
         fig.update_layout(yaxis={"categoryorder": "total ascending"}, showlegend=False)
@@ -725,7 +1043,7 @@ with tab_skills_tab:
         )
         fig2 = px.bar(
             know_im, x="Data Value", y="Element Name", orientation="h",
-            color="Data Value", color_continuous_scale=["#0a3050", C_GREEN],
+            color="Data Value", color_continuous_scale=["#f0fdf4", C_GREEN],
             labels={"Data Value": "Importancia media", "Element Name": ""},
         )
         fig2.update_layout(yaxis={"categoryorder": "total ascending"}, showlegend=False)
@@ -743,7 +1061,7 @@ with tab_skills_tab:
         .pivot(index="Element Name", columns="Job Zone", values="Data Value").fillna(0)
     )
     fig3 = px.imshow(
-        heatmap_df, color_continuous_scale=["#050e1a", "#0a3050", C_TEAL, C_GOLD],
+        heatmap_df, color_continuous_scale=["#eef2ff", "#c7d2fe", C_BLUE, C_NAVY],
         aspect="auto", labels={"x": "Job Zone", "y": "Skill", "color": "Importancia"},
     )
     fig3.update_layout(height=600, **{k: v for k, v in PLOTLY_LAYOUT.items() if k not in ["xaxis", "yaxis"]})
@@ -760,7 +1078,7 @@ with tab_skills_tab:
     fig4 = px.scatter(
         scatter_df, x="Importancia", y="Nivel", size="frecuencia",
         text="Element Name", color="frecuencia",
-        color_continuous_scale=["#0a3050", C_TEAL, C_GOLD],
+        color_continuous_scale=["#eef2ff", C_BLUE, C_NAVY],
         labels={"Importancia": "Importancia promedio", "Nivel": "Nivel requerido"},
     )
     fig4.update_traces(textposition="top center", textfont_size=9)
@@ -795,7 +1113,7 @@ with tab_ocupacion:
     col1, col2 = st.columns([1, 3])
     col1.metric("Job Zone", jz_val)
     col1.metric("Código O*NET", soc_code)
-    col2.markdown(f"<div style='background:#0b2d45;border:1px solid #1a5f7a;border-radius:10px;padding:16px;color:#c8e6f5'><b>📋 {selected}</b><br><br>{desc}</div>", unsafe_allow_html=True)
+    col2.markdown(f"<div class='occ-desc-box'><b>📋 {selected}</b><br><br>{desc}</div>", unsafe_allow_html=True)
 
     st.markdown("---")
     col_a, col_b = st.columns(2)
@@ -818,7 +1136,7 @@ with tab_ocupacion:
                 fill="toself", line_color=C_TEAL,
                 fillcolor=f"rgba(0,180,216,0.18)",
             ))
-            fig.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#0e2d40"), bgcolor="rgba(0,0,0,0)"))
+            fig.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#d1d5db"), bgcolor="rgba(0,0,0,0)"))
             st.plotly_chart(apply_theme(fig, 400), use_container_width=True)
 
     with col_b:
@@ -835,10 +1153,10 @@ with tab_ocupacion:
             sv = skill_occ["Data Value"].tolist()
             fig2 = go.Figure(go.Scatterpolar(
                 r=sv + [sv[0]], theta=sn + [sn[0]],
-                fill="toself", line_color=C_GOLD,
-                fillcolor="rgba(240,192,64,0.15)",
+                fill="toself", line_color=C_BLUE,
+                fillcolor="rgba(33,48,207,0.12)",
             ))
-            fig2.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#0e2d40"), bgcolor="rgba(0,0,0,0)"))
+            fig2.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#d1d5db"), bgcolor="rgba(0,0,0,0)"))
             st.plotly_chart(apply_theme(fig2, 400), use_container_width=True)
 
     st.markdown("#### Estilos de trabajo")
@@ -848,10 +1166,11 @@ with tab_ocupacion:
     if not ws_occ.empty:
         fig3 = px.bar(
             ws_occ, x="Data Value", y="Element Name", orientation="h",
-            color="Data Value", color_continuous_scale=["#0a3050", C_PURPLE],
+            color="Data Value", color_continuous_scale=["#eef2ff", C_BLUE],
             labels={"Data Value": "Importancia", "Element Name": ""},
         )
-        fig3.update_layout(yaxis={"categoryorder": "total ascending"}, showlegend=False)
+        fig3.update_layout(yaxis={"categoryorder": "total ascending"}, showlegend=False,
+                           margin=dict(l=200))
         st.plotly_chart(apply_theme(fig3, 400), use_container_width=True)
 
     st.markdown("#### Ocupaciones relacionadas")
@@ -861,7 +1180,7 @@ with tab_ocupacion:
         fig4 = px.bar(
             rel_occ, x="Index", y="Related Title", orientation="h",
             color="Relatedness Tier",
-            color_discrete_map={"Closely Related": C_GREEN, "Related": "#0a4030"},
+            color_discrete_map={"Closely Related": C_GREEN, "Related": "#bbf7d0"},
             labels={"Index": "Índice de relación", "Related Title": ""},
         )
         fig4.update_layout(yaxis={"categoryorder": "total ascending"})
@@ -908,27 +1227,21 @@ with tab_comparador:
     m1.metric(f"Job Zone — {occ_a[:22]}", int(jz_a[0]) if len(jz_a) else "N/A")
     m2.metric(f"Job Zone — {occ_b[:22]}", int(jz_b[0]) if len(jz_b) else "N/A")
 
+    # ── Skills en común y únicas ────────────────────────────────────────────
+    sk_a_set = set(get_metric(skills_c, code_a, "IM")["Element Name"].tolist())
+    sk_b_set = set(get_metric(skills_c, code_b, "IM")["Element Name"].tolist())
+    comunes   = sk_a_set & sk_b_set
+    unicas_a  = sk_a_set - sk_b_set
+    unicas_b  = sk_b_set - sk_a_set
+
+    c_com, c_ua, c_ub = st.columns(3)
+    c_com.metric("Skills en común",       len(comunes),  help=", ".join(sorted(comunes)) or "–")
+    c_ua.metric(f"Únicas de {occ_a[:18]}", len(unicas_a), help=", ".join(sorted(unicas_a)) or "–")
+    c_ub.metric(f"Únicas de {occ_b[:18]}", len(unicas_b), help=", ".join(sorted(unicas_b)) or "–")
+
     st.markdown("---")
-    col_a, col_b = st.columns(2)
 
-    with col_a:
-        st.markdown(f"#### Skills — {occ_a}")
-        sk_a = get_metric(skills_c, code_a, "IM")
-        fig = px.bar(sk_a, x="Data Value", y="Element Name", orientation="h",
-                     color_discrete_sequence=[C_TEAL],
-                     labels={"Data Value": "Importancia", "Element Name": ""})
-        fig.update_layout(yaxis={"categoryorder": "total ascending"})
-        st.plotly_chart(apply_theme(fig, 380), use_container_width=True)
-
-    with col_b:
-        st.markdown(f"#### Skills — {occ_b}")
-        sk_b = get_metric(skills_c, code_b, "IM")
-        fig2 = px.bar(sk_b, x="Data Value", y="Element Name", orientation="h",
-                      color_discrete_sequence=[C_GOLD],
-                      labels={"Data Value": "Importancia", "Element Name": ""})
-        fig2.update_layout(yaxis={"categoryorder": "total ascending"})
-        st.plotly_chart(apply_theme(fig2, 380), use_container_width=True)
-
+    # ── RIASEC superpuesto primero (más visual e impactante) ───────────────
     st.markdown("#### Comparación RIASEC superpuesta")
     riasec_cats = ["Realistic","Investigative","Artistic","Social","Enterprising","Conventional"]
 
@@ -941,8 +1254,8 @@ with tab_comparador:
 
     fig3 = go.Figure()
     for vals, name, color, fill in [
-        (r_a, occ_a, C_TEAL,  "rgba(0,180,216,0.15)"),
-        (r_b, occ_b, C_GOLD,  "rgba(240,192,64,0.15)"),
+        (r_a, occ_a, C_NAVY, "rgba(13,39,105,0.12)"),
+        (r_b, occ_b, C_BLUE, "rgba(33,48,207,0.12)"),
     ]:
         fig3.add_trace(go.Scatterpolar(
             r=vals.tolist() + [vals.iloc[0]],
@@ -950,8 +1263,31 @@ with tab_comparador:
             fill="toself", name=name,
             line_color=color, fillcolor=fill,
         ))
-    fig3.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#0e2d40"), bgcolor="rgba(0,0,0,0)"))
+    fig3.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#d1d5db"), bgcolor="rgba(0,0,0,0)"))
     st.plotly_chart(apply_theme(fig3, 450), use_container_width=True)
+
+    st.markdown("---")
+
+    # ── Barras de skills lado a lado ───────────────────────────────────────
+    col_a2, col_b2 = st.columns(2)
+
+    with col_a2:
+        st.markdown(f"#### Skills — {occ_a}")
+        sk_a = get_metric(skills_c, code_a, "IM")
+        fig_sa = px.bar(sk_a, x="Data Value", y="Element Name", orientation="h",
+                     color_discrete_sequence=[C_NAVY],
+                     labels={"Data Value": "Importancia", "Element Name": ""})
+        fig_sa.update_layout(yaxis={"categoryorder": "total ascending"}, margin=dict(l=180))
+        st.plotly_chart(apply_theme(fig_sa, 380), use_container_width=True)
+
+    with col_b2:
+        st.markdown(f"#### Skills — {occ_b}")
+        sk_b = get_metric(skills_c, code_b, "IM")
+        fig_sb = px.bar(sk_b, x="Data Value", y="Element Name", orientation="h",
+                      color_discrete_sequence=[C_BLUE],
+                      labels={"Data Value": "Importancia", "Element Name": ""})
+        fig_sb.update_layout(yaxis={"categoryorder": "total ascending"}, margin=dict(l=180))
+        st.plotly_chart(apply_theme(fig_sb, 380), use_container_width=True)
 
     st.markdown("#### Conocimientos requeridos — comparación")
     kn_a = get_metric(knowledge_c, code_a, "IM").rename(columns={"Data Value": occ_a})
@@ -959,8 +1295,8 @@ with tab_comparador:
     kn_merge = kn_a.merge(kn_b, on="Element Name", how="outer").fillna(0)
 
     fig4 = go.Figure()
-    fig4.add_trace(go.Bar(name=occ_a, x=kn_merge["Element Name"], y=kn_merge[occ_a], marker_color=C_TEAL))
-    fig4.add_trace(go.Bar(name=occ_b, x=kn_merge["Element Name"], y=kn_merge[occ_b], marker_color=C_GOLD))
+    fig4.add_trace(go.Bar(name=occ_a, x=kn_merge["Element Name"], y=kn_merge[occ_a], marker_color=C_NAVY))
+    fig4.add_trace(go.Bar(name=occ_b, x=kn_merge["Element Name"], y=kn_merge[occ_b], marker_color=C_BLUE))
     fig4.update_layout(barmode="group", xaxis_tickangle=-35,
                        yaxis_title="Importancia")
     st.plotly_chart(apply_theme(fig4, 420), use_container_width=True)
