@@ -252,7 +252,7 @@ PROCESSED = Path("data/processed")
 # LOADERS CON CACHÉ
 # ══════════════════════════════════════════════════════════════════════════════
 
-@st.cache_data(ttl=60)(ttl=60)
+@st.cache_data(ttl=60)
 def load_skills():
     df = pd.read_excel(ONET / "Skills.xlsx")
     return df[~df["Recommend Suppress"].eq("Y")]
