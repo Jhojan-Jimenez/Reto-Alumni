@@ -1509,6 +1509,200 @@ with tab_ocupacion:
             "💡 Para ver skills y salarios del mercado real, carga datos de Adzuna: "
             "`python load_adzuna.py` y copia el CSV a `data/processed/`."
         )
+
+    # ══════════════════════════════════════════════════════════════════════════
+    # SECCIÓN GEIH: salarios en COP filtrados por la ocupación seleccionada
+    # ══════════════════════════════════════════════════════════════════════════
+
+    geih_ocup = load_geih_salarios()
+    if geih_ocup:
+        st.markdown("---")
+        st.markdown("#### 🇨🇴 Salarios en Colombia (COP) — GEIH DANE + SPE")
+        st.caption(
+            f"Referencia salarial en pesos colombianos para la ocupación: **{selected}**. "
+            "Fuentes: GEIH DANE (ingresos reales) · SPE Colombia (vacantes activas Feb 2026)."
+        )
+
+        # ── Mapeo O*NET occupation → NBC (Núcleo Básico de Conocimiento) ──
+        OCC_NBC_MAP = {
+            "lawyer":        "Ciencias sociales y humanas",
+            "legal":         "Ciencias sociales y humanas",
+            "attorney":      "Ciencias sociales y humanas",
+            "judge":         "Ciencias sociales y humanas",
+            "psycholog":     "Ciencias sociales y humanas",
+            "social work":   "Ciencias sociales y humanas",
+            "sociolog":      "Ciencias sociales y humanas",
+            "political":     "Ciencias sociales y humanas",
+            "economist":     "Ciencias Económicas",
+            "accountant":    "Ciencias Económicas",
+            "financial":     "Ciencias Económicas",
+            "auditor":       "Ciencias Económicas",
+            "administrat":   "Ciencias Económicas",
+            "manager":       "Ciencias Económicas",
+            "software":      "Ingenierías y afines",
+            "engineer":      "Ingenierías y afines",
+            "developer":     "Ingenierías y afines",
+            "architect":     "Ingenierías y afines",
+            "electrician":   "Ingenierías y afines",
+            "mechanic":      "Ingenierías y afines",
+            "nurse":         "Ciencias de la salud",
+            "physician":     "Ciencias de la salud",
+            "doctor":        "Ciencias de la salud",
+            "surgeon":       "Ciencias de la salud",
+            "dentist":       "Ciencias de la salud",
+            "pharmacist":    "Ciencias de la salud",
+            "health":        "Ciencias de la salud",
+            "teacher":       "Ciencias de la educación",
+            "instructor":    "Ciencias de la educación",
+            "professor":     "Ciencias de la educación",
+            "education":     "Ciencias de la educación",
+        }
+
+        # ── Mapeo O*NET occupation → Sector CIIU ──────────────────────────
+        OCC_SECTOR_MAP = {
+            "software":      "Información y comunicaciones",
+            "developer":     "Información y comunicaciones",
+            "network":       "Información y comunicaciones",
+            "lawyer":        "Actividades profesionales y científicas",
+            "legal":         "Actividades profesionales y científicas",
+            "consultant":    "Actividades profesionales y científicas",
+            "accountant":    "Actividades financieras y de seguros",
+            "financial":     "Actividades financieras y de seguros",
+            "banker":        "Actividades financieras y de seguros",
+            "nurse":         "Atención de la salud humana",
+            "physician":     "Atención de la salud humana",
+            "doctor":        "Atención de la salud humana",
+            "health":        "Atención de la salud humana",
+            "teacher":       "Educación",
+            "professor":     "Educación",
+            "education":     "Educación",
+            "engineer":      "Industrias manufactureras",
+            "construct":     "Construcción",
+            "architect":     "Construcción",
+            "transport":     "Transporte y almacenamiento",
+            "driver":        "Transporte y almacenamiento",
+            "administrat":   "Administración pública y defensa",
+            "manager":       "Actividades profesionales y científicas",
+        }
+
+        occ_lower     = selected.lower()
+        matched_nbc   = next((v for k, v in OCC_NBC_MAP.items()    if k in occ_lower), None)
+        matched_sector= next((v for k, v in OCC_SECTOR_MAP.items() if k in occ_lower), None)
+
+        por_nbc_geih    = geih_ocup.get("por_nucleo", {})
+        por_sector_geih = geih_ocup.get("por_sector", {})
+        nbc_stats       = por_nbc_geih.get(matched_nbc)    if matched_nbc    else None
+        sector_stats    = por_sector_geih.get(matched_sector) if matched_sector else None
+
+        # Usamos NBC como fuente principal; sector como fallback
+        stats_principales = nbc_stats or sector_stats
+        label_principal   = matched_nbc or matched_sector or "Datos generales"
+
+        col_g1, col_g2 = st.columns([3, 2])
+
+        with col_g1:
+            if stats_principales:
+                st.markdown(f"##### 📚 {label_principal}")
+                kc1, kc2, kc3, kc4 = st.columns(4)
+                kc1.metric("Mediana mensual",   _fmt_cop(stats_principales["mediana"]))
+                kc2.metric("Percentil 25",       _fmt_cop(stats_principales["p25"]))
+                kc3.metric("Percentil 75",       _fmt_cop(stats_principales["p75"]))
+                kc4.metric("N trabajadores",     f"{stats_principales['n']:,}")
+
+                # ── Comparativa NBC completa resaltando la ocupación ───────
+                if por_nbc_geih:
+                    df_nbc_cmp = pd.DataFrame([
+                        {"NBC": k, "mediana": v["mediana"], "es_actual": (k == matched_nbc)}
+                        for k, v in por_nbc_geih.items()
+                    ]).sort_values("mediana")
+                    fig_nbc_cmp = px.bar(
+                        df_nbc_cmp, x="mediana", y="NBC", orientation="h",
+                        color="es_actual",
+                        color_discrete_map={True: C_GOLD, False: C_BLUE},
+                        text=df_nbc_cmp["mediana"].apply(lambda x: f"${x/1e6:.1f}M"),
+                        labels={"mediana": "Salario mediano mensual (COP)", "NBC": ""},
+                        title="Comparativa por área de conocimiento (NBC)",
+                    )
+                    fig_nbc_cmp.update_traces(textposition="outside")
+                    fig_nbc_cmp.update_layout(
+                        showlegend=False,
+                        coloraxis_showscale=False,
+                        margin=dict(l=260),
+                    )
+                    st.plotly_chart(apply_theme(fig_nbc_cmp, 380), use_container_width=True)
+
+                elif por_sector_geih:
+                    df_sec_cmp = pd.DataFrame([
+                        {"Sector": k, "mediana": v["mediana"], "es_actual": (k == matched_sector)}
+                        for k, v in por_sector_geih.items()
+                    ]).sort_values("mediana").tail(12)
+                    fig_sec_cmp = px.bar(
+                        df_sec_cmp, x="mediana", y="Sector", orientation="h",
+                        color="es_actual",
+                        color_discrete_map={True: C_GOLD, False: C_GREEN},
+                        text=df_sec_cmp["mediana"].apply(lambda x: f"${x/1e6:.1f}M"),
+                        labels={"mediana": "Salario mediano mensual (COP)", "Sector": ""},
+                        title="Comparativa por sector económico (CIIU)",
+                    )
+                    fig_sec_cmp.update_traces(textposition="outside")
+                    fig_sec_cmp.update_layout(
+                        showlegend=False,
+                        coloraxis_showscale=False,
+                        margin=dict(l=280),
+                    )
+                    st.plotly_chart(apply_theme(fig_sec_cmp, 420), use_container_width=True)
+
+            elif geih_ocup.get("tiene_geih"):
+                st.info(
+                    f"No se encontró una correspondencia directa para **{selected}** "
+                    "en los datos del GEIH. Revisa la pestaña **💰 Salarios COP** "
+                    "para ver todos los grupos disponibles."
+                )
+            else:
+                st.info(
+                    "Para ver salarios reales en COP, carga el GEIH en `data/raw/GEIH/` "
+                    "y ejecuta `python3 load_geih_salarios.py`. "
+                    "La pestaña **💰 Salarios COP** muestra los rangos SPE disponibles."
+                )
+
+        with col_g2:
+            # ── SPE rangos con indicador del rango estimado ────────────────
+            st.markdown("##### 📊 Rangos SPE (Feb 2026)")
+            mediana_cop = stats_principales["mediana"] if stats_principales else None
+            spe_list    = [r for r in geih_ocup.get("spe_rangos", []) if r.get("min_cop") is not None]
+
+            for r in spe_list:
+                en_rango = (
+                    mediana_cop is not None
+                    and r["min_cop"] <= mediana_cop <= r["max_cop"]
+                )
+                bg     = "#fff7ed" if en_rango else "#ffffff"
+                border = f"border:2px solid {C_GOLD}" if en_rango else "border:1px solid #dde3f5"
+                star   = " ⭐" if en_rango else ""
+                var    = r.get("variacion", 0)
+                color_var = "#22c55e" if var >= 0 else "#ef4444"
+                arrow_var = "↑" if var >= 0 else "↓"
+                st.markdown(
+                    f"<div style='padding:6px 10px;background:{bg};border-radius:8px;"
+                    f"margin-bottom:4px;{border};font-size:0.79rem'>"
+                    f"<b style='color:#0d2769'>{r['rango']}{star}</b><br>"
+                    f"<span style='color:#4a5568'>{r['participacion']:.1f}% vacantes &nbsp;·&nbsp;</span>"
+                    f"<span style='color:{color_var};font-weight:600'>{arrow_var} {abs(var):.1f}% a/a</span>"
+                    f"</div>",
+                    unsafe_allow_html=True,
+                )
+
+            if mediana_cop:
+                rango_label = _rango_spe_para_salario(mediana_cop, spe_list)
+                st.markdown(
+                    f"<div style='background:#eef2ff;border-radius:8px;padding:10px 14px;"
+                    f"font-size:0.8rem;color:#1a1a2e;margin-top:10px'>"
+                    f"📌 La mediana de <b>{label_principal}</b> "
+                    f"(<b>{_fmt_cop(mediana_cop)}/mes</b>) "
+                    f"corresponde al rango SPE <b>{rango_label}</b>.</div>",
+                    unsafe_allow_html=True,
+                )
+
 # ══════════════════════════════════════════════════════════════════════════════
 
 with tab_comparador:
