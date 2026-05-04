@@ -1,0 +1,7478 @@
+{
+  "meta": {
+    "total_skills": 341,
+    "crecientes": 0,
+    "estables": 341,
+    "decrecientes": 0,
+    "fecha_generacion": "2026-05-03T23:57:51.802787"
+  },
+  "skills": {
+    "análisis de operaciones": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "análisis de sistemas": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "aprendizaje activo": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "ciencias": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "comprensión lectora": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "comunicación oral": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "control de calidad": {
+      "historial": {
+        "2026": {
+          "menciones": 9,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 9,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "coordinación": {
+      "historial": {
+        "2026": {
+          "menciones": 25,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 25,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "diagnóstico y resolución de fallas": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "diseño tecnológico": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "escucha activa": {
+      "historial": {
+        "2026": {
+          "menciones": 13,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 13,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "estrategias de aprendizaje": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "evaluación de sistemas": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "gestión de personal": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "gestión de recursos financieros": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "gestión de recursos materiales": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "gestión del tiempo": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "instalación": {
+      "historial": {
+        "2026": {
+          "menciones": 16,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 16,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "instrucción y capacitación": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "juicio y toma de decisiones": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "mantenimiento de equipos": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "matemáticas": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "monitoreo de operaciones": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "monitoreo y seguimiento": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "negociación": {
+      "historial": {
+        "2026": {
+          "menciones": 22,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 22,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "operación y control de sistemas": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "orientación al servicio": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "pensamiento crítico": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "percepción social": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "persuasión": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "programación": {
+      "historial": {
+        "2026": {
+          "menciones": 42,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 42,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "redacción": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "reparación": {
+      "historial": {
+        "2026": {
+          "menciones": 13,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 13,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "resolución de problemas complejos": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "selección de equipos": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "AJAX": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Adobe Acrobat": {
+      "historial": {
+        "2026": {
+          "menciones": 13,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 13,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Adobe After Effects": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Adobe Creative Cloud software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Adobe Illustrator": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Adobe InDesign": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Adobe Photoshop": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Alteryx software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Amazon DynamoDB": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Amazon Elastic Compute Cloud EC2": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Amazon Redshift": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Amazon Web Services AWS CloudFormation": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Amazon Web Services AWS software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Ansible software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Airflow": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Cassandra": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Hadoop": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Hive": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Kafka": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Maven": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Spark": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Subversion SVN": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apache Tomcat": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apple Safari": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apple iOS": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Apple macOS": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Asana": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Atlassian Bitbucket": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Atlassian Confluence": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Atlassian JIRA": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Autodesk AutoCAD": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Autodesk AutoCAD Civil 3D": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Autodesk Revit": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Bash": {
+      "historial": {
+        "2026": {
+          "menciones": 12,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 12,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Bentley MicroStation": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Bootstrap": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Border Gateway Protocol BGP": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "C": {
+      "historial": {
+        "2026": {
+          "menciones": 237,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 237,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "C#": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "C++": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Canva": {
+      "historial": {
+        "2026": {
+          "menciones": 13,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 13,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Cascading style sheets CSS": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Chef": {
+      "historial": {
+        "2026": {
+          "menciones": 23,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 23,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Cisco Webex": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Dassault Systemes SolidWorks": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Django": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Docker": {
+      "historial": {
+        "2026": {
+          "menciones": 31,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 31,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "ESRI ArcGIS software": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Eclipse IDE": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Elasticsearch": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Epic Systems": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Extensible markup language XML": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Facebook": {
+      "historial": {
+        "2026": {
+          "menciones": 72,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 72,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Figma": {
+      "historial": {
+        "2026": {
+          "menciones": 10,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 10,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Git": {
+      "historial": {
+        "2026": {
+          "menciones": 32,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 32,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "GitHub": {
+      "historial": {
+        "2026": {
+          "menciones": 11,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 11,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "GitLab": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Go": {
+      "historial": {
+        "2026": {
+          "menciones": 179,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 179,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Google Analytics": {
+      "historial": {
+        "2026": {
+          "menciones": 11,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 11,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Google Android": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Google Angular": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Google Docs": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Google Sheets": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Google Workspace software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "GraphQL": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Henry Schein Dentrix": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Hibernate ORM": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "HubSpot software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Hypertext markup language HTML": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "IBM DB2": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "IBM SPSS Statistics": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "IBM Terraform": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "IBM WebSphere MQ": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Informatica software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Intuit QuickBooks": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "JUnit": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "JavaScript": {
+      "historial": {
+        "2026": {
+          "menciones": 38,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 38,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "JavaScript Object Notation JSON": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Jenkins CI": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Kronos Workforce Timekeeper": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Kubernetes": {
+      "historial": {
+        "2026": {
+          "menciones": 31,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 31,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Linux": {
+      "historial": {
+        "2026": {
+          "menciones": 42,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 42,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "MEDITECH software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Marketo Marketing Automation": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft .NET Framework": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft ASP.NET": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Access": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Active Directory": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Active Server Pages ASP": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Azure software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Edge": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Excel": {
+      "historial": {
+        "2026": {
+          "menciones": 47,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 47,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Office software": {
+      "historial": {
+        "2026": {
+          "menciones": 15,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 15,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Outlook": {
+      "historial": {
+        "2026": {
+          "menciones": 16,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 16,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Power Automate": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Power BI": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft PowerPoint": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft PowerShell": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Project": {
+      "historial": {
+        "2026": {
+          "menciones": 11,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 11,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft SQL Server": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft SQL Server Integration Services SSIS": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft SQL Server Reporting Services SSRS": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft SharePoint": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Team Foundation Server": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Teams": {
+      "historial": {
+        "2026": {
+          "menciones": 13,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 13,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Visio": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Visual Basic": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Visual Basic for Applications VBA": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Visual Studio": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Windows": {
+      "historial": {
+        "2026": {
+          "menciones": 8,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 8,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Windows Server": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Microsoft Word": {
+      "historial": {
+        "2026": {
+          "menciones": 60,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 60,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "MongoDB": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Mozilla Firefox": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "MySQL": {
+      "historial": {
+        "2026": {
+          "menciones": 15,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 15,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "NoSQL": {
+      "historial": {
+        "2026": {
+          "menciones": 13,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 13,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Node.js": {
+      "historial": {
+        "2026": {
+          "menciones": 12,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 12,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Oracle Cloud software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Oracle Database": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Oracle Java": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Oracle Java 2 Platform Enterprise Edition J2EE": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Oracle PL/SQL": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Oracle PeopleSoft": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Oracle Primavera Enterprise Project Portfolio Management": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Oracle SQL Developer": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "PHP": {
+      "historial": {
+        "2026": {
+          "menciones": 11,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 11,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Perl": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "PostgreSQL": {
+      "historial": {
+        "2026": {
+          "menciones": 7,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 7,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Procore software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Puppet": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "PyTorch": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Python": {
+      "historial": {
+        "2026": {
+          "menciones": 94,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 94,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "R": {
+      "historial": {
+        "2026": {
+          "menciones": 122,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 122,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "React": {
+      "historial": {
+        "2026": {
+          "menciones": 36,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 36,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Red Hat Enterprise Linux": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Red Hat OpenShift": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Redis": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Ruby": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "SAP Concur": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "SAP ERP": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "SAP software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "SAS": {
+      "historial": {
+        "2026": {
+          "menciones": 17,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 17,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Salesforce software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Scala": {
+      "historial": {
+        "2026": {
+          "menciones": 14,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 14,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Selenium": {
+      "historial": {
+        "2026": {
+          "menciones": 7,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 7,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "ServiceNow": {
+      "historial": {
+        "2026": {
+          "menciones": 20,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 20,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Shell script": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Slack": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Snowflake": {
+      "historial": {
+        "2026": {
+          "menciones": 12,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 12,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Splunk Enterprise": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Spring Boot": {
+      "historial": {
+        "2026": {
+          "menciones": 9,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 9,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Spring Framework": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Structured query language SQL": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Swift": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Tableau": {
+      "historial": {
+        "2026": {
+          "menciones": 17,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 17,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "TensorFlow": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Teradata Database": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "The MathWorks MATLAB": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "TikTok": {
+      "historial": {
+        "2026": {
+          "menciones": 35,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 35,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Transact-SQL": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Trimble SketchUp Pro": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "TypeScript": {
+      "historial": {
+        "2026": {
+          "menciones": 12,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 12,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "UNIX": {
+      "historial": {
+        "2026": {
+          "menciones": 12,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 12,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "UNIX Shell": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Vue.js": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "WordPress": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Workday software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Yardi software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Zoom": {
+      "historial": {
+        "2026": {
+          "menciones": 26,
+          "fuentes": [
+            "LinkedIn",
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 26,
+      "num_fuentes": 3,
+      "fuentes": [
+        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "eClinicalWorks EHR software": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "jQuery": {
+      "historial": {
+        "2026": {
+          "menciones": 7,
+          "fuentes": [
+            "LinkedIn",
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 7,
+      "num_fuentes": 2,
+      "fuentes": [
+        "LinkedIn",
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Anatomía": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Arquitectura y urbanismo": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Atención a adultos, adultos mayores con o sin discapacidad": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Atención integral en salud": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Atención, protección y servicios a la infancia, adolescencia y juventud": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Bellas artes": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Biología": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Bioquímica": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Ciencias políticas y educación cívica": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Computadoras, electrónica y automatización": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Construcción e ingeniería civil": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Contabilidad e impuestos": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Deportes": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Desarrollo y análisis de software y aplicaciones": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Diseño": {
+      "historial": {
+        "2026": {
+          "menciones": 20,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 20,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Diseño industrial, de moda e interiores": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Diseño y administración de redes y bases de datos": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Economía": {
+      "historial": {
+        "2026": {
+          "menciones": 7,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 7,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Educación y capacitación": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Electricidad y energía": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Enfermería y partería": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Estadística": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Farmacia": {
+      "historial": {
+        "2026": {
+          "menciones": 14,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 14,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Filosofía y ética": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Fisioterapia, fonoaudiología, terapia ocupacional, nutrición y afines": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Física": {
+      "historial": {
+        "2026": {
+          "menciones": 11,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 11,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Geografía y territorio": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Gerencia y administración": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Gestión del riesgo de desastres": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Gestión financiera, administración bancaria y seguros": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Herramientas de simulación y diseño": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Idioma extranjero": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Ingeniería y tecnología": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Instrumentación quirúrgica": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Interpretación de planos": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Leyes y gobierno": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Literatura y lingüística": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Manejo de las TIC": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Manipulación de alimentos": {
+      "historial": {
+        "2026": {
+          "menciones": 12,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 12,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Mantenimiento": {
+      "historial": {
+        "2026": {
+          "menciones": 91,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 91,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Matemáticas": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Mecánica e ingeniería de vehículos, barcos y aeronaves de motor": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Mecánica y metalistería": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Medicina": {
+      "historial": {
+        "2026": {
+          "menciones": 9,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 9,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Medicinas y terapias alternativas y complementarias": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Mercadotecnia y publicidad": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Metodología de investigación": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Minería y extracción": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Patrimonio  cultural": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Patrimonio  natural": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Periodismo, comunicación y reportajes": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Primeros auxilios": {
+      "historial": {
+        "2026": {
+          "menciones": 12,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 12,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Procesamiento de alimentos": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Producción y procesamiento": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Productos textiles (ropa, calzado y artículos de cuero)": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Química": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Recursos humanos y de personal": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Saneamiento de la comunidad": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Seguridad pública": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Seguridad y salud en el trabajo": {
+      "historial": {
+        "2026": {
+          "menciones": 24,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 24,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Servicio a la persona y humanización": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Servicio al cliente": {
+      "historial": {
+        "2026": {
+          "menciones": 110,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 110,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Servicios de oficina y administrativos": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Sicología / psicología": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Sociología, antropología y estudios culturales": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Tecnología de diagnóstico y tratamiento médico": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Tecnologías de protección y gestión del medio ambiente": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Telecomunicación": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Técnicas audiovisuales y producción para medios de comunicación": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Ventas al por mayor y al por menor": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "conocimiento",
+      "anios_cubiertos": 1
+    },
+    "Análisis de control de calidad": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Análisis de necesidades": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Análisis de procesos": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Aprendizaje aplicado": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Comprensión de lectura": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Comunicación asertiva": {
+      "historial": {
+        "2026": {
+          "menciones": 22,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 22,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Conciliación": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Creatividad": {
+      "historial": {
+        "2026": {
+          "menciones": 5,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 5,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Criterio y toma de decisiones": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Diseño de tecnología": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Ensamble": {
+      "historial": {
+        "2026": {
+          "menciones": 7,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 7,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Escucha activa": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Estrategias para el aprendizaje": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Evaluación y control de actividades": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Flexibilidad y adaptabilidad": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Gestión de recursos de personal": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Gestión de recursos financieros": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Gestión de recursos materiales": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Gestión del tiempo": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Interpretación": {
+      "historial": {
+        "2026": {
+          "menciones": 11,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 11,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Liderazgo": {
+      "historial": {
+        "2026": {
+          "menciones": 42,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 42,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Lógica matemática": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Manejo de imprevistos": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Mantenimiento de equipos": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Orientación al servicio": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Pensamiento crítico": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Pensamiento sistémico": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Persuasión": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Proactividad": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Programación": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Redacción de textos": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Relaciones interpersonales": {
+      "historial": {
+        "2026": {
+          "menciones": 13,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 13,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Reparación": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Resolución de problemas complejos": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Seguir instrucciones": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Selección de equipo": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Trabajo bajo presión": {
+      "historial": {
+        "2026": {
+          "menciones": 3,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 3,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Trabajo en equipo": {
+      "historial": {
+        "2026": {
+          "menciones": 76,
+          "fuentes": [
+            "Ocupacol",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 76,
+      "num_fuentes": 2,
+      "fuentes": [
+        "Ocupacol",
+        "SPE"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Transmisión de conocimiento": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Vigilancia de las operaciones": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "Ocupacol"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "Ocupacol"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Science": {
+      "historial": {
+        "2026": {
+          "menciones": 306,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 306,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Monitoring": {
+      "historial": {
+        "2026": {
+          "menciones": 293,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 293,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Writing": {
+      "historial": {
+        "2026": {
+          "menciones": 270,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 270,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Time Management": {
+      "historial": {
+        "2026": {
+          "menciones": 219,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 219,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Coordination": {
+      "historial": {
+        "2026": {
+          "menciones": 197,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 197,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Troubleshooting": {
+      "historial": {
+        "2026": {
+          "menciones": 162,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 162,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Programming": {
+      "historial": {
+        "2026": {
+          "menciones": 140,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 140,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Speaking": {
+      "historial": {
+        "2026": {
+          "menciones": 124,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 124,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Installation": {
+      "historial": {
+        "2026": {
+          "menciones": 109,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 109,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Negotiation": {
+      "historial": {
+        "2026": {
+          "menciones": 98,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 98,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Critical Thinking": {
+      "historial": {
+        "2026": {
+          "menciones": 66,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 66,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Repairing": {
+      "historial": {
+        "2026": {
+          "menciones": 57,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 57,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Mathematics": {
+      "historial": {
+        "2026": {
+          "menciones": 52,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 52,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Active Listening": {
+      "historial": {
+        "2026": {
+          "menciones": 39,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 39,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Reading Comprehension": {
+      "historial": {
+        "2026": {
+          "menciones": 29,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 29,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Equipment Maintenance": {
+      "historial": {
+        "2026": {
+          "menciones": 17,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 17,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Instructing": {
+      "historial": {
+        "2026": {
+          "menciones": 10,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 10,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Service Orientation": {
+      "historial": {
+        "2026": {
+          "menciones": 9,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 9,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Systems Analysis": {
+      "historial": {
+        "2026": {
+          "menciones": 8,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 8,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Persuasion": {
+      "historial": {
+        "2026": {
+          "menciones": 6,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 6,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "blanda",
+      "anios_cubiertos": 1
+    },
+    "Learning Strategies": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Operations Analysis": {
+      "historial": {
+        "2026": {
+          "menciones": 2,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 2,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Active Learning": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Technology Design": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    },
+    "Social Perceptiveness": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "LinkedIn"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "LinkedIn"
+      ],
+      "categoria": "destreza",
+      "anios_cubiertos": 1
+    }
+  }
+}
