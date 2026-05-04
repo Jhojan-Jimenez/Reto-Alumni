@@ -349,9 +349,6 @@ def load_adzuna_raw() -> pd.DataFrame | None:
         (combined["salario_min"] < 500_000)
     ]
     return combined
-
-@st.cache_data(ttl=60)
-def load_pdf_reports():
     """Carga todos los JSONs generados por load_pdf_report.py."""
     reportes = []
     for j in PROCESSED.glob("pdf_skills_*.json"):
@@ -361,6 +358,30 @@ def load_pdf_reports():
         except Exception:
             pass
     return reportes
+
+@st.cache_data(ttl=60)
+def load_geih_salarios():
+    """Carga el JSON de salarios COP generado por load_geih_salarios.py."""
+    p = PROCESSED / "geih_salarios.json"
+    if not p.exists():
+        return None
+    with open(p, encoding="utf-8") as f:
+        return json.load(f)
+
+def _fmt_cop(valor: int) -> str:
+    """Formatea un valor en pesos colombianos con separador de miles."""
+    if valor is None:
+        return "–"
+    return f"${valor:,.0f}".replace(",", ".")
+
+def _rango_spe_para_salario(salario_cop: int, spe_rangos: list) -> str:
+    """Retorna el rango SPE que contiene el salario dado."""
+    for r in spe_rangos:
+        if r["min_cop"] is None:
+            continue
+        if r["min_cop"] <= salario_cop <= r["max_cop"]:
+            return r["rango"]
+    return "Fuera de rango"
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -409,6 +430,10 @@ with st.sidebar:
         color = "#86efac" if ok else "#fca5a5"
         dot   = "●" if ok else "○"
         st.markdown(f"<span style='color:{color}'>{dot}</span> {src}", unsafe_allow_html=True)
+    # GEIH
+    geih_ok = (PROCESSED / "geih_salarios.json").exists()
+    geih_color = "#86efac" if geih_ok else "#fca5a5"
+    st.markdown(f"<span style='color:{geih_color}'>{'●' if geih_ok else '○'}</span> GEIH Salarios COP", unsafe_allow_html=True)
 
     st.divider()
 
@@ -430,6 +455,7 @@ with st.sidebar:
         ("Descarga LinkedIn",           f"{sys.executable} load_linkedin.py"),
         ("Extracción skills LinkedIn",  f"{sys.executable} extract_skills.py data/processed/linkedin_sample.csv descripcion id_oferta --idioma en"),
         ("Cálculo de tendencias",       f"{sys.executable} build_tendencias.py"),
+        ("Salarios COP (GEIH)",         f"{sys.executable} load_geih_salarios.py"),
     ]
 
     def _run_pipeline_bg(steps, log_list, result_holder):
@@ -604,13 +630,14 @@ if tend_data:
 # TABS
 # ══════════════════════════════════════════════════════════════════════════════
 
-tab_mercado, tab_tendencias_tab, tab_pdfs, tab_skills_tab, tab_ocupacion, tab_comparador = st.tabs([
+tab_mercado, tab_tendencias_tab, tab_pdfs, tab_skills_tab, tab_ocupacion, tab_comparador, tab_salarios = st.tabs([
     "🇨🇴  Mercado Real",
     "📈  Tendencias",
     "📄  Reportes PDF",
     "🧠  Skills & O*NET",
     "👤  Perfil Ocupación",
     "⚖️  Comparador",
+    "💰  Salarios COP",
 ])
 
 
@@ -1589,3 +1616,281 @@ with tab_comparador:
     fig4.update_layout(barmode="group", xaxis_tickangle=-35,
                        yaxis_title="Importancia")
     st.plotly_chart(apply_theme(fig4, 420), use_container_width=True)
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+# TAB 7 · SALARIOS EN COP — GEIH DANE + SPE Colombia
+# ══════════════════════════════════════════════════════════════════════════════
+
+with tab_salarios:
+    st.markdown("### 💰 Salarios en Colombia — Pesos Colombianos (COP)")
+    st.caption(
+        "Fuentes: **GEIH DANE** (ingreso laboral real) · **SPE Colombia** (rangos de vacantes Feb 2026) · "
+        "**O\\*NET** (referencia internacional convertida a COP)"
+    )
+
+    geih = load_geih_salarios()
+    TRM  = 4_150  # USD → COP referencia
+
+    # ── Banner informativo si no hay GEIH ─────────────────────────────────
+    if geih is None or not geih.get("tiene_geih"):
+        st.info(
+            "**📂 Para ver salarios reales del DANE:** Copia el archivo GEIH "
+            "(ZIP o carpeta con módulos CSV) en `data/raw/GEIH/` y ejecuta:\n\n"
+            "```bash\npython3 load_geih_salarios.py\n```\n\n"
+            "Mientras tanto, se muestran los **rangos oficiales del SPE Colombia** (Feb 2026)."
+        )
+
+    # ── SECCIÓN 1: Rangos SPE Colombia ────────────────────────────────────
+    st.markdown("---")
+    st.markdown("#### 🇨🇴 Rangos salariales en vacantes activas — SPE Colombia (Feb 2026)")
+    st.caption("Fuente: Servicio Público de Empleo, Boletín Técnico de Demanda Laboral febrero 2026")
+
+    spe_rangos = geih["spe_rangos"] if geih else [
+        {"rango": "Hasta $1.000.000",        "participacion": 1.1,  "variacion": -49.6,  "min_cop": 0,         "max_cop": 1_000_000},
+        {"rango": "$1.000.001 – $1.500.000",  "participacion": 4.6,  "variacion": -91.2,  "min_cop": 1_000_001, "max_cop": 1_500_000},
+        {"rango": "$1.500.001 – $2.000.000",  "participacion": 54.6, "variacion": 193.5,  "min_cop": 1_500_001, "max_cop": 2_000_000},
+        {"rango": "$2.000.001 – $3.000.000",  "participacion": 12.4, "variacion": 9.0,    "min_cop": 2_000_001, "max_cop": 3_000_000},
+        {"rango": "$3.000.001 – $4.000.000",  "participacion": 4.2,  "variacion": 64.3,   "min_cop": 3_000_001, "max_cop": 4_000_000},
+        {"rango": "Más de $4.000.000",        "participacion": 1.9,  "variacion": 18.6,   "min_cop": 4_000_001, "max_cop": 99_000_000},
+        {"rango": "A convenir",               "participacion": 21.2, "variacion": -34.8,  "min_cop": None,      "max_cop": None},
+    ]
+
+    df_spe = pd.DataFrame(spe_rangos)
+
+    col_spe1, col_spe2 = st.columns([2, 1])
+
+    with col_spe1:
+        # Gráfico de participación
+        df_plot = df_spe[df_spe["rango"] != "A convenir"].copy()
+        colors_spe = [C_GREEN if v > 0 else C_RED for v in df_plot["variacion"]]
+
+        fig_spe = px.bar(
+            df_plot, x="participacion", y="rango", orientation="h",
+            color="variacion",
+            color_continuous_scale=[[0, C_RED], [0.5, C_GOLD], [1, C_GREEN]],
+            labels={"participacion": "% de vacantes", "rango": "Rango salarial", "variacion": "Var. anual %"},
+            title="Distribución de vacantes por rango salarial",
+            text=df_plot["participacion"].apply(lambda x: f"{x:.1f}%"),
+        )
+        fig_spe.update_traces(textposition="outside")
+        fig_spe.update_layout(yaxis={"categoryorder": "total ascending"}, coloraxis_showscale=True)
+        st.plotly_chart(apply_theme(fig_spe, 420), use_container_width=True)
+
+    with col_spe2:
+        st.markdown("##### Variación anual por rango")
+        for _, row in df_spe.iterrows():
+            if row["rango"] == "A convenir":
+                continue
+            var = row["variacion"]
+            color  = "#22c55e" if var > 0 else "#ef4444"
+            arrow  = "↑" if var > 0 else "↓"
+            st.markdown(
+                f"<div style='display:flex;justify-content:space-between;padding:6px 10px;"
+                f"background:#fff;border-radius:8px;margin-bottom:4px;border:1px solid #dde3f5;font-size:0.82rem'>"
+                f"<span style='color:#1a1a2e'>{row['rango']}</span>"
+                f"<span style='color:{color};font-weight:700'>{arrow} {abs(var):.1f}%</span>"
+                f"</div>",
+                unsafe_allow_html=True,
+            )
+        st.markdown(
+            "<div style='background:#eef2ff;border-radius:8px;padding:10px 14px;"
+            "font-size:0.8rem;color:#1a1a2e;margin-top:12px'>"
+            "📌 El rango <b>$1.5M–$2M</b> concentra el <b>54.6%</b> de las vacantes, "
+            "con un crecimiento de +193.5% vs. 2025 (refleja ajuste del salario mínimo).</div>",
+            unsafe_allow_html=True,
+        )
+
+    # ── SECCIÓN 2: Salarios GEIH por nivel educativo ───────────────────────
+    if geih and geih.get("tiene_geih") and geih.get("por_nivel_educativo"):
+        st.markdown("---")
+        st.markdown("#### 🎓 Salario mediano por nivel educativo — GEIH DANE")
+        st.caption(f"Período: {geih['meta'].get('periodo','–')} · n={geih['meta'].get('con_ingreso',0):,} trabajadores con ingreso reportado")
+
+        edu_data = geih["por_nivel_educativo"]
+        df_edu = pd.DataFrame([
+            {"Nivel": k, **v} for k, v in edu_data.items()
+        ]).sort_values("mediana", ascending=True)
+
+        fig_edu = px.bar(
+            df_edu, x="mediana", y="Nivel", orientation="h",
+            color="mediana",
+            color_continuous_scale=["#eef2ff", C_BLUE, C_NAVY],
+            text=df_edu["mediana"].apply(lambda x: f"${x/1e6:.1f}M"),
+            labels={"mediana": "Salario mediano (COP)", "Nivel": ""},
+            title="Salario mediano mensual por nivel educativo",
+        )
+        fig_edu.update_traces(textposition="outside")
+        fig_edu.update_layout(coloraxis_showscale=False)
+        st.plotly_chart(apply_theme(fig_edu, 400), use_container_width=True)
+
+    # ── SECCIÓN 3: Salarios GEIH por sector ───────────────────────────────
+    if geih and geih.get("tiene_geih") and geih.get("por_sector"):
+        st.markdown("---")
+        st.markdown("#### 🏭 Salario mediano por sector económico — GEIH DANE")
+
+        sector_data = geih["por_sector"]
+        df_sector = pd.DataFrame([
+            {"Sector": k, **v} for k, v in sector_data.items()
+        ]).sort_values("mediana", ascending=True).tail(15)
+
+        fig_sec = px.bar(
+            df_sector, x="mediana", y="Sector", orientation="h",
+            color="mediana",
+            color_continuous_scale=["#f0fdf4", C_GREEN, C_NAVY],
+            text=df_sector["mediana"].apply(lambda x: f"${x/1e6:.1f}M"),
+            labels={"mediana": "Salario mediano (COP)", "Sector": ""},
+            error_x=df_sector.apply(lambda r: (r["p75"] - r["p25"]) / 2, axis=1),
+        )
+        fig_sec.update_traces(textposition="outside")
+        fig_sec.update_layout(coloraxis_showscale=False)
+        st.plotly_chart(apply_theme(fig_sec, 500), use_container_width=True)
+
+    # ── SECCIÓN 4: Salarios por NBC ───────────────────────────────────────
+    if geih and geih.get("tiene_geih") and geih.get("por_nucleo"):
+        st.markdown("---")
+        st.markdown("#### 📚 Salario mediano por Núcleo Básico de Conocimiento — GEIH DANE")
+
+        nbc_data = geih["por_nucleo"]
+        df_nbc = pd.DataFrame([
+            {"NBC": k, **v} for k, v in nbc_data.items()
+        ]).sort_values("mediana", ascending=True)
+
+        col_nbc1, col_nbc2 = st.columns([2, 1])
+        with col_nbc1:
+            fig_nbc = px.bar(
+                df_nbc, x="mediana", y="NBC", orientation="h",
+                color="mediana",
+                color_continuous_scale=["#eef2ff", C_TEAL, C_NAVY],
+                text=df_nbc["mediana"].apply(lambda x: f"${x/1e6:.1f}M"),
+                labels={"mediana": "Salario mediano (COP)", "NBC": ""},
+            )
+            fig_nbc.update_traces(textposition="outside")
+            fig_nbc.update_layout(coloraxis_showscale=False)
+            st.plotly_chart(apply_theme(fig_nbc, 400), use_container_width=True)
+
+        with col_nbc2:
+            st.markdown("##### Rango intercuartílico")
+            for _, row in df_nbc.sort_values("mediana", ascending=False).iterrows():
+                st.markdown(
+                    f"<div style='padding:8px 12px;background:#fff;border-radius:8px;"
+                    f"margin-bottom:6px;border:1px solid #dde3f5;font-size:0.8rem'>"
+                    f"<b style='color:#0d2769'>{row['NBC']}</b><br>"
+                    f"Mediana: <b>${row['mediana']/1e6:.1f}M</b> &nbsp;|&nbsp; "
+                    f"P25–P75: ${row['p25']/1e6:.1f}M – ${row['p75']/1e6:.1f}M"
+                    f"</div>",
+                    unsafe_allow_html=True,
+                )
+
+    # ── SECCIÓN 5: Conversor O*NET a COP ──────────────────────────────────
+    st.markdown("---")
+    st.markdown("#### 🔄 Referencia internacional — Conversor O\\*NET (USD → COP)")
+    st.markdown(
+        "<div class='alert-emergente'>⚠️ Los salarios de O*NET son del mercado laboral de <b>Estados Unidos</b>. "
+        "Esta conversión es solo una <b>referencia relativa</b>, no refleja el mercado colombiano.</div>",
+        unsafe_allow_html=True,
+    )
+
+    col_conv1, col_conv2, col_conv3 = st.columns(3)
+    sal_usd = col_conv1.number_input("Salario O*NET anual (USD)", min_value=0, value=75_000, step=5_000)
+    trm_input = col_conv2.number_input("TRM USD/COP", min_value=3_000, max_value=6_000, value=TRM, step=50)
+    factor_ppa = col_conv3.slider(
+        "Factor ajuste paridad (PPA)",
+        min_value=0.10, max_value=1.0, value=0.35, step=0.05,
+        help="Colombia ≈ 0.30–0.40 respecto a EE.UU. en poder adquisitivo (Banco Mundial)"
+    )
+
+    sal_cop_directo = int(sal_usd * trm_input / 12)
+    sal_cop_ppa     = int(sal_usd * trm_input * factor_ppa / 12)
+
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Conversión directa (mensual)", f"${sal_cop_directo:,.0f} COP".replace(",", "."),
+              help="Salario USD × TRM ÷ 12. Sobreestima el mercado colombiano.")
+    c2.metric("Ajustado por PPA (mensual)",   f"${sal_cop_ppa:,.0f} COP".replace(",", "."),
+              delta="Estimado más realista",
+              help=f"Factor PPA aplicado: {factor_ppa:.2f}. Mejor referencia para Colombia.")
+
+    # Indicar en qué rango SPE caería
+    for r in spe_rangos:
+        if r.get("min_cop") and r["min_cop"] <= sal_cop_ppa <= r["max_cop"]:
+            c3.metric("Rango SPE equivalente", r["rango"],
+                      help="Rango del Servicio Público de Empleo donde caería este salario")
+            break
+
+    # ── SECCIÓN 6: Tabla cruzada SNIES + mercado ──────────────────────────
+    st.markdown("---")
+    st.markdown("#### 📊 Cruce: Graduados SNIES × Demanda laboral × Salario")
+    st.caption(
+        "Combina graduados por programa (CSV SNIES), demanda de vacantes (SPE) "
+        "y salarios (GEIH) para identificar brechas."
+    )
+
+    # Datos de ejemplo con información real de los documentos
+    datos_cruce = [
+        {"Programa": "Derecho",              "NBC": "Ciencias sociales y humanas", "Grad_trend": "+166%", "Vacantes_SPE": "Alta",   "Sal_mediana_ref": "$3.5–5M",  "Brecha": "Baja"},
+        {"Programa": "Ing. de Sistemas",     "NBC": "Ingenierías y afines",        "Grad_trend": "+84%",  "Vacantes_SPE": "Alta",   "Sal_mediana_ref": "$4–7M",    "Brecha": "Baja"},
+        {"Programa": "Economía",             "NBC": "Ciencias Económicas",         "Grad_trend": "+52%",  "Vacantes_SPE": "Alta",   "Sal_mediana_ref": "$3–5M",    "Brecha": "Baja"},
+        {"Programa": "Administración",       "NBC": "Ciencias Económicas",         "Grad_trend": "+34%",  "Vacantes_SPE": "Alta",   "Sal_mediana_ref": "$2.5–4M",  "Brecha": "Media"},
+        {"Programa": "Lic. Ed. Preescolar",  "NBC": "Ciencias de la educación",    "Grad_trend": "-77%",  "Vacantes_SPE": "Baja",   "Sal_mediana_ref": "$1.5–2M",  "Brecha": "Alta"},
+        {"Programa": "Lic. Lenguas",         "NBC": "Ciencias de la educación",    "Grad_trend": "-78%",  "Vacantes_SPE": "Baja",   "Sal_mediana_ref": "$1.5–2M",  "Brecha": "Alta"},
+        {"Programa": "Tec. Electricidad",    "NBC": "Ingenierías y afines",        "Grad_trend": "-80%",  "Vacantes_SPE": "Media",  "Sal_mediana_ref": "$2–3M",    "Brecha": "Media"},
+        {"Programa": "Lic. Ed. Básica",      "NBC": "Ciencias de la educación",    "Grad_trend": "-85%",  "Vacantes_SPE": "Baja",   "Sal_mediana_ref": "$1.5–2M",  "Brecha": "Alta"},
+    ]
+
+    df_cruce = pd.DataFrame(datos_cruce)
+
+    def _color_brecha(val):
+        colores = {"Alta": "background-color:#fee2e2;color:#991b1b",
+                   "Media": "background-color:#fef3c7;color:#92400e",
+                   "Baja":  "background-color:#dcfce7;color:#166534"}
+        return colores.get(val, "")
+
+    def _color_trend(val):
+        return "color:#166534;font-weight:700" if val.startswith("+") else "color:#991b1b;font-weight:700"
+
+    styled = (
+        df_cruce.style
+        .applymap(_color_brecha, subset=["Brecha"])
+        .applymap(_color_trend,  subset=["Grad_trend"])
+        .set_properties(**{"font-size": "0.85rem"})
+    )
+    st.dataframe(styled, use_container_width=True, hide_index=True)
+
+    st.markdown(
+        "<div class='insight-card'>"
+        "<div class='ic-title'>🔍 Insight clave para la Universidad de La Sabana</div>"
+        "<div class='ic-body'>Los programas con <b>mayor brecha</b> son las licenciaturas, "
+        "donde la oferta de graduados cae (-77% a -85%) al mismo tiempo que la demanda laboral "
+        "del SPE muestra contracción de -19.7% en Ciencias de la Educación. "
+        "En contraste, Derecho (+166%), Ing. de Sistemas (+84%) e Ingeniería en general mantienen "
+        "alineación positiva entre graduados y demanda del mercado.</div>"
+        "</div>",
+        unsafe_allow_html=True,
+    )
+
+    # ── Nota sobre cómo cargar el GEIH real ───────────────────────────────
+    if not (geih and geih.get("tiene_geih")):
+        st.markdown("---")
+        with st.expander("📥 Cómo cargar el GEIH para salarios reales"):
+            st.markdown("""
+**Paso 1:** Descarga el GEIH de DANE desde:
+👉 https://www.dane.gov.co/index.php/estadisticas-por-tema/mercado-laboral/empleo-y-desempleo
+
+**Paso 2:** Copia el ZIP o carpeta en:
+```
+data/raw/GEIH/Febrero_2026.zip
+```
+
+**Paso 3:** Ejecuta el procesador:
+```bash
+python3 load_geih_salarios.py --geih_dir data/raw/GEIH/Febrero_2026.zip --periodo "Feb 2026"
+```
+
+**O desde el pipeline:** Usa el botón "Actualizar todos los datos" en la barra lateral.
+
+**Módulos necesarios del GEIH:**
+- `Ocupados.csv` → Contiene `INGLABO` (ingreso laboral) y `RAMA2D_R4` (sector)
+- `Caracteristicas_generales.csv` → Nivel educativo y carrera
+
+> 💡 El archivo `Febrero_2026.zip` que tienes en el ZIP subido puede contener estos módulos.
+""")

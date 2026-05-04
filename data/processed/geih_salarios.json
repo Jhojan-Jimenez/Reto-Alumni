@@ -1,0 +1,65 @@
+{
+  "meta": {
+    "periodo": "Feb 2026",
+    "fuente": "GEIH DANE + SPE Colombia",
+    "n_ocupados": 0,
+    "con_ingreso": 0,
+    "trm_usd_cop": 4150,
+    "nota": "Salarios en COP (pesos colombianos). Fuente: DANE GEIH."
+  },
+  "por_nivel_educativo": {},
+  "por_sector": {},
+  "por_nucleo": {},
+  "spe_rangos": [
+    {
+      "rango": "Hasta $1.000.000",
+      "min_cop": 0,
+      "max_cop": 1000000,
+      "participacion": 1.1,
+      "variacion": -49.6
+    },
+    {
+      "rango": "$1.000.001 – $1.500.000",
+      "min_cop": 1000001,
+      "max_cop": 1500000,
+      "participacion": 4.6,
+      "variacion": -91.2
+    },
+    {
+      "rango": "$1.500.001 – $2.000.000",
+      "min_cop": 1500001,
+      "max_cop": 2000000,
+      "participacion": 54.6,
+      "variacion": 193.5
+    },
+    {
+      "rango": "$2.000.001 – $3.000.000",
+      "min_cop": 2000001,
+      "max_cop": 3000000,
+      "participacion": 12.4,
+      "variacion": 9.0
+    },
+    {
+      "rango": "$3.000.001 – $4.000.000",
+      "min_cop": 3000001,
+      "max_cop": 4000000,
+      "participacion": 4.2,
+      "variacion": 64.3
+    },
+    {
+      "rango": "Más de $4.000.000",
+      "min_cop": 4000001,
+      "max_cop": 99000000,
+      "participacion": 1.9,
+      "variacion": 18.6
+    },
+    {
+      "rango": "A convenir",
+      "min_cop": null,
+      "max_cop": null,
+      "participacion": 21.2,
+      "variacion": -34.8
+    }
+  ],
+  "tiene_geih": false
+}
