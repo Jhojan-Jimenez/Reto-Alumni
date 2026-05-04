@@ -717,59 +717,56 @@ with tab_tendencias_tab:
         
         with col_ta:
             st.markdown(f"#### Top {top_n} skills por score de tendencia")
-            if not skills_filtradas:
-                st.warning("No hay datos con los filtros seleccionados.")
-                st.info("Prueba ajustar los filtros para ver resultados.")
-            else:
-                rows = sorted(
-                    [(s, v["tendencia"], v["score_tendencia"], v["total_menciones"], v["categoria"])
-                    for s, v in skills_filtradas.items()],
-                    key=lambda x: -x[2]
-                )[:top_n]
+            
+            rows = sorted(
+                [(s, v["tendencia"], v["score_tendencia"], v["total_menciones"], v["categoria"])
+                 for s, v in skills_filtradas.items()],
+                key=lambda x: -x[2]
+            )[:top_n]
 
-                df_rows = pd.DataFrame(rows, columns=["skill", "tendencia", "score", "menciones", "categoria"])
-                color_map_tend = {"creciente": C_GREEN, "estable": C_TEAL, "decreciente": C_RED}
+            df_rows = pd.DataFrame(rows, columns=["skill", "tendencia", "score", "menciones", "categoria"])
+            color_map_tend = {"creciente": C_GREEN, "estable": C_TEAL, "decreciente": C_RED}
 
-                fig = px.bar(
-                    df_rows, x="score", y="skill", orientation="h",
-                    color="tendencia",
+            fig = px.bar(
+                df_rows, x="score", y="skill", orientation="h",
+                color="tendencia",
+                color_discrete_map=color_map_tend,
+                labels={"score": "Score tendencia (0–1)", "skill": ""},
+            )
+            fig.update_layout(yaxis={"categoryorder": "total ascending"}, margin=dict(l=220))
+            st.plotly_chart(apply_theme(fig, 560), use_container_width=True)
+
+        with col_tb:
+            st.markdown("#### Distribución de tendencias")
+            tend_dist = pd.DataFrame([
+                {"Tendencia": "Creciente",  "Skills": meta_tend.get("crecientes", 0)},
+                {"Tendencia": "Estable",    "Skills": meta_tend.get("estables", 0)},
+                {"Tendencia": "Decreciente","Skills": meta_tend.get("decrecientes", 0)},
+            ])
+            fig2 = px.pie(
+                tend_dist, names="Tendencia", values="Skills", hole=0.52,
+                color="Tendencia",
+                color_discrete_map={"Creciente": C_GREEN, "Estable": C_TEAL, "Decreciente": C_RED},
+            )
+            fig2.update_traces(textposition="outside", textinfo="percent+label",
+                               textfont=dict(color="#1a1a2e"))
+            st.plotly_chart(apply_theme(fig2, 340), use_container_width=True)
+
+            # ── Categorías más crecientes ──────────────────────────────────
+            st.markdown("#### Por categoría")
+            cat_tend = pd.DataFrame([
+                {"cat": v["categoria"], "tend": v["tendencia"]}
+                for v in skills_filtradas.values()
+            ])
+            if not cat_tend.empty:
+                ct = cat_tend.groupby(["cat", "tend"]).size().reset_index(name="n")
+                fig3 = px.bar(
+                    ct, x="cat", y="n", color="tend",
                     color_discrete_map=color_map_tend,
-                    labels={"score": "Score tendencia (0–1)", "skill": ""},
+                    barmode="stack",
+                    labels={"cat": "Categoría", "n": "Skills", "tend": ""},
                 )
-                fig.update_layout(yaxis={"categoryorder": "total ascending"}, margin=dict(l=220))
-                st.plotly_chart(apply_theme(fig, 560), use_container_width=True)
-
-            with col_tb:
-                st.markdown("#### Distribución de tendencias")
-                tend_dist = pd.DataFrame([
-                    {"Tendencia": "Creciente",  "Skills": meta_tend.get("crecientes", 0)},
-                    {"Tendencia": "Estable",    "Skills": meta_tend.get("estables", 0)},
-                    {"Tendencia": "Decreciente","Skills": meta_tend.get("decrecientes", 0)},
-                ])
-                fig2 = px.pie(
-                    tend_dist, names="Tendencia", values="Skills", hole=0.52,
-                    color="Tendencia",
-                    color_discrete_map={"Creciente": C_GREEN, "Estable": C_TEAL, "Decreciente": C_RED},
-                )
-                fig2.update_traces(textposition="outside", textinfo="percent+label",
-                                textfont=dict(color="#1a1a2e"))
-                st.plotly_chart(apply_theme(fig2, 340), use_container_width=True)
-
-                # ── Categorías más crecientes ──────────────────────────────────
-                st.markdown("#### Por categoría")
-                cat_tend = pd.DataFrame([
-                    {"cat": v["categoria"], "tend": v["tendencia"]}
-                    for v in skills_filtradas.values()
-                ])
-                if not cat_tend.empty:
-                    ct = cat_tend.groupby(["cat", "tend"]).size().reset_index(name="n")
-                    fig3 = px.bar(
-                        ct, x="cat", y="n", color="tend",
-                        color_discrete_map=color_map_tend,
-                        barmode="stack",
-                        labels={"cat": "Categoría", "n": "Skills", "tend": ""},
-                    )
-                    st.plotly_chart(apply_theme(fig3, 280), use_container_width=True)
+                st.plotly_chart(apply_theme(fig3, 280), use_container_width=True)
 
         # ── Evolución temporal de skills seleccionadas ─────────────────────
         st.markdown("#### Evolución temporal — selecciona skills para comparar")
