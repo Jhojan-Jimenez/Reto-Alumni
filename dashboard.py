@@ -349,6 +349,9 @@ def load_adzuna_raw() -> pd.DataFrame | None:
         (combined["salario_min"] < 500_000)
     ]
     return combined
+
+@st.cache_data(ttl=60)
+def load_pdf_reports():
     """Carga todos los JSONs generados por load_pdf_report.py."""
     reportes = []
     for j in PROCESSED.glob("pdf_skills_*.json"):
