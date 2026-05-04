@@ -1,10 +1,10 @@
 {
   "meta": {
-    "total_skills": 341,
+    "total_skills": 316,
     "crecientes": 0,
-    "estables": 341,
+    "estables": 316,
     "decrecientes": 0,
-    "fecha_generacion": "2026-05-03T23:57:51.802787"
+    "fecha_generacion": "2026-05-04T01:34:51.542665"
   },
   "skills": {
     "análisis de operaciones": {
@@ -787,9 +787,8 @@
     "AJAX": {
       "historial": {
         "2026": {
-          "menciones": 5,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -798,10 +797,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -810,9 +808,8 @@
     "Adobe Acrobat": {
       "historial": {
         "2026": {
-          "menciones": 13,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -821,10 +818,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 13,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -833,9 +829,8 @@
     "Adobe After Effects": {
       "historial": {
         "2026": {
-          "menciones": 3,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -844,10 +839,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 3,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -877,9 +871,8 @@
     "Adobe Illustrator": {
       "historial": {
         "2026": {
-          "menciones": 3,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -888,10 +881,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 3,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -921,9 +913,8 @@
     "Adobe Photoshop": {
       "historial": {
         "2026": {
-          "menciones": 6,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -932,10 +923,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1217,9 +1207,8 @@
     "Apache Spark": {
       "historial": {
         "2026": {
-          "menciones": 3,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1228,10 +1217,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 3,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1261,9 +1249,8 @@
     "Apache Tomcat": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1272,10 +1259,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1305,9 +1291,8 @@
     "Apple iOS": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1316,10 +1301,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1349,9 +1333,8 @@
     "Asana": {
       "historial": {
         "2026": {
-          "menciones": 5,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1360,10 +1343,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1477,9 +1459,8 @@
     "Autodesk Revit": {
       "historial": {
         "2026": {
-          "menciones": 3,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1488,10 +1469,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 3,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1500,9 +1480,8 @@
     "Bash": {
       "historial": {
         "2026": {
-          "menciones": 12,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1511,10 +1490,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 12,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1544,9 +1522,8 @@
     "Bootstrap": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1555,10 +1532,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1588,80 +1564,8 @@
     "C": {
       "historial": {
         "2026": {
-          "menciones": 237,
-          "fuentes": [
-            "LinkedIn",
-            "ONET",
-            "SPE"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 237,
-      "num_fuentes": 3,
-      "fuentes": [
-        "LinkedIn",
-        "ONET",
-        "SPE"
-      ],
-      "categoria": "técnica",
-      "anios_cubiertos": 1
-    },
-    "C#": {
-      "historial": {
-        "2026": {
-          "menciones": 5,
-          "fuentes": [
-            "LinkedIn",
-            "ONET"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
-      "fuentes": [
-        "LinkedIn",
-        "ONET"
-      ],
-      "categoria": "técnica",
-      "anios_cubiertos": 1
-    },
-    "C++": {
-      "historial": {
-        "2026": {
-          "menciones": 5,
-          "fuentes": [
-            "LinkedIn",
-            "ONET"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
-      "fuentes": [
-        "LinkedIn",
-        "ONET"
-      ],
-      "categoria": "técnica",
-      "anios_cubiertos": 1
-    },
-    "Canva": {
-      "historial": {
-        "2026": {
           "menciones": 13,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -1672,9 +1576,73 @@
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
       "total_menciones": 13,
-      "num_fuentes": 3,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
+        "ONET",
+        "SPE"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "C#": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "C++": {
+      "historial": {
+        "2026": {
+          "menciones": 1,
+          "fuentes": [
+            "ONET"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 1,
+      "num_fuentes": 1,
+      "fuentes": [
+        "ONET"
+      ],
+      "categoria": "técnica",
+      "anios_cubiertos": 1
+    },
+    "Canva": {
+      "historial": {
+        "2026": {
+          "menciones": 4,
+          "fuentes": [
+            "ONET",
+            "SPE"
+          ]
+        }
+      },
+      "tendencia": "estable",
+      "score_tendencia": 0.5,
+      "primera_aparicion": 2026,
+      "ultima_aparicion": 2026,
+      "total_menciones": 4,
+      "num_fuentes": 2,
+      "fuentes": [
         "ONET",
         "SPE"
       ],
@@ -1705,9 +1673,8 @@
     "Chef": {
       "historial": {
         "2026": {
-          "menciones": 23,
+          "menciones": 6,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -1717,10 +1684,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 23,
-      "num_fuentes": 3,
+      "total_menciones": 6,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -1772,9 +1738,8 @@
     "Django": {
       "historial": {
         "2026": {
-          "menciones": 3,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1783,10 +1748,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 3,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1795,9 +1759,8 @@
     "Docker": {
       "historial": {
         "2026": {
-          "menciones": 31,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1806,10 +1769,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 31,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1818,9 +1780,8 @@
     "ESRI ArcGIS software": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1829,10 +1790,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1883,9 +1843,8 @@
     "Epic Systems": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1894,10 +1853,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1927,9 +1885,8 @@
     "Facebook": {
       "historial": {
         "2026": {
-          "menciones": 72,
+          "menciones": 3,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -1939,10 +1896,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 72,
-      "num_fuentes": 3,
+      "total_menciones": 3,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -1952,9 +1908,8 @@
     "Figma": {
       "historial": {
         "2026": {
-          "menciones": 10,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1963,10 +1918,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 10,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1975,9 +1929,8 @@
     "Git": {
       "historial": {
         "2026": {
-          "menciones": 32,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -1986,10 +1939,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 32,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -1998,9 +1950,8 @@
     "GitHub": {
       "historial": {
         "2026": {
-          "menciones": 11,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2009,10 +1960,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 11,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2021,9 +1971,8 @@
     "GitLab": {
       "historial": {
         "2026": {
-          "menciones": 6,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2032,10 +1981,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2044,9 +1992,8 @@
     "Go": {
       "historial": {
         "2026": {
-          "menciones": 179,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2055,10 +2002,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 179,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2067,9 +2013,8 @@
     "Google Analytics": {
       "historial": {
         "2026": {
-          "menciones": 11,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2078,10 +2023,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 11,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2132,9 +2076,8 @@
     "Google Docs": {
       "historial": {
         "2026": {
-          "menciones": 4,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2143,10 +2086,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 4,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2155,9 +2097,8 @@
     "Google Sheets": {
       "historial": {
         "2026": {
-          "menciones": 5,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2166,10 +2107,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2430,9 +2370,8 @@
     "JUnit": {
       "historial": {
         "2026": {
-          "menciones": 5,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2441,10 +2380,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2453,9 +2391,8 @@
     "JavaScript": {
       "historial": {
         "2026": {
-          "menciones": 38,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2464,10 +2401,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 38,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2497,9 +2433,8 @@
     "Jenkins CI": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2508,10 +2443,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2541,9 +2475,8 @@
     "Kubernetes": {
       "historial": {
         "2026": {
-          "menciones": 31,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2552,10 +2485,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 31,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2564,9 +2496,8 @@
     "Linux": {
       "historial": {
         "2026": {
-          "menciones": 42,
+          "menciones": 3,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -2576,10 +2507,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 42,
-      "num_fuentes": 3,
+      "total_menciones": 3,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -2673,9 +2603,8 @@
     "Microsoft Access": {
       "historial": {
         "2026": {
-          "menciones": 5,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2684,10 +2613,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2780,9 +2708,8 @@
     "Microsoft Excel": {
       "historial": {
         "2026": {
-          "menciones": 47,
+          "menciones": 2,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -2792,10 +2719,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 47,
-      "num_fuentes": 3,
+      "total_menciones": 2,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -2805,9 +2731,8 @@
     "Microsoft Office software": {
       "historial": {
         "2026": {
-          "menciones": 15,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2816,10 +2741,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 15,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2828,9 +2752,8 @@
     "Microsoft Outlook": {
       "historial": {
         "2026": {
-          "menciones": 16,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2839,10 +2762,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 16,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2872,9 +2794,8 @@
     "Microsoft Power BI": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2883,10 +2804,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2895,9 +2815,8 @@
     "Microsoft PowerPoint": {
       "historial": {
         "2026": {
-          "menciones": 4,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2906,10 +2825,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 4,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2939,9 +2857,8 @@
     "Microsoft Project": {
       "historial": {
         "2026": {
-          "menciones": 11,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2950,10 +2867,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 11,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -2962,9 +2878,8 @@
     "Microsoft SQL Server": {
       "historial": {
         "2026": {
-          "menciones": 4,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -2973,10 +2888,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 4,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3069,9 +2983,8 @@
     "Microsoft Teams": {
       "historial": {
         "2026": {
-          "menciones": 13,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3080,10 +2993,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 13,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3092,9 +3004,8 @@
     "Microsoft Visio": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3103,10 +3014,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3157,9 +3067,8 @@
     "Microsoft Visual Studio": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3168,10 +3077,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3180,9 +3088,8 @@
     "Microsoft Windows": {
       "historial": {
         "2026": {
-          "menciones": 8,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3191,10 +3098,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 8,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3224,9 +3130,8 @@
     "Microsoft Word": {
       "historial": {
         "2026": {
-          "menciones": 60,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3235,10 +3140,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 60,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3247,9 +3151,8 @@
     "MongoDB": {
       "historial": {
         "2026": {
-          "menciones": 6,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3258,10 +3161,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3270,9 +3172,8 @@
     "Mozilla Firefox": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3281,10 +3182,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3293,9 +3193,8 @@
     "MySQL": {
       "historial": {
         "2026": {
-          "menciones": 15,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3304,10 +3203,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 15,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3316,9 +3214,8 @@
     "NoSQL": {
       "historial": {
         "2026": {
-          "menciones": 13,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3327,10 +3224,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 13,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3339,9 +3235,8 @@
     "Node.js": {
       "historial": {
         "2026": {
-          "menciones": 12,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3350,10 +3245,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 12,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3383,9 +3277,8 @@
     "Oracle Database": {
       "historial": {
         "2026": {
-          "menciones": 3,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3394,10 +3287,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 3,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3406,9 +3298,8 @@
     "Oracle Java": {
       "historial": {
         "2026": {
-          "menciones": 3,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3417,10 +3308,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 3,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3534,9 +3424,8 @@
     "PHP": {
       "historial": {
         "2026": {
-          "menciones": 11,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3545,10 +3434,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 11,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3557,9 +3445,8 @@
     "Perl": {
       "historial": {
         "2026": {
-          "menciones": 5,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3568,10 +3455,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3580,9 +3466,8 @@
     "PostgreSQL": {
       "historial": {
         "2026": {
-          "menciones": 7,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3591,10 +3476,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 7,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3624,9 +3508,8 @@
     "Puppet": {
       "historial": {
         "2026": {
-          "menciones": 6,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3635,10 +3518,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3647,9 +3529,8 @@
     "PyTorch": {
       "historial": {
         "2026": {
-          "menciones": 6,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3658,10 +3539,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3670,9 +3550,8 @@
     "Python": {
       "historial": {
         "2026": {
-          "menciones": 94,
+          "menciones": 2,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -3682,10 +3561,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 94,
-      "num_fuentes": 3,
+      "total_menciones": 2,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -3695,9 +3573,8 @@
     "R": {
       "historial": {
         "2026": {
-          "menciones": 122,
+          "menciones": 5,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -3707,10 +3584,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 122,
-      "num_fuentes": 3,
+      "total_menciones": 5,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -3720,9 +3596,8 @@
     "React": {
       "historial": {
         "2026": {
-          "menciones": 36,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3731,10 +3606,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 36,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3785,9 +3659,8 @@
     "Redis": {
       "historial": {
         "2026": {
-          "menciones": 6,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3796,10 +3669,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3808,9 +3680,8 @@
     "Ruby": {
       "historial": {
         "2026": {
-          "menciones": 4,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3819,10 +3690,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 4,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3852,9 +3722,8 @@
     "SAP ERP": {
       "historial": {
         "2026": {
-          "menciones": 2,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3863,10 +3732,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3896,9 +3764,8 @@
     "SAS": {
       "historial": {
         "2026": {
-          "menciones": 17,
+          "menciones": 5,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -3908,10 +3775,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 17,
-      "num_fuentes": 3,
+      "total_menciones": 5,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -3942,9 +3808,8 @@
     "Scala": {
       "historial": {
         "2026": {
-          "menciones": 14,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3953,10 +3818,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 14,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3965,9 +3829,8 @@
     "Selenium": {
       "historial": {
         "2026": {
-          "menciones": 7,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -3976,10 +3839,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 7,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -3988,9 +3850,8 @@
     "ServiceNow": {
       "historial": {
         "2026": {
-          "menciones": 20,
+          "menciones": 3,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -4000,10 +3861,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 20,
-      "num_fuentes": 3,
+      "total_menciones": 3,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -4034,9 +3894,8 @@
     "Slack": {
       "historial": {
         "2026": {
-          "menciones": 5,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4045,10 +3904,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 5,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4057,9 +3915,8 @@
     "Snowflake": {
       "historial": {
         "2026": {
-          "menciones": 12,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4068,10 +3925,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 12,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4101,9 +3957,8 @@
     "Spring Boot": {
       "historial": {
         "2026": {
-          "menciones": 9,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4112,10 +3967,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 9,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4124,9 +3978,8 @@
     "Spring Framework": {
       "historial": {
         "2026": {
-          "menciones": 4,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4135,10 +3988,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 4,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4168,9 +4020,8 @@
     "Swift": {
       "historial": {
         "2026": {
-          "menciones": 6,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4179,10 +4030,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4191,9 +4041,8 @@
     "Tableau": {
       "historial": {
         "2026": {
-          "menciones": 17,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4202,10 +4051,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 17,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4214,9 +4062,8 @@
     "TensorFlow": {
       "historial": {
         "2026": {
-          "menciones": 6,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4225,10 +4072,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4279,9 +4125,8 @@
     "TikTok": {
       "historial": {
         "2026": {
-          "menciones": 35,
+          "menciones": 2,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -4291,10 +4136,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 35,
-      "num_fuentes": 3,
+      "total_menciones": 2,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -4346,9 +4190,8 @@
     "TypeScript": {
       "historial": {
         "2026": {
-          "menciones": 12,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4357,10 +4200,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 12,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4369,9 +4211,8 @@
     "UNIX": {
       "historial": {
         "2026": {
-          "menciones": 12,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4380,10 +4221,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 12,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4413,9 +4253,8 @@
     "Vue.js": {
       "historial": {
         "2026": {
-          "menciones": 3,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4424,10 +4263,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 3,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -4436,9 +4274,8 @@
     "WordPress": {
       "historial": {
         "2026": {
-          "menciones": 4,
+          "menciones": 2,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -4448,10 +4285,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 4,
-      "num_fuentes": 3,
+      "total_menciones": 2,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -4503,9 +4339,8 @@
     "Zoom": {
       "historial": {
         "2026": {
-          "menciones": 26,
+          "menciones": 2,
           "fuentes": [
-            "LinkedIn",
             "ONET",
             "SPE"
           ]
@@ -4515,10 +4350,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 26,
-      "num_fuentes": 3,
+      "total_menciones": 2,
+      "num_fuentes": 2,
       "fuentes": [
-        "LinkedIn",
         "ONET",
         "SPE"
       ],
@@ -4549,9 +4383,8 @@
     "jQuery": {
       "historial": {
         "2026": {
-          "menciones": 7,
+          "menciones": 1,
           "fuentes": [
-            "LinkedIn",
             "ONET"
           ]
         }
@@ -4560,10 +4393,9 @@
       "score_tendencia": 0.5,
       "primera_aparicion": 2026,
       "ultima_aparicion": 2026,
-      "total_menciones": 7,
-      "num_fuentes": 2,
+      "total_menciones": 1,
+      "num_fuentes": 1,
       "fuentes": [
-        "LinkedIn",
         "ONET"
       ],
       "categoria": "técnica",
@@ -6945,531 +6777,6 @@
       "num_fuentes": 1,
       "fuentes": [
         "Ocupacol"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Science": {
-      "historial": {
-        "2026": {
-          "menciones": 306,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 306,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Monitoring": {
-      "historial": {
-        "2026": {
-          "menciones": 293,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 293,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Writing": {
-      "historial": {
-        "2026": {
-          "menciones": 270,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 270,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Time Management": {
-      "historial": {
-        "2026": {
-          "menciones": 219,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 219,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Coordination": {
-      "historial": {
-        "2026": {
-          "menciones": 197,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 197,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Troubleshooting": {
-      "historial": {
-        "2026": {
-          "menciones": 162,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 162,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Programming": {
-      "historial": {
-        "2026": {
-          "menciones": 140,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 140,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Speaking": {
-      "historial": {
-        "2026": {
-          "menciones": 124,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 124,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Installation": {
-      "historial": {
-        "2026": {
-          "menciones": 109,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 109,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Negotiation": {
-      "historial": {
-        "2026": {
-          "menciones": 98,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 98,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Critical Thinking": {
-      "historial": {
-        "2026": {
-          "menciones": 66,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 66,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Repairing": {
-      "historial": {
-        "2026": {
-          "menciones": 57,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 57,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Mathematics": {
-      "historial": {
-        "2026": {
-          "menciones": 52,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 52,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Active Listening": {
-      "historial": {
-        "2026": {
-          "menciones": 39,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 39,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Reading Comprehension": {
-      "historial": {
-        "2026": {
-          "menciones": 29,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 29,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Equipment Maintenance": {
-      "historial": {
-        "2026": {
-          "menciones": 17,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 17,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Instructing": {
-      "historial": {
-        "2026": {
-          "menciones": 10,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 10,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Service Orientation": {
-      "historial": {
-        "2026": {
-          "menciones": 9,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 9,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Systems Analysis": {
-      "historial": {
-        "2026": {
-          "menciones": 8,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 8,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Persuasion": {
-      "historial": {
-        "2026": {
-          "menciones": 6,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 6,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "blanda",
-      "anios_cubiertos": 1
-    },
-    "Learning Strategies": {
-      "historial": {
-        "2026": {
-          "menciones": 2,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Operations Analysis": {
-      "historial": {
-        "2026": {
-          "menciones": 2,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 2,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Active Learning": {
-      "historial": {
-        "2026": {
-          "menciones": 1,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 1,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Technology Design": {
-      "historial": {
-        "2026": {
-          "menciones": 1,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 1,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
-      ],
-      "categoria": "destreza",
-      "anios_cubiertos": 1
-    },
-    "Social Perceptiveness": {
-      "historial": {
-        "2026": {
-          "menciones": 1,
-          "fuentes": [
-            "LinkedIn"
-          ]
-        }
-      },
-      "tendencia": "estable",
-      "score_tendencia": 0.5,
-      "primera_aparicion": 2026,
-      "ultima_aparicion": 2026,
-      "total_menciones": 1,
-      "num_fuentes": 1,
-      "fuentes": [
-        "LinkedIn"
       ],
       "categoria": "destreza",
       "anios_cubiertos": 1
