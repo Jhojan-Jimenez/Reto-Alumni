@@ -325,7 +325,30 @@ def load_all_freq_sources():
     return pd.concat(frames, ignore_index=True) if frames else None
 
 @st.cache_data(ttl=60)
-def load_pdf_reports():
+def load_adzuna_raw() -> pd.DataFrame | None:
+    """Carga todos los CSVs de Adzuna (adzuna_*.csv) que tengan columnas salariales."""
+    frames = []
+    for csv in PROCESSED.glob("adzuna_*.csv"):
+        # Ignorar archivos de frecuencia
+        if "frecuencia" in csv.name or "con_skills" in csv.name:
+            continue
+        try:
+            df = pd.read_csv(csv, encoding="utf-8-sig", low_memory=False)
+            needed = {"titulo", "salario_min", "salario_max", "categoria"}
+            if needed.issubset(set(df.columns)):
+                df["_fuente_csv"] = csv.stem
+                frames.append(df)
+        except Exception:
+            pass
+    if not frames:
+        return None
+    combined = pd.concat(frames, ignore_index=True)
+    # Limpiar: excluir salarios 0 o extremos (>500k anual)
+    combined = combined[
+        (combined["salario_min"] > 0) &
+        (combined["salario_min"] < 500_000)
+    ]
+    return combined
     """Carga todos los JSONs generados por load_pdf_report.py."""
     reportes = []
     for j in PROCESSED.glob("pdf_skills_*.json"):
@@ -1200,9 +1223,258 @@ with tab_ocupacion:
         fig4.update_layout(yaxis={"categoryorder": "total ascending"})
         st.plotly_chart(apply_theme(fig4, 400), use_container_width=True)
 
+    # ══════════════════════════════════════════════════════════════════════════
+    # SECCIÓN ADZUNA: skills reales del mercado + salarios
+    # ══════════════════════════════════════════════════════════════════════════
 
-# ══════════════════════════════════════════════════════════════════════════════
-# TAB 6 · COMPARADOR DE OCUPACIONES
+    adzuna_raw = load_adzuna_raw()
+
+    if adzuna_raw is not None:
+        st.markdown("---")
+
+        # ── Función de match: título O*NET → ofertas Adzuna ────────────────
+        def match_adzuna(occ_title: str, df_az: pd.DataFrame, min_match: int = 30):
+            """
+            Busca en los títulos de Adzuna palabras clave del nombre de la ocupación.
+            Si hay menos de min_match coincidencias, amplía al nivel de categoría.
+            Retorna (subset_df, nivel_match: 'titulo'|'categoria'|'ninguno')
+            """
+            # Palabras clave: tokens ≥4 chars del nombre de la ocupación
+            keywords = [w.lower() for w in occ_title.split() if len(w) >= 4]
+            titulo_norm = df_az["titulo"].str.lower()
+
+            if keywords:
+                mask = titulo_norm.str.contains("|".join(keywords), na=False, regex=True)
+                subset = df_az[mask]
+            else:
+                subset = pd.DataFrame()
+
+            if len(subset) >= min_match:
+                return subset, "título"
+
+            # Fallback: usar la categoría Adzuna más frecuente como proxy
+            # Mapeo heurístico O*NET category → Adzuna category label
+            CAT_MAP = {
+                "engineer": "Engineering Jobs",
+                "software": "IT Jobs",
+                "developer": "IT Jobs",
+                "lawyer": "Legal Jobs",
+                "legal": "Legal Jobs",
+                "accountant": "Accounting & Finance Jobs",
+                "finance": "Accounting & Finance Jobs",
+                "teacher": "Teaching Jobs",
+                "nurse": "Healthcare & Nursing Jobs",
+                "health": "Healthcare & Nursing Jobs",
+                "social work": "Social work Jobs",
+                "manager": "Consultancy Jobs",
+                "sales": "Sales Jobs",
+                "hr": "HR & Recruitment Jobs",
+                "recruit": "HR & Recruitment Jobs",
+                "marketing": "PR, Advertising & Marketing Jobs",
+                "admin": "Admin Jobs",
+                "logistics": "Logistics & Warehouse Jobs",
+            }
+            title_lower = occ_title.lower()
+            az_cat = None
+            for kw, cat in CAT_MAP.items():
+                if kw in title_lower:
+                    az_cat = cat
+                    break
+
+            if az_cat:
+                subset_cat = df_az[df_az["categoria"] == az_cat]
+                if len(subset_cat) >= 5:
+                    return subset_cat, f"categoría · {az_cat}"
+
+            return pd.DataFrame(), "ninguno"
+
+        az_subset, match_nivel = match_adzuna(selected, adzuna_raw)
+
+        # ── Skills más demandadas en Adzuna para esta ocupación ───────────
+        all_freq_data = load_all_freq_sources()
+        adzuna_freq_files = list(PROCESSED.glob("adzuna_*_frecuencia_skills.csv"))
+
+        st.markdown("#### 📊 Skills demandadas en el mercado real (Adzuna)")
+
+        if adzuna_freq_files:
+            # Cargar y combinar todos los archivos de frecuencia de Adzuna
+            az_freq_frames = []
+            for f in adzuna_freq_files:
+                try:
+                    tmp = pd.read_csv(f, encoding="utf-8-sig")
+                    tmp["_archivo"] = f.stem
+                    az_freq_frames.append(tmp)
+                except Exception:
+                    pass
+
+            if az_freq_frames:
+                az_freq = pd.concat(az_freq_frames, ignore_index=True)
+                az_freq_agg = (
+                    az_freq.groupby(["skill", "categoria"])["menciones"]
+                    .sum().reset_index()
+                    .sort_values("menciones", ascending=False)
+                    .head(20)
+                )
+
+                col_sk1, col_sk2 = st.columns([3, 2])
+
+                with col_sk1:
+                    fig_az = px.bar(
+                        az_freq_agg, x="menciones", y="skill", orientation="h",
+                        color="categoria", color_discrete_map=CAT_COLORS,
+                        labels={"menciones": "Menciones en ofertas Adzuna", "skill": ""},
+                        title="Top 20 skills en ofertas Adzuna",
+                    )
+                    fig_az.update_layout(
+                        yaxis={"categoryorder": "total ascending"},
+                        margin=dict(l=200),
+                    )
+                    st.plotly_chart(apply_theme(fig_az, 500), use_container_width=True)
+
+                with col_sk2:
+                    # Overlap: skills O*NET de la ocupación vs skills top Adzuna
+                    onet_skills_occ = set(
+                        skills_df2[
+                            (skills_df2["O*NET-SOC Code"] == soc_code) &
+                            (skills_df2["Scale ID"] == "IM")
+                        ]["Element Name"].str.lower().tolist()
+                    )
+                    az_skills_set = set(az_freq_agg["skill"].str.lower().tolist())
+                    comunes = onet_skills_occ & az_skills_set
+                    solo_onet = onet_skills_occ - az_skills_set
+                    solo_az   = az_skills_set  - onet_skills_occ
+
+                    st.markdown("##### Overlap O*NET vs Adzuna")
+                    ov1, ov2, ov3 = st.columns(3)
+                    ov1.metric("En ambas", len(comunes),  help=", ".join(sorted(comunes)) or "–")
+                    ov2.metric("Solo O*NET", len(solo_onet))
+                    ov3.metric("Solo Adzuna", len(solo_az), help=", ".join(sorted(solo_az)) or "–")
+
+                    if comunes:
+                        st.markdown(
+                            "<div style='background:#eef2ff;border-radius:8px;padding:12px 16px;"
+                            "font-size:0.82rem;color:#1a1a2e;margin-top:8px'>"
+                            "<b>Skills validadas por ambas fuentes:</b><br>"
+                            + " · ".join(f"<span style='color:{C_BLUE}'>{s.title()}</span>" for s in sorted(comunes))
+                            + "</div>",
+                            unsafe_allow_html=True,
+                        )
+        else:
+            st.info(
+                "No se encontraron archivos `adzuna_*_frecuencia_skills.csv` en `data/processed/`. "
+                "Corre el pipeline para generarlos."
+            )
+
+        # ── Gráfico de rango salarial ──────────────────────────────────────
+        st.markdown("---")
+        st.markdown("#### 💰 Rango salarial en el mercado (Adzuna)")
+
+        if az_subset.empty:
+            st.info(
+                f"No se encontraron ofertas de Adzuna que coincidan con **{selected}**. "
+                "El gráfico salarial aparecerá cuando haya más datos en `data/processed/`."
+            )
+        else:
+            sal = az_subset[["salario_min", "salario_max", "titulo", "empresa", "ubicacion"]].copy()
+            sal["salario_medio"] = (sal["salario_min"] + sal["salario_max"]) / 2
+            sal = sal[sal["salario_medio"] < 400_000]  # excluir outliers extremos
+
+            pct10  = sal["salario_medio"].quantile(0.10)
+            pct25  = sal["salario_medio"].quantile(0.25)
+            mediana= sal["salario_medio"].median()
+            pct75  = sal["salario_medio"].quantile(0.75)
+            pct90  = sal["salario_medio"].quantile(0.90)
+
+            # KPIs salariales
+            s1, s2, s3, s4 = st.columns(4)
+            s1.metric("Salario mínimo (P10)",  f"£{pct10:,.0f}")
+            s2.metric("Percentil 25",           f"£{pct25:,.0f}")
+            s3.metric("Mediana",                f"£{mediana:,.0f}")
+            s4.metric("Percentil 90",           f"£{pct90:,.0f}")
+
+            st.caption(
+                f"Basado en **{len(sal):,} ofertas** en Adzuna UK · "
+                f"Match por: *{match_nivel}* · Salarios anuales en GBP (£)"
+            )
+
+            col_sal1, col_sal2 = st.columns([2, 1])
+
+            with col_sal1:
+                # Histograma + líneas de percentil
+                fig_sal = px.histogram(
+                    sal, x="salario_medio",
+                    nbins=40,
+                    color_discrete_sequence=[C_BLUE],
+                    labels={"salario_medio": "Salario medio anual (£)", "count": "Ofertas"},
+                    title=f"Distribución salarial — {selected}",
+                )
+                # Líneas verticales de percentiles
+                for val, label, color in [
+                    (pct25,  "P25",     C_TEAL),
+                    (mediana,"Mediana", C_NAVY),
+                    (pct75,  "P75",     C_GREEN),
+                ]:
+                    fig_sal.add_vline(
+                        x=val, line_dash="dash", line_color=color, line_width=2,
+                        annotation_text=f"{label} £{val:,.0f}",
+                        annotation_position="top right",
+                        annotation_font=dict(color=color, size=11),
+                    )
+                fig_sal.update_layout(showlegend=False, margin=dict(t=50))
+                st.plotly_chart(apply_theme(fig_sal, 380), use_container_width=True)
+
+            with col_sal2:
+                # Box plot horizontal
+                fig_box = go.Figure()
+                fig_box.add_trace(go.Box(
+                    x=sal["salario_medio"],
+                    name=selected[:30],
+                    marker_color=C_BLUE,
+                    line_color=C_NAVY,
+                    fillcolor="rgba(33,48,207,0.15)",
+                    boxmean=True,
+                    boxpoints="outliers",
+                ))
+                fig_box.update_layout(
+                    xaxis_title="Salario medio anual (£)",
+                    showlegend=False,
+                )
+                st.plotly_chart(apply_theme(fig_box, 380), use_container_width=True)
+
+            # Top 10 empresas por salario medio
+            if "empresa" in sal.columns and sal["empresa"].notna().sum() > 5:
+                top_emp = (
+                    sal.groupby("empresa")["salario_medio"]
+                    .agg(["mean", "count"])
+                    .rename(columns={"mean": "salario_medio", "count": "ofertas"})
+                    .query("ofertas >= 2")
+                    .sort_values("salario_medio", ascending=False)
+                    .head(10)
+                    .reset_index()
+                )
+                if not top_emp.empty:
+                    st.markdown("##### Top 10 empresas por salario medio")
+                    fig_emp = px.bar(
+                        top_emp, x="salario_medio", y="empresa", orientation="h",
+                        color="salario_medio",
+                        color_continuous_scale=["#eef2ff", C_BLUE, C_NAVY],
+                        text=top_emp["salario_medio"].apply(lambda v: f"£{v:,.0f}"),
+                        labels={"salario_medio": "Salario medio (£)", "empresa": ""},
+                        title="Empresas que más pagan (≥2 ofertas)",
+                    )
+                    fig_emp.update_traces(textposition="outside")
+                    fig_emp.update_layout(
+                        yaxis={"categoryorder": "total ascending"},
+                        coloraxis_showscale=False,
+                        margin=dict(l=180),
+                    )
+                    st.plotly_chart(apply_theme(fig_emp, 380), use_container_width=True)
+    else:
+        st.markdown("---")
+        st.info(
+            "💡 Para ver skills y salarios del mercado real, carga datos de Adzuna: "
+            "`python load_adzuna.py` y copia el CSV a `data/processed/`."
+        )
 # ══════════════════════════════════════════════════════════════════════════════
 
 with tab_comparador:
