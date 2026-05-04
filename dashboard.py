@@ -1520,149 +1520,230 @@ with tab_ocupacion:
         st.markdown("#### 🇨🇴 Salarios en Colombia (COP) — GEIH DANE + SPE")
         st.caption(
             f"Referencia salarial en pesos colombianos para la ocupación: **{selected}**. "
-            "Fuentes: GEIH DANE (ingresos reales) · SPE Colombia (vacantes activas Feb 2026)."
+            "Fuentes: GEIH DANE · CNO-2015 (ocupación real) · SPE Colombia (vacantes Feb 2026)."
         )
 
-        # ── Mapeo O*NET occupation → NBC (Núcleo Básico de Conocimiento) ──
-        OCC_NBC_MAP = {
-            "lawyer":        "Ciencias sociales y humanas",
-            "legal":         "Ciencias sociales y humanas",
-            "attorney":      "Ciencias sociales y humanas",
-            "judge":         "Ciencias sociales y humanas",
-            "psycholog":     "Ciencias sociales y humanas",
-            "social work":   "Ciencias sociales y humanas",
-            "sociolog":      "Ciencias sociales y humanas",
-            "political":     "Ciencias sociales y humanas",
-            "economist":     "Ciencias Económicas",
-            "accountant":    "Ciencias Económicas",
-            "financial":     "Ciencias Económicas",
-            "auditor":       "Ciencias Económicas",
-            "administrat":   "Ciencias Económicas",
-            "manager":       "Ciencias Económicas",
-            "software":      "Ingenierías y afines",
-            "engineer":      "Ingenierías y afines",
-            "developer":     "Ingenierías y afines",
-            "architect":     "Ingenierías y afines",
-            "electrician":   "Ingenierías y afines",
-            "mechanic":      "Ingenierías y afines",
-            "nurse":         "Ciencias de la salud",
-            "physician":     "Ciencias de la salud",
-            "doctor":        "Ciencias de la salud",
-            "surgeon":       "Ciencias de la salud",
-            "dentist":       "Ciencias de la salud",
-            "pharmacist":    "Ciencias de la salud",
-            "health":        "Ciencias de la salud",
-            "teacher":       "Ciencias de la educación",
-            "instructor":    "Ciencias de la educación",
-            "professor":     "Ciencias de la educación",
-            "education":     "Ciencias de la educación",
+        # ── Mapeo O*NET title → subgrupo CNO-2015 (2 dígitos) — fuente primaria ──
+        # Orden importa: más específico primero
+        OCC_CNO_DETALLE = {
+            # Salud
+            "surgeon":       "Especialistas en ciencias de la salud",
+            "physician":     "Especialistas en ciencias de la salud",
+            "dentist":       "Especialistas en ciencias de la salud",
+            "pharmacist":    "Especialistas en ciencias de la salud",
+            "nurse":         "Técnicos en salud",
+            "therapist":     "Especialistas en ciencias de la salud",
+            "psycholog":     "Especialistas en derecho, ciencias sociales y culturales",
+            # Enseñanza
+            "teacher":       "Especialistas en enseñanza",
+            "professor":     "Especialistas en enseñanza",
+            "instructor":    "Especialistas en enseñanza",
+            # TIC / Ingeniería
+            "software":      "Especialistas en ciencias físicas, matemáticas, ingeniería y TIC",
+            "developer":     "Especialistas en ciencias físicas, matemáticas, ingeniería y TIC",
+            "data scien":    "Especialistas en ciencias físicas, matemáticas, ingeniería y TIC",
+            "network":       "Especialistas en TIC",
+            "database":      "Especialistas en TIC",
+            "security anal": "Especialistas en TIC",
+            "engineer":      "Especialistas en ciencias físicas, matemáticas, ingeniería y TIC",
+            "architect":     "Especialistas en ciencias físicas, matemáticas, ingeniería y TIC",
+            "electrician":   "Electricistas e instaladores de redes",
+            "mechanic":      "Oficiales y operarios de la construcción",
+            # Derecho / CC Sociales
+            "lawyer":        "Especialistas en derecho, ciencias sociales y culturales",
+            "legal":         "Especialistas en derecho, ciencias sociales y culturales",
+            "judge":         "Especialistas en derecho, ciencias sociales y culturales",
+            "attorney":      "Especialistas en derecho, ciencias sociales y culturales",
+            "sociolog":      "Especialistas en derecho, ciencias sociales y culturales",
+            "political":     "Especialistas en derecho, ciencias sociales y culturales",
+            "social work":   "Técnicos en asuntos jurídicos, sociales y culturales",
+            # Economía / Finanzas / Negocios
+            "economist":     "Especialistas en administración de empresas y economía",
+            "financial":     "Especialistas en administración de empresas y economía",
+            "accountant":    "Empleados en contabilidad y finanzas",
+            "auditor":       "Especialistas en administración de empresas y economía",
+            "administrat":   "Especialistas en administración de empresas y economía",
+            # Gerencia
+            "chief exec":    "Directivos generales y gerentes de grandes empresas",
+            "manager":       "Gerentes de áreas funcionales especializadas",
+            "director":      "Gerentes de áreas funcionales especializadas",
+            "supervisor":    "Gerentes de pequeñas empresas",
+            # Técnicos
+            "technician":    "Técnicos en ciencias físicas e ingeniería",
+            "drafter":       "Técnicos en ciencias físicas e ingeniería",
+            # Transporte / Logística
+            "driver":        "Conductores y operadores de transporte",
+            "pilot":         "Conductores y operadores de transporte",
+            "transport":     "Conductores y operadores de transporte",
+            # Ventas / Servicio
+            "sales":         "Vendedores",
+            "retail":        "Vendedores",
+            "cashier":       "Vendedores",
+            "food":          "Personal de los servicios personales",
+            "cook":          "Personal de los servicios personales",
+            # Construcción
+            "construct":     "Oficiales y operarios de la construcción",
+            "plumber":       "Oficiales y operarios de la construcción",
+            "carpenter":     "Oficiales y operarios de la construcción",
         }
 
-        # ── Mapeo O*NET occupation → Sector CIIU ──────────────────────────
-        OCC_SECTOR_MAP = {
-            "software":      "Información y comunicaciones",
-            "developer":     "Información y comunicaciones",
-            "network":       "Información y comunicaciones",
-            "lawyer":        "Actividades profesionales y científicas",
-            "legal":         "Actividades profesionales y científicas",
-            "consultant":    "Actividades profesionales y científicas",
-            "accountant":    "Actividades financieras y de seguros",
-            "financial":     "Actividades financieras y de seguros",
-            "banker":        "Actividades financieras y de seguros",
-            "nurse":         "Atención de la salud humana",
-            "physician":     "Atención de la salud humana",
-            "doctor":        "Atención de la salud humana",
-            "health":        "Atención de la salud humana",
-            "teacher":       "Educación",
-            "professor":     "Educación",
-            "education":     "Educación",
-            "engineer":      "Industrias manufactureras",
-            "construct":     "Construcción",
-            "architect":     "Construcción",
-            "transport":     "Transporte y almacenamiento",
-            "driver":        "Transporte y almacenamiento",
-            "administrat":   "Administración pública y defensa",
-            "manager":       "Actividades profesionales y científicas",
+        # ── Mapeo O*NET title → grupo CNO principal (1 dígito) — fallback ─
+        OCC_CNO_GRUPO = {
+            "chief exec":    "Directivos y gerentes",
+            "manager":       "Directivos y gerentes",
+            "director":      "Directivos y gerentes",
+            "lawyer":        "Profesionales científicos e intelectuales",
+            "physician":     "Profesionales científicos e intelectuales",
+            "engineer":      "Profesionales científicos e intelectuales",
+            "software":      "Profesionales científicos e intelectuales",
+            "architect":     "Profesionales científicos e intelectuales",
+            "economist":     "Profesionales científicos e intelectuales",
+            "accountant":    "Profesionales científicos e intelectuales",
+            "teacher":       "Profesionales científicos e intelectuales",
+            "professor":     "Profesionales científicos e intelectuales",
+            "nurse":         "Técnicos y profesionales de nivel medio",
+            "technician":    "Técnicos y profesionales de nivel medio",
+            "sales":         "Trabajadores de servicios y vendedores",
+            "cashier":       "Trabajadores de servicios y vendedores",
+            "cook":          "Trabajadores de servicios y vendedores",
+            "driver":        "Operadores de instalaciones y máquinas",
+            "mechanic":      "Oficiales, operarios y artesanos",
+            "electrician":   "Oficiales, operarios y artesanos",
+            "construct":     "Oficiales, operarios y artesanos",
+            "carpenter":     "Oficiales, operarios y artesanos",
+            "farmer":        "Agricultores y trabajadores agropecuarios calificados",
         }
 
-        occ_lower     = selected.lower()
-        matched_nbc   = next((v for k, v in OCC_NBC_MAP.items()    if k in occ_lower), None)
-        matched_sector= next((v for k, v in OCC_SECTOR_MAP.items() if k in occ_lower), None)
+        # ── Resolución por capas: CNO detalle → CNO grupo → NBC → sector ──
+        occ_lower = selected.lower()
 
-        por_nbc_geih    = geih_ocup.get("por_nucleo", {})
-        por_sector_geih = geih_ocup.get("por_sector", {})
-        nbc_stats       = por_nbc_geih.get(matched_nbc)    if matched_nbc    else None
-        sector_stats    = por_sector_geih.get(matched_sector) if matched_sector else None
+        matched_cno_det = next((v for k, v in OCC_CNO_DETALLE.items() if k in occ_lower), None)
+        matched_cno_grp = next((v for k, v in OCC_CNO_GRUPO.items()   if k in occ_lower), None)
 
-        # Usamos NBC como fuente principal; sector como fallback
-        stats_principales = nbc_stats or sector_stats
-        label_principal   = matched_nbc or matched_sector or "Datos generales"
+        # Fallback NBC (área de conocimiento)
+        OCC_NBC_FALLBACK = {
+            "lawyer": "Ciencias sociales y humanas", "legal": "Ciencias sociales y humanas",
+            "psycholog": "Ciencias sociales y humanas", "sociolog": "Ciencias sociales y humanas",
+            "economist": "Ciencias Económicas", "accountant": "Ciencias Económicas",
+            "financial": "Ciencias Económicas", "administrat": "Ciencias Económicas",
+            "software": "Ingenierías y afines", "engineer": "Ingenierías y afines",
+            "developer": "Ingenierías y afines", "architect": "Ingenierías y afines",
+            "nurse": "Ciencias de la salud", "physician": "Ciencias de la salud",
+            "doctor": "Ciencias de la salud", "health": "Ciencias de la salud",
+            "teacher": "Ciencias de la educación", "professor": "Ciencias de la educación",
+        }
+        matched_nbc = next((v for k, v in OCC_NBC_FALLBACK.items() if k in occ_lower), None)
+
+        # Fallback sector CIIU
+        OCC_SECTOR_FALLBACK = {
+            "software": "Información y comunicaciones", "developer": "Información y comunicaciones",
+            "lawyer": "Actividades profesionales y científicas",
+            "accountant": "Actividades financieras y de seguros",
+            "financial": "Actividades financieras y de seguros",
+            "nurse": "Atención de la salud humana", "physician": "Atención de la salud humana",
+            "teacher": "Educación", "professor": "Educación",
+            "engineer": "Industrias manufactureras",
+            "construct": "Construcción", "driver": "Transporte y almacenamiento",
+        }
+        matched_sector = next((v for k, v in OCC_SECTOR_FALLBACK.items() if k in occ_lower), None)
+
+        # Recuperar datos por cada nivel
+        por_occ_det  = geih_ocup.get("por_ocupacion_detalle", {})
+        por_occ_grp  = geih_ocup.get("por_ocupacion", {})
+        por_nbc_geih = geih_ocup.get("por_nucleo", {})
+        por_sec_geih = geih_ocup.get("por_sector", {})
+
+        stats_det    = por_occ_det.get(matched_cno_det)   if matched_cno_det  else None
+        stats_grp    = por_occ_grp.get(matched_cno_grp)   if matched_cno_grp  else None
+        stats_nbc    = por_nbc_geih.get(matched_nbc)      if matched_nbc      else None
+        stats_sec    = por_sec_geih.get(matched_sector)   if matched_sector   else None
+
+        # Prioridad: CNO detalle > CNO grupo > NBC > sector
+        stats_principales = stats_det or stats_grp or stats_nbc or stats_sec
+        label_principal   = matched_cno_det or matched_cno_grp or matched_nbc or matched_sector or "Datos generales"
+        fuente_label      = (
+            "CNO subgrupo" if stats_det else
+            "CNO grupo"    if stats_grp else
+            "NBC"          if stats_nbc else
+            "Sector CIIU"  if stats_sec else "–"
+        )
 
         col_g1, col_g2 = st.columns([3, 2])
 
         with col_g1:
             if stats_principales:
-                st.markdown(f"##### 📚 {label_principal}")
+                st.markdown(f"##### 👷 {label_principal}")
+                st.caption(f"Fuente de matching: **{fuente_label}** · GEIH DANE")
                 kc1, kc2, kc3, kc4 = st.columns(4)
-                kc1.metric("Mediana mensual",   _fmt_cop(stats_principales["mediana"]))
-                kc2.metric("Percentil 25",       _fmt_cop(stats_principales["p25"]))
-                kc3.metric("Percentil 75",       _fmt_cop(stats_principales["p75"]))
-                kc4.metric("N trabajadores",     f"{stats_principales['n']:,}")
+                kc1.metric("Mediana mensual", _fmt_cop(stats_principales["mediana"]))
+                kc2.metric("Percentil 25",    _fmt_cop(stats_principales["p25"]))
+                kc3.metric("Percentil 75",    _fmt_cop(stats_principales["p75"]))
+                kc4.metric("N trabajadores",  f"{stats_principales['n']:,}")
 
-                # ── Comparativa NBC completa resaltando la ocupación ───────
-                if por_nbc_geih:
-                    df_nbc_cmp = pd.DataFrame([
+                # ── Gráfico comparativo según la fuente de datos disponible ──
+                # Prioridad visual: CNO detalle > CNO grupo > NBC > sector
+                if por_occ_det:
+                    df_cmp = pd.DataFrame([
+                        {"Ocupación CNO": k, "mediana": v["mediana"], "es_actual": (k == matched_cno_det)}
+                        for k, v in por_occ_det.items()
+                    ]).sort_values("mediana")
+                    title_cmp = "Comparativa por subgrupo de ocupación (CNO)"
+                    y_col, color_key = "Ocupación CNO", matched_cno_det
+                    margin_l = 360
+
+                elif por_occ_grp:
+                    df_cmp = pd.DataFrame([
+                        {"Grupo CNO": k, "mediana": v["mediana"], "es_actual": (k == matched_cno_grp)}
+                        for k, v in por_occ_grp.items()
+                    ]).sort_values("mediana")
+                    title_cmp = "Comparativa por grupo de ocupación (CNO)"
+                    y_col, color_key = "Grupo CNO", matched_cno_grp
+                    margin_l = 310
+
+                elif por_nbc_geih:
+                    df_cmp = pd.DataFrame([
                         {"NBC": k, "mediana": v["mediana"], "es_actual": (k == matched_nbc)}
                         for k, v in por_nbc_geih.items()
                     ]).sort_values("mediana")
-                    fig_nbc_cmp = px.bar(
-                        df_nbc_cmp, x="mediana", y="NBC", orientation="h",
+                    title_cmp = "Comparativa por área de conocimiento (NBC)"
+                    y_col, color_key = "NBC", matched_nbc
+                    margin_l = 260
+
+                else:
+                    df_cmp = pd.DataFrame([
+                        {"Sector": k, "mediana": v["mediana"], "es_actual": (k == matched_sector)}
+                        for k, v in por_sec_geih.items()
+                    ]).sort_values("mediana").tail(12)
+                    title_cmp = "Comparativa por sector económico (CIIU)"
+                    y_col, color_key = "Sector", matched_sector
+                    margin_l = 280
+
+                if not df_cmp.empty:
+                    fig_cmp = px.bar(
+                        df_cmp, x="mediana", y=y_col, orientation="h",
                         color="es_actual",
                         color_discrete_map={True: C_GOLD, False: C_BLUE},
-                        text=df_nbc_cmp["mediana"].apply(lambda x: f"${x/1e6:.1f}M"),
-                        labels={"mediana": "Salario mediano mensual (COP)", "NBC": ""},
-                        title="Comparativa por área de conocimiento (NBC)",
+                        text=df_cmp["mediana"].apply(lambda x: f"${x/1e6:.1f}M"),
+                        labels={"mediana": "Salario mediano mensual (COP)", y_col: ""},
+                        title=title_cmp,
                     )
-                    fig_nbc_cmp.update_traces(textposition="outside")
-                    fig_nbc_cmp.update_layout(
+                    fig_cmp.update_traces(textposition="outside")
+                    fig_cmp.update_layout(
                         showlegend=False,
                         coloraxis_showscale=False,
-                        margin=dict(l=260),
+                        margin=dict(l=margin_l),
                     )
-                    st.plotly_chart(apply_theme(fig_nbc_cmp, 380), use_container_width=True)
-
-                elif por_sector_geih:
-                    df_sec_cmp = pd.DataFrame([
-                        {"Sector": k, "mediana": v["mediana"], "es_actual": (k == matched_sector)}
-                        for k, v in por_sector_geih.items()
-                    ]).sort_values("mediana").tail(12)
-                    fig_sec_cmp = px.bar(
-                        df_sec_cmp, x="mediana", y="Sector", orientation="h",
-                        color="es_actual",
-                        color_discrete_map={True: C_GOLD, False: C_GREEN},
-                        text=df_sec_cmp["mediana"].apply(lambda x: f"${x/1e6:.1f}M"),
-                        labels={"mediana": "Salario mediano mensual (COP)", "Sector": ""},
-                        title="Comparativa por sector económico (CIIU)",
-                    )
-                    fig_sec_cmp.update_traces(textposition="outside")
-                    fig_sec_cmp.update_layout(
-                        showlegend=False,
-                        coloraxis_showscale=False,
-                        margin=dict(l=280),
-                    )
-                    st.plotly_chart(apply_theme(fig_sec_cmp, 420), use_container_width=True)
+                    st.plotly_chart(apply_theme(fig_cmp, 420), use_container_width=True)
 
             elif geih_ocup.get("tiene_geih"):
                 st.info(
-                    f"No se encontró una correspondencia directa para **{selected}** "
-                    "en los datos del GEIH. Revisa la pestaña **💰 Salarios COP** "
-                    "para ver todos los grupos disponibles."
+                    f"No se encontró correspondencia CNO para **{selected}**. "
+                    "Revisa la pestaña **💰 Salarios COP** para ver todos los grupos disponibles."
                 )
             else:
                 st.info(
                     "Para ver salarios reales en COP, carga el GEIH en `data/raw/GEIH/` "
-                    "y ejecuta `python3 load_geih_salarios.py`. "
-                    "La pestaña **💰 Salarios COP** muestra los rangos SPE disponibles."
+                    "y ejecuta `python3 load_geih_salarios.py`."
                 )
 
         with col_g2:
@@ -1676,10 +1757,10 @@ with tab_ocupacion:
                     mediana_cop is not None
                     and r["min_cop"] <= mediana_cop <= r["max_cop"]
                 )
-                bg     = "#fff7ed" if en_rango else "#ffffff"
-                border = f"border:2px solid {C_GOLD}" if en_rango else "border:1px solid #dde3f5"
-                star   = " ⭐" if en_rango else ""
-                var    = r.get("variacion", 0)
+                bg        = "#fff7ed" if en_rango else "#ffffff"
+                border    = f"border:2px solid {C_GOLD}" if en_rango else "border:1px solid #dde3f5"
+                star      = " ⭐" if en_rango else ""
+                var       = r.get("variacion", 0)
                 color_var = "#22c55e" if var >= 0 else "#ef4444"
                 arrow_var = "↑" if var >= 0 else "↓"
                 st.markdown(

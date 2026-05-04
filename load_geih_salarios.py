@@ -99,6 +99,64 @@ NBC_MAP = {
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
+# CNO-2015 (Clasificación Nacional de Ocupaciones) — grupos y subgrupos
+# Variable GEIH: OFICIO (código CNO 1–4 dígitos)
+# ─────────────────────────────────────────────────────────────────────────────
+CNO_GRUPOS = {
+    "0": "Ocupaciones militares",
+    "1": "Directivos y gerentes",
+    "2": "Profesionales científicos e intelectuales",
+    "3": "Técnicos y profesionales de nivel medio",
+    "4": "Personal de apoyo administrativo",
+    "5": "Trabajadores de servicios y vendedores",
+    "6": "Agricultores y trabajadores agropecuarios calificados",
+    "7": "Oficiales, operarios y artesanos",
+    "8": "Operadores de instalaciones y máquinas",
+    "9": "Ocupaciones elementales",
+}
+
+CNO_SUBGRUPOS = {
+    "11": "Directivos generales y gerentes de grandes empresas",
+    "12": "Gerentes de áreas funcionales especializadas",
+    "13": "Gerentes de pequeñas empresas",
+    "14": "Gerentes y directivos del sector público",
+    "21": "Especialistas en ciencias físicas, matemáticas, ingeniería y TIC",
+    "22": "Especialistas en ciencias de la salud",
+    "23": "Especialistas en enseñanza",
+    "24": "Especialistas en administración de empresas y economía",
+    "25": "Especialistas en TIC",
+    "26": "Especialistas en derecho, ciencias sociales y culturales",
+    "31": "Técnicos en ciencias físicas e ingeniería",
+    "32": "Técnicos en salud",
+    "33": "Técnicos y profesionales en finanzas y administración",
+    "34": "Técnicos en asuntos jurídicos, sociales y culturales",
+    "35": "Técnicos en TIC",
+    "41": "Secretarios y auxiliares de oficina",
+    "42": "Empleados en atención al cliente",
+    "43": "Empleados en contabilidad y finanzas",
+    "44": "Empleados de información al cliente",
+    "51": "Personal de los servicios personales",
+    "52": "Vendedores",
+    "53": "Cuidadores personales y trabajadores de salud",
+    "54": "Trabajadores de protección y seguridad",
+    "61": "Agricultores y trabajadores agropecuarios calificados",
+    "62": "Trabajadores forestales calificados y pescadores",
+    "71": "Oficiales y operarios de la construcción",
+    "72": "Oficiales de metalurgia y construcción mecánica",
+    "73": "Artesanos y operarios en imprenta y artes",
+    "74": "Electricistas e instaladores de redes",
+    "75": "Trabajadores de procesamiento de alimentos y afines",
+    "81": "Operadores de instalaciones mineras y procesamiento",
+    "82": "Operadores de maquinaria",
+    "83": "Conductores y operadores de transporte",
+    "91": "Trabajadores domésticos y limpiadores",
+    "92": "Trabajadores agrícolas de subsistencia",
+    "93": "Trabajadores de servicios básicos y callejeros",
+    "94": "Vendedores ambulantes",
+    "95": "Recolectores de desechos y afines",
+}
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Rangos SPE (datos reales del boletín Feb 2026 — Tabla 7)
 # ─────────────────────────────────────────────────────────────────────────────
 SPE_RANGOS_FIJOS = [
@@ -238,6 +296,8 @@ def procesar_geih(geih_dir: Path, periodo: str = "Feb 2026") -> dict:
         "por_nivel_educativo": {},
         "por_sector": {},
         "por_nucleo": {},
+        "por_ocupacion": {},
+        "por_ocupacion_detalle": {},
         "spe_rangos": SPE_RANGOS_FIJOS,
         "tiene_geih": False,
     }
@@ -299,6 +359,46 @@ def procesar_geih(geih_dir: Path, periodo: str = "Feb 2026") -> dict:
                     stats = _estadisticas(grp[col_ingreso])
                     if stats:
                         resultado["por_sector"][str(sector)] = stats
+
+            # ── Por ocupación CNO (OFICIO) ─────────────────────────────────
+            col_oficio = None
+            for c in ["OFICIO", "P6430", "P6435", "COD_OCUP", "OCUPACION"]:
+                if c in df_ocup.columns:
+                    col_oficio = c
+                    break
+            # Fallback: buscar cualquier columna con "OFIC" u "OCUP"
+            if col_oficio is None:
+                for c in df_ocup.columns:
+                    if "OFIC" in c or ("OCUP" in c and c != col_rama):
+                        col_oficio = c
+                        break
+
+            if col_oficio:
+                print(f"  ✓ Columna de ocupación CNO: {col_oficio}")
+                # Normalizar: convertir a string y extraer dígitos
+                df_con_ingreso["_cno_raw"] = (
+                    df_con_ingreso[col_oficio]
+                    .astype(str).str.strip().str.extract(r"(\d+)")[0]
+                )
+                # Grupo principal (1 dígito)
+                df_con_ingreso["_cno_grupo"] = df_con_ingreso["_cno_raw"].str[:1]
+                df_con_ingreso["_cno_grupo_nombre"] = df_con_ingreso["_cno_grupo"].map(CNO_GRUPOS)
+                for grupo, grp in df_con_ingreso[df_con_ingreso["_cno_grupo_nombre"].notna()].groupby("_cno_grupo_nombre"):
+                    stats = _estadisticas(grp[col_ingreso])
+                    if stats:
+                        resultado["por_ocupacion"][str(grupo)] = stats
+
+                # Subgrupo (2 dígitos) — mayor detalle
+                df_con_ingreso["_cno_sub"] = df_con_ingreso["_cno_raw"].str[:2]
+                df_con_ingreso["_cno_sub_nombre"] = df_con_ingreso["_cno_sub"].map(CNO_SUBGRUPOS)
+                for subgrupo, grp in df_con_ingreso[df_con_ingreso["_cno_sub_nombre"].notna()].groupby("_cno_sub_nombre"):
+                    stats = _estadisticas(grp[col_ingreso])
+                    if stats:
+                        resultado["por_ocupacion_detalle"][str(subgrupo)] = stats
+
+                print(f"  📋 Grupos CNO: {len(resultado['por_ocupacion'])} | Subgrupos: {len(resultado['por_ocupacion_detalle'])}")
+            else:
+                print("  ⚠ No se encontró columna de ocupación CNO (OFICIO/P6430). Se omite por_ocupacion.")
 
             # ── Por núcleo básico de conocimiento ──────────────────────────
             # Si hay módulo de características, hacer join para obtener carrera
@@ -404,6 +504,7 @@ Ejemplos:
                 "nota": "Pasa la ruta al ZIP con --geih_dir.",
             },
             "por_nivel_educativo": {}, "por_sector": {}, "por_nucleo": {},
+            "por_ocupacion": {}, "por_ocupacion_detalle": {},
             "spe_rangos": SPE_RANGOS_FIJOS, "tiene_geih": False,
         }
     else:
@@ -418,6 +519,8 @@ Ejemplos:
     print(f"  • Sectores            : {len(resultado['por_sector'])}")
     print(f"  • Niveles educativos  : {len(resultado['por_nivel_educativo'])}")
     print(f"  • Núcleos NBC         : {len(resultado['por_nucleo'])}")
+    print(f"  • Grupos CNO          : {len(resultado['por_ocupacion'])}")
+    print(f"  • Subgrupos CNO       : {len(resultado['por_ocupacion_detalle'])}")
     print(f"  • Rangos SPE          : {len(resultado['spe_rangos'])}")
     if tiene:
         m = resultado["meta"]
