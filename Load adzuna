@@ -1,0 +1,269 @@
+"""
+load_adzuna.py
+Descarga ofertas laborales desde la API de Adzuna, normaliza las columnas
+al mismo formato del sistema y guarda un CSV listo para extract_skills.py.
+
+Uso:
+    python3 load_adzuna.py [opciones]
+
+Opciones:
+    --pais      Código de país (default: co — Colombia)
+                Otros: gb, us, au, de, fr, ca, br, in, nl, nz, pl, ru, sg, za
+    --query     Término de búsqueda (default: vacío → todas las ofertas)
+    --muestra   Número de ofertas a recolectar (default: 5000)
+    --salida    Ruta del CSV de salida (default: data/processed/adzuna_sample.csv)
+
+Ejemplos:
+    python3 load_adzuna.py
+    python3 load_adzuna.py --pais gb --query "data scientist" --muestra 2000
+    python3 load_adzuna.py --pais us --query "software engineer" --muestra 3000
+
+Variables de entorno requeridas (o editar directamente las constantes abajo):
+    ADZUNA_APP_ID
+    ADZUNA_APP_KEY
+
+Nota sobre idioma:
+    Para países de habla inglesa (gb, us, au…) usa --idioma en en extract_skills.
+    Para Colombia (co) usa --idioma es (default).
+
+    Ejemplo completo:
+        python3 load_adzuna.py --pais gb --muestra 3000
+        python3 extract_skills.py adzuna_sample.csv descripcion id_oferta --idioma en
+"""
+
+import os
+import sys
+import time
+import argparse
+import warnings
+import requests
+import pandas as pd
+from pathlib import Path
+
+warnings.filterwarnings("ignore")
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Configuración — edita aquí o usa variables de entorno
+# ─────────────────────────────────────────────────────────────────────────────
+
+APP_ID  = os.environ.get("aa178fc6")
+APP_KEY = os.environ.get("abba0bd969a03f00b96926ceef86152a")
+
+BASE_URL          = "https://api.adzuna.com/v1/api/jobs"
+RESULTS_POR_PAGINA = 50          # Máximo permitido por Adzuna
+PAUSA_ENTRE_LLAMADAS = 1.0       # Segundos entre requests (evita rate limit)
+
+SALIDA_DEFAULT    = Path("data/processed/adzuna_sample.csv")
+
+# Países con habla inglesa (para orientar al usuario sobre --idioma)
+PAISES_EN = {"gb", "us", "au", "ca", "nz", "sg", "in", "za"}
+
+# Columnas que extrae la API de Adzuna → nombre interno del sistema
+COLUMNAS_MAPEADAS = {
+    "id":                   "id_oferta",
+    "title":                "titulo",
+    "description":          "descripcion",
+    "company.display_name": "empresa",
+    "location.display_name":"ubicacion",
+    "contract_type":        "modalidad",
+    "category.label":       "categoria",
+    "salary_min":           "salario_min",
+    "salary_max":           "salario_max",
+    "redirect_url":         "url_oferta",
+    "created":              "fecha_publicacion",
+}
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Llamada a la API
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _extraer_campo(objeto: dict, ruta: str):
+    """
+    Extrae un campo anidado usando notación de punto.
+    Ej: "company.display_name" → objeto["company"]["display_name"]
+    """
+    partes = ruta.split(".")
+    valor = objeto
+    for parte in partes:
+        if isinstance(valor, dict):
+            valor = valor.get(parte)
+        else:
+            return None
+    return valor
+
+
+def fetch_pagina(pais: str, query: str, pagina: int) -> dict:
+    """Llama a la API de Adzuna y retorna el JSON de una página."""
+    url = f"{BASE_URL}/{pais}/search/{pagina}"
+    params = {
+        "app_id":           APP_ID,
+        "app_key":          APP_KEY,
+        "results_per_page": RESULTS_POR_PAGINA,
+        "content-type":     "application/json",
+    }
+    if query.strip():
+        params["what"] = query.strip()
+
+    response = requests.get(url, params=params, timeout=20)
+    response.raise_for_status()
+    return response.json()
+
+
+def normalizar_oferta(oferta: dict) -> dict:
+    """Convierte un objeto JSON de Adzuna al formato interno del sistema."""
+    fila = {}
+    for campo_api, nombre_interno in COLUMNAS_MAPEADAS.items():
+        fila[nombre_interno] = _extraer_campo(oferta, campo_api)
+    return fila
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Recolección paginada
+# ─────────────────────────────────────────────────────────────────────────────
+
+def cargar_adzuna(pais: str, query: str, muestra: int) -> pd.DataFrame:
+    """
+    Itera páginas de la API hasta alcanzar `muestra` ofertas válidas
+    (con descripción no vacía).
+    """
+    print(f"\n[1/3] Conectando a Adzuna API...")
+    print(f"  País   : {pais.upper()}")
+    print(f"  Query  : '{query}' (vacío = todas las categorías)")
+    print(f"  Muestra: {muestra:,} ofertas objetivo")
+
+    # Verificar credenciales con una primera llamada
+    try:
+        datos_iniciales = fetch_pagina(pais, query, pagina=1)
+    except requests.exceptions.HTTPError as e:
+        if e.response.status_code == 401:
+            print("\n  ERROR 401: Credenciales inválidas.")
+            print("  Verifica APP_ID y APP_KEY en load_adzuna.py o como variables de entorno.")
+        elif e.response.status_code == 400:
+            print(f"\n  ERROR 400: Parámetros inválidos. ¿El código de país '{pais}' es correcto?")
+        else:
+            print(f"\n  ERROR HTTP {e.response.status_code}: {e}")
+        sys.exit(1)
+    except requests.exceptions.ConnectionError:
+        print("\n  ERROR: No se pudo conectar a api.adzuna.com. Verifica tu conexión.")
+        sys.exit(1)
+
+    total_disponible = datos_iniciales.get("count", 0)
+    total_a_recolectar = min(muestra, total_disponible)
+    paginas_necesarias = -(-total_a_recolectar // RESULTS_POR_PAGINA)  # Ceil division
+
+    print(f"  Ofertas disponibles en Adzuna : {total_disponible:,}")
+    print(f"  Ofertas a recolectar          : {total_a_recolectar:,}")
+    print(f"  Páginas a consultar           : {paginas_necesarias}")
+
+    # Primera página ya la tenemos
+    todas_las_ofertas = [
+        normalizar_oferta(o) for o in datos_iniciales.get("results", [])
+    ]
+
+    for pagina in range(2, paginas_necesarias + 1):
+        if len(todas_las_ofertas) >= muestra:
+            break
+
+        print(f"  Descargando página {pagina}/{paginas_necesarias}...", end="\r")
+
+        try:
+            datos = fetch_pagina(pais, query, pagina=pagina)
+            resultados = datos.get("results", [])
+            if not resultados:
+                print(f"\n  No hay más resultados en página {pagina}. Finalizando.")
+                break
+            todas_las_ofertas.extend([normalizar_oferta(o) for o in resultados])
+        except requests.exceptions.RequestException as e:
+            print(f"\n  [!] Error en página {pagina}: {e}. Reintentando en 5s...")
+            time.sleep(5)
+            continue
+
+        time.sleep(PAUSA_ENTRE_LLAMADAS)
+
+    print(f"\n  Ofertas brutas descargadas: {len(todas_las_ofertas):,}")
+
+    # Construir DataFrame y limpiar
+    df = pd.DataFrame(todas_las_ofertas)
+
+    # Filtrar descripciones vacías o muy cortas
+    df = df.dropna(subset=["descripcion"])
+    df = df[df["descripcion"].str.strip().str.len() > 100]
+    df = df.drop_duplicates(subset=["id_oferta"])
+
+    # Recortar a la muestra pedida
+    df = df.head(muestra).reset_index(drop=True)
+
+    # Añadir metadatos de la fuente
+    df["fuente"]  = "adzuna"
+    df["pais"]    = pais.upper()
+    df["idioma"]  = "en" if pais in PAISES_EN else "es"
+
+    print(f"  Ofertas limpias finales      : {len(df):,}")
+    return df
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Guardar y mostrar instrucciones
+# ─────────────────────────────────────────────────────────────────────────────
+
+def guardar(df: pd.DataFrame, ruta: Path):
+    print(f"\n[2/3] Guardando CSV en {ruta}...")
+    ruta.parent.mkdir(parents=True, exist_ok=True)
+    df.to_csv(ruta, index=False, encoding="utf-8-sig")
+    size_kb = ruta.stat().st_size / 1024
+    print(f"  ✓ Guardado: {ruta} ({size_kb:.0f} KB)")
+    print(f"  Columnas: {list(df.columns)}")
+
+
+def instrucciones(pais: str, ruta: Path):
+    idioma = "en" if pais in PAISES_EN else "es"
+    nombre = ruta.name
+
+    print(f"""
+[3/3] Listo. Próximo paso — extrae las skills:
+
+  python3 extract_skills.py {nombre} descripcion id_oferta --idioma {idioma}
+
+  {'⚠  País de habla inglesa → se usa --idioma en (soft skills en inglés de O*NET)' 
+   if idioma == 'en' 
+   else '✓  País hispanohablante → se usa --idioma es (soft skills en español)'}
+
+  Puedes combinar fuentes creando un CSV unificado:
+
+    python3 load_adzuna.py --pais co --muestra 5000   # mercado colombiano
+    python3 load_adzuna.py --pais gb --muestra 5000   # benchmark Reino Unido
+    python3 extract_skills.py adzuna_sample.csv descripcion id_oferta --idioma {idioma}
+
+  Países soportados:
+    co (Colombia), gb (UK), us (EE.UU.), au (Australia),
+    de (Alemania), fr (Francia), ca (Canadá), br (Brasil),
+    in (India), nl (Países Bajos), nz (Nueva Zelanda),
+    pl (Polonia), ru (Rusia), sg (Singapur), za (Sudáfrica)
+""")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Argparse y entrada principal
+# ─────────────────────────────────────────────────────────────────────────────
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Descarga ofertas de Adzuna al formato del Observatorio Laboral."
+    )
+    parser.add_argument("--pais",    default="co",   help="Código de país (default: co)")
+    parser.add_argument("--query",   default="",     help="Término de búsqueda (default: todas)")
+    parser.add_argument("--muestra", default=5000, type=int, help="Número de ofertas (default: 5000)")
+    parser.add_argument("--salida",  default=str(SALIDA_DEFAULT), help="Ruta CSV de salida")
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+
+   
+
+    salida = Path(args.salida)
+    df = cargar_adzuna(pais=args.pais, query=args.query, muestra=args.muestra)
+    guardar(df, salida)
+    instrucciones(args.pais, salida)
