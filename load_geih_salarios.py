@@ -135,11 +135,18 @@ def _estadisticas(serie: pd.Series) -> dict:
 
 
 def _buscar_archivo(directorio: Path, patrones: list[str]) -> Path | None:
-    """Busca un archivo por patrones de nombre (case-insensitive)."""
+    """
+    Busca archivos por patrones (case-insensitive).
+    Cubre nombres del DANE: 'Cabecera - Ocupados.csv', 'Area_Ocupados_Feb26.csv', etc.
+    Prefiere el archivo más grande cuando hay múltiples coincidencias.
+    """
+    ext_validas = {".csv", ".dta", ".xlsx", ".xls"}
+    todos = [f for f in directorio.rglob("*")
+             if f.is_file() and f.suffix.lower() in ext_validas]
     for patron in patrones:
-        hits = list(directorio.rglob(f"*{patron}*"))
-        hits = [h for h in hits if h.is_file() and h.suffix.lower() in (".csv", ".dta", ".xlsx")]
+        hits = [f for f in todos if patron.lower() in f.name.lower()]
         if hits:
+            hits.sort(key=lambda f: -f.stat().st_size)
             return hits[0]
     return None
 
@@ -189,20 +196,29 @@ def procesar_geih(geih_dir: Path, periodo: str = "Feb 2026") -> dict:
 
     # ── Buscar módulo Ocupados ─────────────────────────────────────────────
     df_ocup = None
-    ocup_path = _buscar_archivo(geih_dir, ["Ocupados", "ocupados", "OCUPADOS"])
+    ocup_path = _buscar_archivo(geih_dir, [
+        "Ocupados", "ocupados", "OCUPADOS", "Ocup", "ocup", "Empleo",
+    ])
     if ocup_path:
         print(f"  ✓ Módulo Ocupados: {ocup_path.name}")
         df_ocup = _leer_modulo(ocup_path)
         if df_ocup is not None:
             df_ocup = _normalizar_columnas(df_ocup)
     else:
-        print("  ⚠ No se encontró módulo Ocupados — usando datos SPE únicamente")
+        ext_validas = {".csv", ".dta", ".xlsx", ".xls"}
+        disponibles = [f.name for f in geih_dir.rglob("*")
+                       if f.is_file() and f.suffix.lower() in ext_validas]
+        print("  ⚠ No se encontró módulo Ocupados.")
+        if disponibles:
+            print("  ℹ Archivos disponibles en el ZIP/carpeta:")
+            for n in sorted(disponibles):
+                print(f"     • {n}")
+        print("  → Usando datos SPE únicamente")
 
-    # ── Buscar módulo Características generales ────────────────────────────
-    df_caract = None
-    caract_path = _buscar_archivo(
-        geih_dir, ["Caracteristicas_generales", "caracteristicas", "CARACTERISTICAS"]
-    )
+    caract_path = _buscar_archivo(geih_dir, [
+        "Caracteristicas_generales", "Características_generales",
+        "caracteristicas", "Caracter", "General", "Hogares",
+    ])
     if caract_path:
         print(f"  ✓ Módulo Características: {caract_path.name}")
         df_caract = _leer_modulo(caract_path)
@@ -325,13 +341,22 @@ def procesar_geih(geih_dir: Path, periodo: str = "Feb 2026") -> dict:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Procesa GEIH para extraer salarios en COP")
-    parser.add_argument("--geih_dir", default="data/raw/GEIH",
-                        help="Ruta al directorio o ZIP del GEIH (default: data/raw/GEIH)")
-    parser.add_argument("--salida", default="data/processed/geih_salarios.json",
-                        help="Ruta de salida JSON (default: data/processed/geih_salarios.json)")
-    parser.add_argument("--periodo", default="Feb 2026",
-                        help="Etiqueta del período (ej: 'Feb 2026')")
+    parser = argparse.ArgumentParser(
+        description="Procesa GEIH para extraer salarios en COP",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Ejemplos:
+  python load_geih_salarios.py --geih_dir "data/raw/GEIH/Febrero_2026.zip"
+  python load_geih_salarios.py --geih_dir "data/raw/GEIH/Febrero_2026.zip" --listar
+  python load_geih_salarios.py --geih_dir "data/raw/GEIH" --periodo "Feb 2026"
+        """
+    )
+    parser.add_argument("--geih_dir",  default="data/raw/GEIH",
+                        help="Ruta al ZIP o carpeta del GEIH (default: data/raw/GEIH)")
+    parser.add_argument("--salida",    default="data/processed/geih_salarios.json")
+    parser.add_argument("--periodo",   default="Feb 2026")
+    parser.add_argument("--listar",    action="store_true",
+                        help="Solo lista archivos dentro del ZIP/carpeta sin procesar")
     args = parser.parse_args()
 
     geih_path = Path(args.geih_dir)
@@ -341,24 +366,45 @@ def main():
     print(f"\n{'='*55}")
     print("  PROCESADOR GEIH — Observatorio Laboral UniSabana")
     print(f"{'='*55}")
+    print(f"  Ruta: {geih_path}")
 
+    # ── Modo --listar ──────────────────────────────────────────────────────
+    if args.listar:
+        if not geih_path.exists():
+            print(f"\n  ⚠  No existe: {geih_path}")
+            return
+        if geih_path.suffix.lower() == ".zip":
+            print(f"\n  📦 Contenido de '{geih_path.name}':")
+            with zipfile.ZipFile(geih_path) as z:
+                for name in sorted(z.namelist()):
+                    if not name.endswith("/"):
+                        kb = z.getinfo(name).file_size / 1024
+                        print(f"    {name:<65} {kb:>8.1f} KB")
+        else:
+            ext = {".csv", ".dta", ".xlsx", ".xls"}
+            archivos = [f for f in geih_path.rglob("*") if f.is_file() and f.suffix.lower() in ext]
+            print(f"\n  📁 Archivos en '{geih_path}':")
+            for f in sorted(archivos):
+                kb = f.stat().st_size / 1024
+                print(f"    {str(f.relative_to(geih_path)):<65} {kb:>8.1f} KB")
+        return
+
+    # ── Ruta no encontrada ─────────────────────────────────────────────────
     if not geih_path.exists():
-        print(f"\n  ⚠ No se encontró: {geih_path}")
-        print("  → Generando archivo con datos SPE únicamente...")
+        print(f"\n  ⚠  No se encontró: {geih_path}")
+        print("""
+  Pasa la ruta correcta con --geih_dir, por ejemplo:
+    python load_geih_salarios.py --geih_dir "data/raw/GEIH/Febrero_2026.zip"
+    python load_geih_salarios.py --geih_dir "data/raw/GEIH/Febrero_2026.zip" --listar
+        """)
         resultado = {
             "meta": {
-                "periodo":    args.periodo,
-                "fuente":     "SPE Colombia (GEIH no disponible)",
-                "n_ocupados": 0,
-                "con_ingreso": 0,
-                "trm_usd_cop": TRM_USD_COP,
-                "nota": "Carga el GEIH en data/raw/GEIH/ para salarios reales del DANE.",
+                "periodo": args.periodo, "fuente": "SPE Colombia (GEIH no disponible)",
+                "n_ocupados": 0, "con_ingreso": 0, "trm_usd_cop": TRM_USD_COP,
+                "nota": "Pasa la ruta al ZIP con --geih_dir.",
             },
-            "por_nivel_educativo": {},
-            "por_sector": {},
-            "por_nucleo": {},
-            "spe_rangos": SPE_RANGOS_FIJOS,
-            "tiene_geih": False,
+            "por_nivel_educativo": {}, "por_sector": {}, "por_nucleo": {},
+            "spe_rangos": SPE_RANGOS_FIJOS, "tiene_geih": False,
         }
     else:
         resultado = procesar_geih(geih_path, periodo=args.periodo)
@@ -366,11 +412,17 @@ def main():
     with open(salida, "w", encoding="utf-8") as f:
         json.dump(resultado, f, ensure_ascii=False, indent=2)
 
+    tiene = resultado.get("tiene_geih", False)
     print(f"\n  ✅ Guardado en: {salida}")
-    print(f"  • Sectores: {len(resultado['por_sector'])}")
-    print(f"  • Niveles educativos: {len(resultado['por_nivel_educativo'])}")
-    print(f"  • Núcleos NBC: {len(resultado['por_nucleo'])}")
-    print(f"  • Rangos SPE: {len(resultado['spe_rangos'])}")
+    print(f"  • Tiene GEIH real     : {'Sí' if tiene else 'No — solo SPE'}")
+    print(f"  • Sectores            : {len(resultado['por_sector'])}")
+    print(f"  • Niveles educativos  : {len(resultado['por_nivel_educativo'])}")
+    print(f"  • Núcleos NBC         : {len(resultado['por_nucleo'])}")
+    print(f"  • Rangos SPE          : {len(resultado['spe_rangos'])}")
+    if tiene:
+        m = resultado["meta"]
+        print(f"  • Ocupados totales    : {m.get('n_ocupados', 0):,}")
+        print(f"  • Con ingreso laboral : {m.get('con_ingreso', 0):,}")
 
 
 if __name__ == "__main__":

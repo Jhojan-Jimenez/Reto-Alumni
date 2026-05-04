@@ -2,8 +2,8 @@
   "meta": {
     "periodo": "Feb 2026",
     "fuente": "GEIH DANE + SPE Colombia",
-    "n_ocupados": 0,
-    "con_ingreso": 0,
+    "n_ocupados": 29892,
+    "con_ingreso": 29054,
     "trm_usd_cop": 4150,
     "nota": "Salarios en COP (pesos colombianos). Fuente: DANE GEIH."
   },
@@ -61,5 +61,5 @@
       "variacion": -34.8
     }
   ],
-  "tiene_geih": false
+  "tiene_geih": true
 }
