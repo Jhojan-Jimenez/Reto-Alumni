@@ -362,15 +362,6 @@ def load_adzuna_raw() -> pd.DataFrame | None:
         (combined["salario_min"] < 500_000)
     ]
     return combined
-    """Carga todos los JSONs generados por load_pdf_report.py."""
-    reportes = []
-    for j in PROCESSED.glob("pdf_skills_*.json"):
-        try:
-            with open(j, encoding="utf-8") as f:
-                reportes.append(json.load(f))
-        except Exception:
-            pass
-    return reportes
 
 @st.cache_data(ttl=60)
 def load_geih_salarios():
@@ -1863,8 +1854,8 @@ with tab_salarios:
 
     styled = (
         df_cruce.style
-        .applymap(_color_brecha, subset=["Brecha"])
-        .applymap(_color_trend,  subset=["Grad_trend"])
+        .map(_color_brecha, subset=["Brecha"])
+        .map(_color_trend,  subset=["Grad_trend"])
         .set_properties(**{"font-size": "0.85rem"})
     )
     st.dataframe(styled, use_container_width=True, hide_index=True)
