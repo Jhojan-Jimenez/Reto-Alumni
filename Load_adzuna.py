@@ -282,7 +282,7 @@ Ejemplos:
                         help="Varios países a descargar en secuencia, ej: --paises gb us br\n(sobreescribe --pais)")
     parser.add_argument("--query",   default="",
                         help="Término de búsqueda (default: vacío = todas las categorías)")
-    parser.add_argument("--muestra", default=200, type=int,
+    parser.add_argument("--muestra", default=3000, type=int,
                         help="Número de ofertas por país (default: 2000)")
     parser.add_argument("--salida",  default=None,
                         help="Ruta CSV de salida (solo aplica con --pais individual)")
