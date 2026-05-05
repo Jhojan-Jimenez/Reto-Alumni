@@ -130,17 +130,17 @@ st.markdown("""
   [data-testid="stSidebar"] .stButton > button {
     background: transparent !important;
     border: none !important;
-    color: #94a3b8 !important;
+    color: #ffffff !important;
     text-align: left !important;
     padding: 10px 16px !important;
     border-radius: 8px !important;
-    font-size: 0.88rem !important;
-    font-weight: 500 !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
     width: 100% !important;
     transition: all 0.15s ease !important;
   }
   [data-testid="stSidebar"] .stButton > button:hover {
-    background: rgba(255,255,255,0.08) !important;
+    background: rgba(255,255,255,0.15) !important;
     color: #ffffff !important;
   }
   /* Caption / info en sidebar */
@@ -930,7 +930,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# ── Barra de filtros horizontal (debajo del título) ───────────────────────────
+# ── Barra de filtros horizontal ocultable ────────────────────────────────────
 REGIONES_CO  = [
     "Todas las regiones",
     "Bogotá D.C.", "Antioquia", "Valle del Cauca", "Atlántico",
@@ -940,57 +940,79 @@ REGIONES_INT = ["Global (Adzuna UK)", "Reino Unido", "Estados Unidos", "Europa",
 
 cat_opciones = ["técnica", "blanda", "conocimiento", "destreza"]
 
-with st.container():
-    st.markdown(
-        "<div style='background:#ffffff;border:1px solid #e2e8f0;border-radius:14px;"
-        "padding:16px 20px 10px;margin-bottom:18px;"
-        "box-shadow:0 1px 4px rgba(0,0,0,0.05);'>",
-        unsafe_allow_html=True,
-    )
-    st.markdown(
-        "<div style='font-size:0.7rem;font-weight:700;text-transform:uppercase;"
-        "letter-spacing:0.12em;color:#94a3b8;margin-bottom:10px;'>🔍 Filtros globales</div>",
-        unsafe_allow_html=True,
-    )
+if "mostrar_filtros" not in st.session_state:
+    st.session_state.mostrar_filtros = True
 
-    fc1, fc2, fc3, fc4, fc5 = st.columns([2, 2, 1, 2, 1])
+# Botón toggle pequeño a la derecha del label
+toggle_col, _ = st.columns([1, 8])
+with toggle_col:
+    label_toggle = "🔽 Filtros" if st.session_state.mostrar_filtros else "▶ Filtros"
+    if st.button(label_toggle, key="toggle_filtros"):
+        st.session_state.mostrar_filtros = not st.session_state.mostrar_filtros
+        st.rerun()
 
-    with fc1:
-        fuentes_sel = st.multiselect(
-            "Fuentes de datos",
-            options=fuentes_disponibles or ["SPE", "Adzuna", "LinkedIn"],
-            default=fuentes_disponibles,
-            key="sidebar_fuentes",
+# Valores por defecto para cuando los filtros están ocultos
+if st.session_state.mostrar_filtros:
+    with st.container():
+        st.markdown(
+            "<div style='background:#ffffff;border:1px solid #e2e8f0;border-radius:14px;"
+            "padding:16px 20px 10px;margin-bottom:18px;"
+            "box-shadow:0 1px 4px rgba(0,0,0,0.05);'>",
+            unsafe_allow_html=True,
         )
-    with fc2:
-        cat_sel = st.multiselect(
-            "Categorías de skills",
-            options=cat_opciones,
-            default=cat_opciones,
-            key="sidebar_cats",
+        st.markdown(
+            "<div style='font-size:0.7rem;font-weight:700;text-transform:uppercase;"
+            "letter-spacing:0.12em;color:#94a3b8;margin-bottom:10px;'>🔍 Filtros globales</div>",
+            unsafe_allow_html=True,
         )
-    with fc3:
-        top_n = st.slider("Top N skills", 5, 40, 20, key="sidebar_topn")
-    with fc4:
-        ambito_sel = st.radio(
-            "Ámbito de análisis",
-            ["🇨🇴 Colombia (SPE)", "🌐 Internacional (Adzuna)", "📊 Ambos"],
-            key="sidebar_ambito",
-            horizontal=True,
-        )
-    with fc5:
-        if ambito_sel == "🇨🇴 Colombia (SPE)":
-            region_sel = st.selectbox("Departamento / Ciudad", REGIONES_CO, key="sidebar_region_co")
-            pais_sel = "Colombia"
-        elif ambito_sel == "🌐 Internacional (Adzuna)":
-            region_sel = st.selectbox("Región internacional", REGIONES_INT, key="sidebar_region_int")
-            pais_sel = "Internacional"
-        else:
-            region_sel = "Todas las regiones"
-            pais_sel = "Ambos"
-            st.caption("Región: todas")
 
-    st.markdown("</div>", unsafe_allow_html=True)
+        fc1, fc2, fc3, fc4, fc5 = st.columns([2, 2, 1, 2, 1])
+
+        with fc1:
+            fuentes_sel = st.multiselect(
+                "Fuentes de datos",
+                options=fuentes_disponibles or ["SPE", "Adzuna", "LinkedIn"],
+                default=fuentes_disponibles,
+                key="sidebar_fuentes",
+            )
+        with fc2:
+            cat_sel = st.multiselect(
+                "Categorías de skills",
+                options=cat_opciones,
+                default=cat_opciones,
+                key="sidebar_cats",
+            )
+        with fc3:
+            top_n = st.slider("Top N skills", 5, 40, 20, key="sidebar_topn")
+        with fc4:
+            ambito_sel = st.radio(
+                "Ámbito de análisis",
+                ["🇨🇴 Colombia (SPE)", "🌐 Internacional (Adzuna)", "📊 Ambos"],
+                key="sidebar_ambito",
+                horizontal=True,
+            )
+        with fc5:
+            if ambito_sel == "🇨🇴 Colombia (SPE)":
+                region_sel = st.selectbox("Departamento / Ciudad", REGIONES_CO, key="sidebar_region_co")
+                pais_sel = "Colombia"
+            elif ambito_sel == "🌐 Internacional (Adzuna)":
+                region_sel = st.selectbox("Región internacional", REGIONES_INT, key="sidebar_region_int")
+                pais_sel = "Internacional"
+            else:
+                region_sel = "Todas las regiones"
+                pais_sel = "Ambos"
+                st.caption("Región: todas")
+
+        st.markdown("</div>", unsafe_allow_html=True)
+else:
+    # Valores por defecto cuando los filtros están ocultos
+    fuentes_sel  = fuentes_disponibles
+    cat_sel      = cat_opciones
+    top_n        = 20
+    ambito_sel   = "🇨🇴 Colombia (SPE)"
+    region_sel   = "Todas las regiones"
+    pais_sel     = "Colombia"
+
 
 col_h1, col_h2, col_h3, col_h4, col_h5, col_h6 = st.columns(6)
 col_h1.metric("Skills identificadas",   f"{total_skills:,}" if isinstance(total_skills, int) else total_skills)
@@ -3367,6 +3389,22 @@ CREATE INDEX idx_vacantes_geo_region ON vacantes_geo(pais, departamento, periodo
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 9 · EXPORTAR REPORTES
 # ══════════════════════════════════════════════════════════════════════════════
+
+# datos_empl necesario en tab_reportes (definido aquí como fallback)
+if "datos_empl" not in dir():
+    datos_empl = {
+        "Todos los programas":          {"empl_6m": 68.4, "tiempo_prom": 8.2, "sobrecal": 31.2, "informal": 42.1, "nps": 62},
+        "Derecho":                      {"empl_6m": 72.1, "tiempo_prom": 7.4, "sobrecal": 28.4, "informal": 35.2, "nps": 68},
+        "Administración de Empresas":   {"empl_6m": 65.8, "tiempo_prom": 9.1, "sobrecal": 38.7, "informal": 44.3, "nps": 58},
+        "Ingeniería de Sistemas":       {"empl_6m": 82.3, "tiempo_prom": 4.6, "sobrecal": 15.2, "informal": 22.1, "nps": 78},
+        "Economía":                     {"empl_6m": 70.4, "tiempo_prom": 7.8, "sobrecal": 29.6, "informal": 38.4, "nps": 65},
+        "Psicología":                   {"empl_6m": 63.2, "tiempo_prom": 10.3, "sobrecal": 41.8, "informal": 49.2, "nps": 54},
+        "Medicina":                     {"empl_6m": 91.2, "tiempo_prom": 3.2, "sobrecal": 8.4, "informal": 12.3, "nps": 88},
+        "Ing. Industrial":              {"empl_6m": 77.8, "tiempo_prom": 6.1, "sobrecal": 22.4, "informal": 31.2, "nps": 72},
+        "Comunicación Social":          {"empl_6m": 61.4, "tiempo_prom": 11.2, "sobrecal": 44.2, "informal": 52.8, "nps": 51},
+        "Contaduría Pública":           {"empl_6m": 69.3, "tiempo_prom": 8.4, "sobrecal": 34.1, "informal": 41.3, "nps": 60},
+        "Lic. Educación Preescolar":    {"empl_6m": 58.7, "tiempo_prom": 12.4, "sobrecal": 48.3, "informal": 56.1, "nps": 48},
+    }
 
 if tab_reportes:
     import io, base64
