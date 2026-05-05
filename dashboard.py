@@ -24,7 +24,7 @@ st.set_page_config(
     page_title="Observatorio Laboral – UniSabana",
     page_icon="🎓",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 st.cache_data.clear()
@@ -90,16 +90,6 @@ st.markdown("""
     padding-left: 2rem !important;
     padding-right: 2rem !important;
     max-width: 100% !important;
-  }
-
-  /* ═══════════════════════════════════════════
-     OCULTAR SIDEBAR
-  ═══════════════════════════════════════════ */
-  [data-testid="stSidebar"] {
-    display: none !important;
-  }
-  [data-testid="collapsedControl"] {
-    display: none !important;
   }
 
   /* ═══════════════════════════════════════════
@@ -709,58 +699,147 @@ def _rango_spe_para_salario(salario_cop: int, spe_rangos: list) -> str:
 # ══════════════════════════════════════════════════════════════════════════════
 
 # ══════════════════════════════════════════════════════════════════════════════
-# CARGA INICIAL DE DATOS PARA FILTROS (antes del header)
+# SIDEBAR — Navegación de secciones
 # ══════════════════════════════════════════════════════════════════════════════
 
-all_freq = load_all_freq_sources()
-fuentes_disponibles = sorted(all_freq["fuente"].unique().tolist()) if all_freq is not None else []
-
-# Estado pipeline
-if "pipeline_running" not in st.session_state:
-    st.session_state.pipeline_running = False
-if "pipeline_log" not in st.session_state:
-    st.session_state.pipeline_log = []
-if "pipeline_result" not in st.session_state:
-    st.session_state.pipeline_result = None
-
-PIPELINE_STEPS = [
-    ("Diccionario de skills",       f"{sys.executable} build_dictionary.py"),
-    ("Descarga Adzuna",             f"{sys.executable} load_adzuna.py"),
-    ("Extracción skills Adzuna",    f"{sys.executable} extract_skills.py data/processed/adzuna_sample.csv descripcion id_oferta"),
-    ("Descarga LinkedIn",           f"{sys.executable} load_linkedin.py"),
-    ("Extracción skills LinkedIn",  f"{sys.executable} extract_skills.py data/processed/linkedin_sample.csv descripcion id_oferta --idioma en"),
-    ("Cálculo de tendencias",       f"{sys.executable} build_tendencias.py"),
-    ("Salarios COP (GEIH)",         f"{sys.executable} load_geih_salarios.py"),
+SECCIONES = [
+    ("🇨🇴", "Mercado Real"),
+    ("📈", "Tendencias"),
+    ("📄", "Reportes PDF"),
+    ("🧠", "Skills & O*NET"),
+    ("👤", "Perfil Ocupación"),
+    ("⚖️", "Comparador"),
+    ("📊", "Empleabilidad"),
+    ("🗄️", "Base de Datos"),
+    ("📥", "Exportar"),
 ]
 
-def _run_pipeline_bg(steps, log_list, result_holder):
-    """Corre el pipeline en un hilo background y escribe al log compartido."""
-    project_dir = str(Path(__file__).parent)
-    for nombre, cmd in steps:
-        log_list.append(f"▶ {nombre}...")
-        try:
-            proc = subprocess.run(
-                cmd, shell=True, capture_output=True, text=True,
-                timeout=600, cwd=project_dir,
-            )
-            if proc.returncode == 0:
-                log_list.append(f"  ✓ Completado")
-            else:
-                log_list.append(f"  ✗ Error (código {proc.returncode})")
-                if proc.stderr.strip():
-                    for ln in proc.stderr.strip().splitlines()[-5:]:
-                        log_list.append(f"    {ln}")
-                result_holder["status"] = "error"
-                return
-        except subprocess.TimeoutExpired:
-            log_list.append(f"  ✗ Timeout (>10 min)")
-            result_holder["status"] = "error"
-            return
-        except Exception as e:
-            log_list.append(f"  ✗ Excepción: {e}")
-            result_holder["status"] = "error"
-            return
-    result_holder["status"] = "ok"
+if "seccion_activa" not in st.session_state:
+    st.session_state.seccion_activa = "Mercado Real"
+
+with st.sidebar:
+    st.markdown("""
+    <div style='padding: 20px 8px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 8px;'>
+      <div style='display:flex; align-items:center; gap:10px; margin-bottom:10px;'>
+        <div style='width:40px; height:40px; background:#ffffff; border-radius:8px;
+                    display:flex; align-items:center; justify-content:center; flex-shrink:0;'>
+          <span style='font-size:1.2rem;'>🎓</span>
+        </div>
+        <div>
+          <div style='font-size:0.68rem; color:#94a3b8; font-weight:500; line-height:1;
+                      font-family:Inter,sans-serif; letter-spacing:0.04em;'>
+            Universidad de
+          </div>
+          <div style='font-size:1rem; color:#ffffff; font-weight:700; line-height:1.1;
+                      font-family:Inter,sans-serif; letter-spacing:-0.01em;'>
+            La Sabana
+          </div>
+        </div>
+      </div>
+      <div style='font-size:0.65rem; font-weight:700; letter-spacing:0.18em;
+                  color:#c8952a; font-family:Inter,sans-serif; text-transform:uppercase;
+                  padding-left:2px;'>
+        OBSERVATORIO LABORAL
+      </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown(
+        "<div style='font-size:0.65rem;font-weight:700;letter-spacing:0.14em;"
+        "color:#64748b;text-transform:uppercase;padding:12px 4px 8px;'>Secciones</div>",
+        unsafe_allow_html=True,
+    )
+
+    for icono, nombre in SECCIONES:
+        activo = st.session_state.seccion_activa == nombre
+        estilo_btn = (
+            "background:rgba(255,255,255,0.12)!important;color:#ffffff!important;"
+            if activo else ""
+        )
+        # Usamos un st.button por sección
+        if st.button(
+            f"{icono}  {nombre}",
+            key=f"nav_{nombre}",
+            use_container_width=True,
+        ):
+            st.session_state.seccion_activa = nombre
+            st.rerun()
+
+    st.divider()
+
+    # ── Fuentes activas ────────────────────────────────────────────────────
+    st.markdown(
+        "<div style='font-size:0.65rem;font-weight:700;letter-spacing:0.14em;"
+        "color:#64748b;text-transform:uppercase;padding:4px 4px 8px;'>Fuentes activas</div>",
+        unsafe_allow_html=True,
+    )
+    for src in ["O*NET", "SPE Colombia", "Adzuna", "LinkedIn", "PDF Reports", "Ocupacol"]:
+        p_csv  = PROCESSED / f"{src.lower().replace(' ','_')}_frecuencia_skills.csv"
+        p_json = list(PROCESSED.glob(f"pdf_skills_{src.lower()}*.json"))
+        ok     = p_csv.exists() or bool(p_json) or src == "O*NET"
+        color  = "#86efac" if ok else "#fca5a5"
+        dot    = "●" if ok else "○"
+        st.markdown(f"<span style='color:{color}'>{dot}</span> {src}", unsafe_allow_html=True)
+    geih_ok    = (PROCESSED / "geih_salarios.json").exists()
+    geih_color = "#86efac" if geih_ok else "#fca5a5"
+    st.markdown(f"<span style='color:{geih_color}'>{'●' if geih_ok else '○'}</span> GEIH Salarios COP", unsafe_allow_html=True)
+
+    st.divider()
+
+    # ── Pipeline de datos ──────────────────────────────────────────────────
+    st.markdown(
+        "<div style='font-size:0.65rem;font-weight:700;letter-spacing:0.14em;"
+        "color:#64748b;text-transform:uppercase;padding:4px 4px 8px;'>⚙️ Pipeline de datos</div>",
+        unsafe_allow_html=True,
+    )
+
+    btn_disabled = st.session_state.pipeline_running
+    if st.button(
+        "🔄 Actualizar todos los datos",
+        disabled=btn_disabled,
+        use_container_width=True,
+        help="Ejecuta: diccionario → Adzuna → LinkedIn → tendencias",
+    ):
+        st.session_state.pipeline_running = True
+        st.session_state.pipeline_log     = []
+        st.session_state.pipeline_result  = None
+        result_holder = {"status": None}
+        t = threading.Thread(
+            target=_run_pipeline_bg,
+            args=(PIPELINE_STEPS, st.session_state.pipeline_log, result_holder),
+            daemon=True,
+        )
+        t.start()
+        progress_placeholder = st.empty()
+        while t.is_alive():
+            log_text = "\n".join(st.session_state.pipeline_log)
+            progress_placeholder.code(log_text or "Iniciando...", language="bash")
+            time.sleep(1.5)
+            st.rerun()
+        log_text = "\n".join(st.session_state.pipeline_log)
+        progress_placeholder.code(log_text, language="bash")
+        st.session_state.pipeline_running = False
+        st.session_state.pipeline_result  = result_holder["status"]
+        st.cache_data.clear()
+        st.rerun()
+
+    if st.session_state.pipeline_running:
+        log_text = "\n".join(st.session_state.pipeline_log)
+        st.code(log_text or "Iniciando...", language="bash")
+    if st.session_state.pipeline_result == "ok":
+        st.success("Pipeline completado.")
+        if st.button("Limpiar log", key="clear_log"):
+            st.session_state.pipeline_log    = []
+            st.session_state.pipeline_result = None
+            st.rerun()
+    elif st.session_state.pipeline_result == "error":
+        st.error("Error en el pipeline. Revisa el log.")
+
+    st.divider()
+    st.caption("build_dictionary · extract_skills · load_adzuna · load_pdf_report · build_tendencias")
+
+
+
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -913,24 +992,29 @@ if tend_data:
 # TABS
 # ══════════════════════════════════════════════════════════════════════════════
 
-tab_mercado, tab_tendencias_tab, tab_pdfs, tab_skills_tab, tab_ocupacion, tab_comparador, tab_empleabilidad, tab_bd, tab_reportes = st.tabs([
-    "🇨🇴  Mercado Real",
-    "📈  Tendencias",
-    "📄  Reportes PDF",
-    "🧠  Skills & O*NET",
-    "👤  Perfil Ocupación",
-    "⚖️  Comparador",
-    "📊  Empleabilidad",
-    "🗄️  Base de Datos",
-    "📥  Exportar",
-])
+# ══════════════════════════════════════════════════════════════════════════════
+# CONTENIDO SEGÚN SECCIÓN ACTIVA
+# ══════════════════════════════════════════════════════════════════════════════
+
+_seccion = st.session_state.seccion_activa
+
+# Aliases para compatibilidad con el código de cada tab
+tab_mercado         = (_seccion == "Mercado Real")
+tab_tendencias_tab  = (_seccion == "Tendencias")
+tab_pdfs            = (_seccion == "Reportes PDF")
+tab_skills_tab      = (_seccion == "Skills & O*NET")
+tab_ocupacion       = (_seccion == "Perfil Ocupación")
+tab_comparador      = (_seccion == "Comparador")
+tab_empleabilidad   = (_seccion == "Empleabilidad")
+tab_bd              = (_seccion == "Base de Datos")
+tab_reportes        = (_seccion == "Exportar")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
 # TAB 1 · MERCADO REAL (SPE + Adzuna + LinkedIn unificados)
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_mercado:
+if tab_mercado:
     st.markdown("### Demanda real de skills por fuente de datos")
 
     if all_freq2 is None:
@@ -1158,7 +1242,7 @@ with tab_mercado:
 # TAB 2 · TENDENCIAS TEMPORALES
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_tendencias_tab:
+if tab_tendencias_tab:
     st.markdown("### Tendencias de skills en el tiempo")
 
     if tend_data is None:
@@ -1311,7 +1395,7 @@ with tab_tendencias_tab:
 # TAB 3 · REPORTES PDF
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_pdfs:
+if tab_pdfs:
     st.markdown("### Reportes internacionales procesados con Document AI")
 
     # ── Subida y procesamiento de PDF ──────────────────────────────────────
@@ -1516,7 +1600,7 @@ with tab_pdfs:
 # TAB 4 · SKILLS & O*NET (original mejorado)
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_skills_tab:
+if tab_skills_tab:
     st.markdown("### Taxonomía O\\*NET — Skills, Conocimiento y Tecnología")
 
     skills_df    = load_skills()
@@ -1597,7 +1681,7 @@ with tab_skills_tab:
 # TAB 5 · PERFIL DE OCUPACIÓN
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_ocupacion:
+if tab_ocupacion:
     st.markdown("### Perfil de una Ocupación")
 
     occ_data     = load_occ_data()
@@ -2669,7 +2753,7 @@ python3 load_geih_salarios.py --geih_dir data/raw/GEIH/Febrero_2026.zip --period
 
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_comparador:
+if tab_comparador:
     st.markdown("### Comparador de Ocupaciones")
 
     occ_data2   = load_occ_data()
@@ -2784,7 +2868,7 @@ with tab_comparador:
 # TAB 7 · VARIABLES DE EMPLEABILIDAD
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_empleabilidad:
+if tab_empleabilidad:
     st.markdown("### 📊 Variables de Empleabilidad de Egresados")
     st.caption(
         "Indicadores clave de inserción laboral por programa académico. "
@@ -2981,7 +3065,7 @@ with tab_empleabilidad:
 # TAB 8 · ESTRUCTURA DE BASE DE DATOS
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_bd:
+if tab_bd:
     st.markdown("### 🗄️ Estructura de Base de Datos — Modelo Conceptual")
     st.caption(
         "Documentación técnica del modelo de datos del Observatorio Laboral. "
@@ -3236,7 +3320,7 @@ CREATE INDEX idx_vacantes_geo_region ON vacantes_geo(pais, departamento, periodo
 # TAB 9 · EXPORTAR REPORTES
 # ══════════════════════════════════════════════════════════════════════════════
 
-with tab_reportes:
+if tab_reportes:
     import io, base64
     from datetime import datetime as _dt_rep
 
