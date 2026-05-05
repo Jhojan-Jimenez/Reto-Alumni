@@ -65,19 +65,27 @@ def normalizar(texto: str) -> str:
 
 
 def cargar_diccionario() -> dict:
+    if not DICT_PATH.exists():
+        raise FileNotFoundError(
+            f"Diccionario de skills no encontrado en: {DICT_PATH}\n"
+            "Ejecuta primero: python build_dictionary.py"
+        )
     with open(DICT_PATH, encoding="utf-8") as f:
         return json.load(f)
 
 
-def get_categoria(skill: str, diccionario: dict) -> str:
-    s_n = normalizar(skill)
-    blandas_norm  = {normalizar(s) for s in diccionario["blandas"]["terminos_es"]}
-    tecnicas_norm = {normalizar(s) for s in diccionario["tecnicas"]["terminos"]}
-    conocimientos = set(diccionario["ocupacol"]["conocimientos"])
+def get_categoria(skill: str, diccionario: dict,
+                  _cache: dict = {}) -> str:
+    """Clasifica una skill. Construye los sets de lookup una sola vez."""
+    if not _cache:
+        _cache["blandas"]   = {normalizar(s) for s in diccionario["blandas"]["terminos_es"]}
+        _cache["tecnicas"]  = {normalizar(s) for s in diccionario["tecnicas"]["terminos"]}
+        _cache["conocimientos"] = set(diccionario["ocupacol"]["conocimientos"])
 
-    if s_n in blandas_norm:    return "blanda"
-    if s_n in tecnicas_norm:   return "técnica"
-    if skill in conocimientos: return "conocimiento"
+    s_n = normalizar(skill)
+    if s_n in _cache["blandas"]:        return "blanda"
+    if s_n in _cache["tecnicas"]:       return "técnica"
+    if skill in _cache["conocimientos"]: return "conocimiento"
     return "destreza"
 
 

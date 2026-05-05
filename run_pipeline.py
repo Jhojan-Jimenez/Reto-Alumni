@@ -20,7 +20,7 @@ def main():
     run(f"{PYTHON} build_dictionary.py")
 
     # 2. Adzuna
-    run(f"{PYTHON} 'Load adzuna.py'")
+    run(f"{PYTHON} Load_adzuna.py")
     run(f"{PYTHON} extract_skills.py data/processed/adzuna_sample.csv descripcion id_oferta")
 
     # 3. LinkedIn
@@ -32,8 +32,9 @@ def main():
     if spe_file.exists():
         run(f"{PYTHON} extract_skills.py {spe_file} DESCRIPCION_VACANTE")
 
-    # 5. PDFs ya cargados (solo reconstruye tendencias)
-    # (los PDFs se procesan cuando el usuario los sube desde el dashboard)
+    # 5. PDFs: se procesan individualmente desde el dashboard o con:
+    #    python load_pdf_reports.py "archivo.pdf" --fuente WEF --anio 2024 --idioma en
+    #    Una vez procesados, build_tendencias los integra automáticamente.
 
     # 6. Construir tendencias
     run(f"{PYTHON} build_tendencias.py")

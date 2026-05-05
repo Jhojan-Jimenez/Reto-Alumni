@@ -3,6 +3,7 @@ Observatorio Laboral – Universidad de La Sabana
 Dashboard interactivo: O*NET · SPE Colombia · Adzuna · PDF Reports · Tendencias
 """
 
+import io
 import json
 import sys
 import subprocess
@@ -480,7 +481,7 @@ with st.sidebar:
 
     PIPELINE_STEPS = [
         ("Diccionario de skills",       f"{sys.executable} build_dictionary.py"),
-        ("Descarga Adzuna",             f"{sys.executable} load_adzuna.py"),
+        ("Descarga Adzuna",             f"{sys.executable} Load_adzuna.py"),
         ("Extracción skills Adzuna",    f"{sys.executable} extract_skills.py data/processed/adzuna_sample.csv descripcion id_oferta"),
         ("Descarga LinkedIn",           f"{sys.executable} load_linkedin.py"),
         ("Extracción skills LinkedIn",  f"{sys.executable} extract_skills.py data/processed/linkedin_sample.csv descripcion id_oferta --idioma en"),
