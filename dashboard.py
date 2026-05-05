@@ -771,10 +771,10 @@ with st.sidebar:
       <div style='display:flex; align-items:center; gap:10px; margin-bottom:10px;'>
         <div style='width:40px; height:40px; background:#ffffff; border-radius:8px;
                     display:flex; align-items:center; justify-content:center; flex-shrink:0;'>
-          <span style='font-size:1.2rem;'>🎓</span>
+          <span style='font-size:2rem;'>🎓</span>
         </div>
         <div>
-          <div style='font-size:0.68rem; color:#94a3b8; font-weight:500; line-height:1;
+          <div style='font-size:1.25rem; color:#94a3b8; font-weight:500; line-height:1;
                       font-family:Inter,sans-serif; letter-spacing:0.04em;'>
             Universidad de
           </div>
@@ -784,7 +784,7 @@ with st.sidebar:
           </div>
         </div>
       </div>
-      <div style='font-size:0.65rem; font-weight:700; letter-spacing:0.18em;
+      <div style='font-size:1.25rem; font-weight:700; letter-spacing:0.18em;
                   color:#c8952a; font-family:Inter,sans-serif; text-transform:uppercase;
                   padding-left:2px;'>
         OBSERVATORIO LABORAL
@@ -793,7 +793,7 @@ with st.sidebar:
     """, unsafe_allow_html=True)
 
     st.markdown(
-        "<div style='font-size:0.65rem;font-weight:700;letter-spacing:0.14em;"
+        "<div style='font-size:1.25rem;font-weight:700;letter-spacing:0.14em;"
         "color:#64748b;text-transform:uppercase;padding:12px 4px 8px;'>Secciones</div>",
         unsafe_allow_html=True,
     )
@@ -817,7 +817,7 @@ with st.sidebar:
 
     # ── Fuentes activas ────────────────────────────────────────────────────
     st.markdown(
-        "<div style='font-size:0.65rem;font-weight:700;letter-spacing:0.14em;"
+        "<div style='font-size:1.25rem;font-weight:700;letter-spacing:0.14em;"
         "color:#64748b;text-transform:uppercase;padding:4px 4px 8px;'>Fuentes activas</div>",
         unsafe_allow_html=True,
     )
@@ -836,7 +836,7 @@ with st.sidebar:
 
     # ── Pipeline de datos ──────────────────────────────────────────────────
     st.markdown(
-        "<div style='font-size:0.65rem;font-weight:700;letter-spacing:0.14em;"
+        "<div style='font-size:1.25rem;font-weight:700;letter-spacing:0.14em;"
         "color:#64748b;text-transform:uppercase;padding:4px 4px 8px;'>⚙️ Pipeline de datos</div>",
         unsafe_allow_html=True,
     )
@@ -917,14 +917,14 @@ rango_anios = (
 st.markdown(f"""
 <div style='display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px;'>
   <div>
-    <div style='font-family:Rajdhani,sans-serif; font-size:1.6rem; font-weight:700; color:#0d2769; line-height:1.1;'>
+    <div style='font-family:Rajdhani,sans-serif; font-size:2rem; font-weight:700; color:#0d2769; line-height:1.1;'>
       Observatorio Laboral — Universidad de La Sabana
     </div>
-    <div style='font-size:0.82rem; color:#4a5568; margin-top:2px;'>
+    <div style='font-size:1.5rem; color:#4a5568; margin-top:2px;'>
       Inteligencia de mercado laboral basada en O*NET · SPE · Adzuna · LinkedIn · Reportes globales
     </div>
   </div>
-  <div style='font-size:0.78rem; color:#6b7280; text-align:right; white-space:nowrap;'>
+  <div style='font-size:1.5rem; color:#6b7280; text-align:right; white-space:nowrap;'>
     🕐 Actualizado: <strong>{_fecha_act}</strong>
   </div>
 </div>
@@ -961,7 +961,7 @@ if st.session_state.mostrar_filtros:
             unsafe_allow_html=True,
         )
         st.markdown(
-            "<div style='font-size:0.7rem;font-weight:700;text-transform:uppercase;"
+            "<div style='font-size:1.25rem;font-weight:700;text-transform:uppercase;"
             "letter-spacing:0.12em;color:#94a3b8;margin-bottom:10px;'>🔍 Filtros globales</div>",
             unsafe_allow_html=True,
         )
@@ -3572,6 +3572,14 @@ if tab_reportes:
     )
 
     # ── HTML ───────────────────────────────────────────────────────────────
+    _df_empl_html = df_empl_rep.rename(columns={
+        'empl_6m': 'Empl. 6m (%)',
+        'tiempo_prom': 'Tiempo 1er empleo (meses)',
+        'sobrecal': 'Sobrecal. (%)',
+        'informal': 'Informalidad (%)',
+        'nps': 'NPS',
+    }).to_html(index=False, border=0)
+
     html_report = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -3606,7 +3614,7 @@ if tab_reportes:
   <h2>Resumen de indicadores</h2>
   {datos_export.to_html(index=False, border=0)}
   <h2>Empleabilidad por programa</h2>
-  {df_empl_rep.rename(columns={{'empl_6m':'Empl. 6m (%)','tiempo_prom':'Tiempo 1er empleo (meses)','sobrecal':'Sobrecal. (%)','informal':'Informalidad (%)','nps':'NPS'}}).to_html(index=False, border=0)}
+  {_df_empl_html}
   <div class="footer">Observatorio Laboral · Universidad de La Sabana · Generado automáticamente el {fecha_gen}</div>
 </body>
 </html>"""
