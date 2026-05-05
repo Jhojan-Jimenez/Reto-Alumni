@@ -117,24 +117,53 @@ def extraer_texto_documentai(ruta_pdf: Path) -> tuple[str, dict]:
 
 def extraer_texto_pdfplumber(ruta_pdf: Path) -> tuple[str, dict]:
     """
-    Fallback: extrae texto con pdfplumber (sin costo, sin credenciales).
-    Bueno para PDFs nativos (texto seleccionable). Menos preciso en scaneados.
+    Fallback: extrae texto sin Document AI.
+    Intenta pdfplumber primero; si no está instalado, usa pypdf como alternativa.
+    Bueno para PDFs nativos (texto seleccionable). Menos preciso en escaneados.
     """
-    import pdfplumber
+    # ── Intento 1: pdfplumber ─────────────────────────────────────────────────
+    try:
+        import pdfplumber
+        print("  Usando pdfplumber (fallback sin Document AI)...")
+        paginas_texto = []
+        with pdfplumber.open(ruta_pdf) as pdf:
+            num_paginas = len(pdf.pages)
+            for pagina in pdf.pages:
+                texto = pagina.extract_text()
+                if texto:
+                    paginas_texto.append(texto)
+        texto_completo = "\n".join(paginas_texto)
+        meta = {"paginas": num_paginas, "idioma_detectado": "desconocido"}
+        return texto_completo, meta
 
-    print("  Usando pdfplumber (fallback sin Document AI)...")
-    paginas_texto = []
+    except ImportError:
+        print("  pdfplumber no disponible. Usando pypdf como alternativa...")
 
-    with pdfplumber.open(ruta_pdf) as pdf:
-        num_paginas = len(pdf.pages)
-        for pagina in pdf.pages:
+    # ── Intento 2: pypdf ──────────────────────────────────────────────────────
+    try:
+        from pypdf import PdfReader
+        print("  Usando pypdf (fallback secundario)...")
+        reader = PdfReader(str(ruta_pdf))
+        num_paginas = len(reader.pages)
+        paginas_texto = []
+        for pagina in reader.pages:
             texto = pagina.extract_text()
             if texto:
                 paginas_texto.append(texto)
+        texto_completo = "\n".join(paginas_texto)
+        meta = {"paginas": num_paginas, "idioma_detectado": "desconocido"}
+        return texto_completo, meta
 
-    texto_completo = "\n".join(paginas_texto)
-    meta = {"paginas": num_paginas, "idioma_detectado": "desconocido"}
-    return texto_completo, meta
+    except ImportError:
+        pass
+
+    # ── Sin opciones disponibles ──────────────────────────────────────────────
+    raise RuntimeError(
+        "No se encontró ninguna librería para extraer texto del PDF.\n"
+        "Instala al menos una con:\n"
+        "    pip install pdfplumber\n"
+        "    pip install pypdf"
+    )
 
 
 def extraer_metadatos_nativos_pdf(ruta_pdf: Path) -> dict:
@@ -523,7 +552,6 @@ def main():
     print(f"\n[2/4] Detectando año del reporte...")
     anio = args.anio or detectar_anio(texto, ruta_pdf.name, meta_docai)
     if anio is None:
-        # Si se llama desde Streamlit (no hay terminal interactiva), usar año actual
         if not sys.stdin.isatty():
             anio = datetime.now().year
             print(f"  [!] No se detectó el año. Se usará el año actual: {anio}")
