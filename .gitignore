@@ -12,8 +12,7 @@ env/
 
 
 
-# LinkedIn — archivos grandes generados localmente
-data/processed/linkedin_sample*.csv
+
 
 # Otros archivos grandes
 *.parquet

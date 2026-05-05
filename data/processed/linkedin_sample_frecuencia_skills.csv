@@ -1,0 +1,110 @@
+﻿skill,menciones,porcentaje_ofertas,categoria
+Science,306,10.2,destreza
+Monitoring,293,9.8,destreza
+Writing,270,9.0,destreza
+C,224,7.5,técnica
+Time Management,219,7.3,destreza
+Coordination,197,6.6,destreza
+Go,178,5.9,técnica
+Troubleshooting,162,5.4,destreza
+Programming,140,4.7,destreza
+Speaking,124,4.1,destreza
+R,117,3.9,técnica
+Installation,109,3.6,destreza
+Negotiation,98,3.3,destreza
+Python,92,3.1,técnica
+Facebook,69,2.3,técnica
+Critical Thinking,66,2.2,destreza
+Microsoft Word,59,2.0,técnica
+Repairing,57,1.9,destreza
+Mathematics,52,1.7,destreza
+Microsoft Excel,45,1.5,técnica
+Linux,39,1.3,técnica
+Active Listening,39,1.3,destreza
+JavaScript,37,1.2,técnica
+React,35,1.2,técnica
+TikTok,33,1.1,técnica
+Git,31,1.0,técnica
+Kubernetes,30,1.0,técnica
+Docker,30,1.0,técnica
+Reading Comprehension,29,1.0,destreza
+Zoom,24,0.8,técnica
+Chef,17,0.6,técnica
+Equipment Maintenance,17,0.6,destreza
+ServiceNow,17,0.6,técnica
+Tableau,16,0.5,técnica
+Microsoft Outlook,15,0.5,técnica
+Microsoft Office software,14,0.5,técnica
+MySQL,14,0.5,técnica
+Scala,13,0.4,técnica
+Adobe Acrobat,12,0.4,técnica
+SAS,12,0.4,técnica
+NoSQL,12,0.4,técnica
+Microsoft Teams,12,0.4,técnica
+Bash,11,0.4,técnica
+UNIX,11,0.4,técnica
+TypeScript,11,0.4,técnica
+Node.js,11,0.4,técnica
+Snowflake,11,0.4,técnica
+Microsoft Project,10,0.3,técnica
+Instructing,10,0.3,destreza
+Google Analytics,10,0.3,técnica
+GitHub,10,0.3,técnica
+PHP,10,0.3,técnica
+Service Orientation,9,0.3,destreza
+Figma,9,0.3,técnica
+Canva,9,0.3,técnica
+Systems Analysis,8,0.3,destreza
+Spring Boot,8,0.3,técnica
+Microsoft Windows,7,0.2,técnica
+Selenium,6,0.2,técnica
+PostgreSQL,6,0.2,técnica
+jQuery,6,0.2,técnica
+Persuasion,6,0.2,blanda
+Adobe Photoshop,5,0.2,técnica
+MongoDB,5,0.2,técnica
+Swift,5,0.2,técnica
+TensorFlow,5,0.2,técnica
+PyTorch,5,0.2,técnica
+GitLab,5,0.2,técnica
+Puppet,5,0.2,técnica
+Redis,5,0.2,técnica
+Microsoft Access,4,0.1,técnica
+Perl,4,0.1,técnica
+Slack,4,0.1,técnica
+C++,4,0.1,técnica
+C#,4,0.1,técnica
+Asana,4,0.1,técnica
+Google Sheets,4,0.1,técnica
+JUnit,4,0.1,técnica
+AJAX,4,0.1,técnica
+Google Docs,3,0.1,técnica
+Spring Framework,3,0.1,técnica
+Microsoft SQL Server,3,0.1,técnica
+Microsoft PowerPoint,3,0.1,técnica
+Ruby,3,0.1,técnica
+Adobe After Effects,2,0.1,técnica
+Autodesk Revit,2,0.1,técnica
+Apache Spark,2,0.1,técnica
+Oracle Java,2,0.1,técnica
+WordPress,2,0.1,técnica
+Vue.js,2,0.1,técnica
+Learning Strategies,2,0.1,destreza
+Django,2,0.1,técnica
+Oracle Database,2,0.1,técnica
+Operations Analysis,2,0.1,destreza
+Adobe Illustrator,2,0.1,técnica
+Jenkins CI,1,0.0,técnica
+Apache Tomcat,1,0.0,técnica
+Apple iOS,1,0.0,técnica
+Microsoft Power BI,1,0.0,técnica
+Epic Systems,1,0.0,técnica
+Microsoft Visio,1,0.0,técnica
+Bootstrap,1,0.0,técnica
+ESRI ArcGIS software,1,0.0,técnica
+Active Learning,1,0.0,destreza
+Technology Design,1,0.0,destreza
+SAP ERP,1,0.0,técnica
+Microsoft Visual Studio,1,0.0,técnica
+Mozilla Firefox,1,0.0,técnica
+Social Perceptiveness,1,0.0,destreza
