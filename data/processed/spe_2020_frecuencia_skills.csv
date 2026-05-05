@@ -1,0 +1,77 @@
+﻿skill,menciones,porcentaje_ofertas,categoria
+"trabajo en equipo",181,2.1,blanda
+"liderazgo",162,1.9,blanda
+"pensamiento crítico",156,1.8,blanda
+"comprensión lectora",148,1.7,destreza
+"resolución de problemas",146,1.7,destreza
+"orientación al servicio",143,1.7,blanda
+"trabajo en equipo",141,1.7,destreza
+"pensamiento crítico",139,1.6,destreza
+"comunicación oral",136,1.6,blanda
+"escucha activa",136,1.6,destreza
+"gestión del tiempo",121,1.4,blanda
+"servicio al cliente",118,1.4,conocimiento
+"Microsoft Excel",115,1.4,técnica
+"Microsoft Office",110,1.3,técnica
+"orientación al servicio",103,1.2,destreza
+"resolución de problemas complejos",98,1.2,blanda
+"negociación",98,1.2,blanda
+"comunicación escrita",95,1.1,blanda
+"adaptabilidad",94,1.1,blanda
+"toma de decisiones",93,1.1,destreza
+"SQL",92,1.1,técnica
+"juicio y toma de decisiones",92,1.1,blanda
+"aprendizaje activo",91,1.1,blanda
+"administración y gestión",87,1.0,conocimiento
+"Java",85,1.0,técnica
+"manejo del tiempo",82,1.0,destreza
+"redacción",81,1.0,blanda
+"informática",79,0.9,conocimiento
+"ingeniería y tecnología",79,0.9,conocimiento
+"aprendizaje activo",79,0.9,destreza
+"Python",77,0.9,técnica
+"liderazgo",77,0.9,destreza
+"economía y contabilidad",76,0.9,conocimiento
+"ventas y marketing",74,0.9,conocimiento
+"hablar en público",74,0.9,destreza
+"JavaScript",72,0.8,técnica
+"persuasión",72,0.8,blanda
+"instrucción y capacitación",72,0.8,blanda
+"matemáticas",72,0.8,blanda
+"percepción social",70,0.8,destreza
+"coordinación",69,0.8,blanda
+"monitoreo y seguimiento",67,0.8,blanda
+"recursos humanos",65,0.8,conocimiento
+"inteligencia emocional",64,0.8,blanda
+"gestión de personal",64,0.8,blanda
+"negociación efectiva",62,0.7,destreza
+"control de calidad",61,0.7,blanda
+"SAP",56,0.7,técnica
+"derecho y gobierno",56,0.7,conocimiento
+"matemáticas aplicadas",55,0.6,conocimiento
+"análisis de sistemas",54,0.6,blanda
+"Git",53,0.6,técnica
+"Machine Learning",51,0.6,técnica
+"Oracle",50,0.6,técnica
+"escritura creativa",44,0.5,destreza
+"C++",43,0.5,técnica
+"medicina y odontología",43,0.5,conocimiento
+"educación y formación",42,0.5,conocimiento
+"producción y procesamiento",40,0.5,conocimiento
+"R",38,0.4,técnica
+"Salesforce",37,0.4,técnica
+"Tableau",34,0.4,técnica
+"Amazon Web Services",34,0.4,técnica
+"seguridad pública",34,0.4,conocimiento
+"física",29,0.3,conocimiento
+"Hadoop",28,0.3,técnica
+"Power BI",27,0.3,técnica
+"React",25,0.3,técnica
+"Docker",23,0.3,técnica
+"MATLAB",22,0.3,técnica
+"Apache Spark",21,0.2,técnica
+"Microsoft Azure",20,0.2,técnica
+"TensorFlow",15,0.2,técnica
+"Google Cloud",15,0.2,técnica
+"Kubernetes",13,0.2,técnica
+"PyTorch",9,0.1,técnica
