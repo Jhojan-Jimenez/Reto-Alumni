@@ -24,7 +24,7 @@ st.set_page_config(
     page_title="Observatorio Laboral – UniSabana",
     page_icon="🎓",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
 st.cache_data.clear()
@@ -86,10 +86,20 @@ st.markdown("""
 
   /* Remove streamlit default padding */
   [data-testid="stMain"] .block-container {
-    padding-top: 1.5rem !important;
+    padding-top: 2.5rem !important;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
     max-width: 100% !important;
+  }
+
+  /* ═══════════════════════════════════════════
+     OCULTAR SIDEBAR
+  ═══════════════════════════════════════════ */
+  [data-testid="stSidebar"] {
+    display: none !important;
+  }
+  [data-testid="collapsedControl"] {
+    display: none !important;
   }
 
   /* ═══════════════════════════════════════════
@@ -698,203 +708,59 @@ def _rango_spe_para_salario(salario_cop: int, spe_rangos: list) -> str:
 # SIDEBAR
 # ══════════════════════════════════════════════════════════════════════════════
 
-with st.sidebar:
-    st.markdown("""
-    <div style='padding: 20px 8px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 8px;'>
-      <div style='display:flex; align-items:center; gap:10px; margin-bottom:10px;'>
-        <div style='width:40px; height:40px; background:#ffffff; border-radius:8px;
-                    display:flex; align-items:center; justify-content:center; flex-shrink:0;'>
-          <span style='font-size:1.2rem;'>🎓</span>
-        </div>
-        <div>
-          <div style='font-size:0.68rem; color:#94a3b8; font-weight:500; line-height:1;
-                      font-family:Inter,sans-serif; letter-spacing:0.04em;'>
-            Universidad de
-          </div>
-          <div style='font-size:1rem; color:#ffffff; font-weight:700; line-height:1.1;
-                      font-family:Inter,sans-serif; letter-spacing:-0.01em;'>
-            La Sabana
-          </div>
-        </div>
-      </div>
-      <div style='font-size:0.65rem; font-weight:700; letter-spacing:0.18em;
-                  color:#c8952a; font-family:Inter,sans-serif; text-transform:uppercase;
-                  padding-left:2px;'>
-        OBSERVATORIO LABORAL
-      </div>
-    </div>
-    """, unsafe_allow_html=True)
+# ══════════════════════════════════════════════════════════════════════════════
+# CARGA INICIAL DE DATOS PARA FILTROS (antes del header)
+# ══════════════════════════════════════════════════════════════════════════════
 
-    st.divider()
+all_freq = load_all_freq_sources()
+fuentes_disponibles = sorted(all_freq["fuente"].unique().tolist()) if all_freq is not None else []
 
-    st.markdown("### 🔍 Filtros globales")
+# Estado pipeline
+if "pipeline_running" not in st.session_state:
+    st.session_state.pipeline_running = False
+if "pipeline_log" not in st.session_state:
+    st.session_state.pipeline_log = []
+if "pipeline_result" not in st.session_state:
+    st.session_state.pipeline_result = None
 
-    all_freq = load_all_freq_sources()
-    fuentes_disponibles = sorted(all_freq["fuente"].unique().tolist()) if all_freq is not None else []
-    fuentes_sel = st.multiselect(
-        "Fuentes de datos",
-        options=fuentes_disponibles or ["SPE", "Adzuna", "LinkedIn"],
-        default=fuentes_disponibles,
-        key="sidebar_fuentes",
-    )
+PIPELINE_STEPS = [
+    ("Diccionario de skills",       f"{sys.executable} build_dictionary.py"),
+    ("Descarga Adzuna",             f"{sys.executable} load_adzuna.py"),
+    ("Extracción skills Adzuna",    f"{sys.executable} extract_skills.py data/processed/adzuna_sample.csv descripcion id_oferta"),
+    ("Descarga LinkedIn",           f"{sys.executable} load_linkedin.py"),
+    ("Extracción skills LinkedIn",  f"{sys.executable} extract_skills.py data/processed/linkedin_sample.csv descripcion id_oferta --idioma en"),
+    ("Cálculo de tendencias",       f"{sys.executable} build_tendencias.py"),
+    ("Salarios COP (GEIH)",         f"{sys.executable} load_geih_salarios.py"),
+]
 
-    cat_opciones = ["técnica", "blanda", "conocimiento", "destreza"]
-    cat_sel = st.multiselect(
-        "Categorías de skills",
-        options=cat_opciones,
-        default=cat_opciones,
-        key="sidebar_cats",
-    )
-
-    top_n = st.slider("Top N skills a mostrar", 5, 40, 20, key="sidebar_topn")
-
-    st.divider()
-    st.markdown("### 🌍 Filtro geográfico")
-
-    REGIONES_CO = [
-        "Todas las regiones",
-        "Bogotá D.C.", "Antioquia", "Valle del Cauca", "Atlántico",
-        "Santander", "Cundinamarca", "Bolívar", "Nariño", "Tolima", "Meta",
-    ]
-    REGIONES_INT = ["Global (Adzuna UK)", "Reino Unido", "Estados Unidos", "Europa", "Latinoamérica"]
-
-    ambito_sel = st.radio(
-        "Ámbito de análisis",
-        ["🇨🇴 Colombia (SPE)", "🌐 Internacional (Adzuna)", "📊 Ambos"],
-        key="sidebar_ambito",
-    )
-
-    if ambito_sel == "🇨🇴 Colombia (SPE)":
-        region_sel = st.selectbox("Departamento / Ciudad", REGIONES_CO, key="sidebar_region_co")
-        pais_sel = "Colombia"
-    elif ambito_sel == "🌐 Internacional (Adzuna)":
-        region_sel = st.selectbox("Región internacional", REGIONES_INT, key="sidebar_region_int")
-        pais_sel = "Internacional"
-    else:
-        region_sel = "Todas las regiones"
-        pais_sel = "Ambos"
-
-    st.divider()
-    st.markdown("**Fuentes activas:**")
-    for src in ["O*NET", "SPE Colombia", "Adzuna", "LinkedIn", "PDF Reports", "Ocupacol"]:
-        p_csv = PROCESSED / f"{src.lower().replace(' ','_')}_frecuencia_skills.csv"
-        p_json = list(PROCESSED.glob(f"pdf_skills_{src.lower()}*.json"))
-        ok = p_csv.exists() or bool(p_json) or src == "O*NET"
-        color = "#86efac" if ok else "#fca5a5"
-        dot   = "●" if ok else "○"
-        st.markdown(f"<span style='color:{color}'>{dot}</span> {src}", unsafe_allow_html=True)
-    # GEIH
-    geih_ok = (PROCESSED / "geih_salarios.json").exists()
-    geih_color = "#86efac" if geih_ok else "#fca5a5"
-    st.markdown(f"<span style='color:{geih_color}'>{'●' if geih_ok else '○'}</span> GEIH Salarios COP", unsafe_allow_html=True)
-
-    st.divider()
-
-    # ── Botón actualizar pipeline ─────────────────────────────────────────
-    st.markdown("### ⚙️ Pipeline de datos")
-
-    # Estado compartido entre reruns usando session_state
-    if "pipeline_running"  not in st.session_state:
-        st.session_state.pipeline_running  = False
-    if "pipeline_log"      not in st.session_state:
-        st.session_state.pipeline_log      = []
-    if "pipeline_result"   not in st.session_state:
-        st.session_state.pipeline_result   = None   # None | "ok" | "error"
-
-    PIPELINE_STEPS = [
-        ("Diccionario de skills",       f"{sys.executable} build_dictionary.py"),
-        ("Descarga Adzuna",             f"{sys.executable} load_adzuna.py"),
-        ("Extracción skills Adzuna",    f"{sys.executable} extract_skills.py data/processed/adzuna_sample.csv descripcion id_oferta"),
-        ("Descarga LinkedIn",           f"{sys.executable} load_linkedin.py"),
-        ("Extracción skills LinkedIn",  f"{sys.executable} extract_skills.py data/processed/linkedin_sample.csv descripcion id_oferta --idioma en"),
-        ("Cálculo de tendencias",       f"{sys.executable} build_tendencias.py"),
-        ("Salarios COP (GEIH)",         f"{sys.executable} load_geih_salarios.py"),
-    ]
-
-    def _run_pipeline_bg(steps, log_list, result_holder):
-        """Corre el pipeline en un hilo background y escribe al log compartido."""
-        project_dir = str(Path(__file__).parent)
-        for nombre, cmd in steps:
-            log_list.append(f"▶ {nombre}...")
-            try:
-                proc = subprocess.run(
-                    cmd, shell=True, capture_output=True, text=True,
-                    timeout=600, cwd=project_dir,
-                )
-                if proc.returncode == 0:
-                    log_list.append(f"  ✓ Completado")
-                else:
-                    log_list.append(f"  ✗ Error (código {proc.returncode})")
-                    if proc.stderr.strip():
-                        for ln in proc.stderr.strip().splitlines()[-5:]:
-                            log_list.append(f"    {ln}")
-                    result_holder["status"] = "error"
-                    return
-            except subprocess.TimeoutExpired:
-                log_list.append(f"  ✗ Timeout (>10 min)")
+def _run_pipeline_bg(steps, log_list, result_holder):
+    """Corre el pipeline en un hilo background y escribe al log compartido."""
+    project_dir = str(Path(__file__).parent)
+    for nombre, cmd in steps:
+        log_list.append(f"▶ {nombre}...")
+        try:
+            proc = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True,
+                timeout=600, cwd=project_dir,
+            )
+            if proc.returncode == 0:
+                log_list.append(f"  ✓ Completado")
+            else:
+                log_list.append(f"  ✗ Error (código {proc.returncode})")
+                if proc.stderr.strip():
+                    for ln in proc.stderr.strip().splitlines()[-5:]:
+                        log_list.append(f"    {ln}")
                 result_holder["status"] = "error"
                 return
-            except Exception as e:
-                log_list.append(f"  ✗ Excepción: {e}")
-                result_holder["status"] = "error"
-                return
-        result_holder["status"] = "ok"
-
-    btn_disabled = st.session_state.pipeline_running
-
-    if st.button(
-        "🔄 Actualizar todos los datos",
-        disabled=btn_disabled,
-        use_container_width=True,
-        help="Ejecuta: diccionario → Adzuna → LinkedIn → tendencias",
-    ):
-        st.session_state.pipeline_running = True
-        st.session_state.pipeline_log     = []
-        st.session_state.pipeline_result  = None
-
-        result_holder = {"status": None}
-
-        t = threading.Thread(
-            target=_run_pipeline_bg,
-            args=(PIPELINE_STEPS, st.session_state.pipeline_log, result_holder),
-            daemon=True,
-        )
-        t.start()
-
-        # Espera activa con rerun periódico para mostrar el log en vivo
-        progress_placeholder = st.empty()
-        while t.is_alive():
-            log_text = "\n".join(st.session_state.pipeline_log)
-            progress_placeholder.code(log_text or "Iniciando...", language="bash")
-            time.sleep(1.5)
-            st.rerun()
-
-        # Hilo terminó
-        log_text = "\n".join(st.session_state.pipeline_log)
-        progress_placeholder.code(log_text, language="bash")
-        st.session_state.pipeline_running = False
-        st.session_state.pipeline_result  = result_holder["status"]
-
-        # Limpiar caché para que el dashboard muestre datos frescos
-        st.cache_data.clear()
-        st.rerun()
-
-    # Mostrar log persistente si hay uno del último run
-    if st.session_state.pipeline_running:
-        log_text = "\n".join(st.session_state.pipeline_log)
-        st.code(log_text or "Iniciando...", language="bash")
-
-    if st.session_state.pipeline_result == "ok":
-        st.success("Pipeline completado. Datos actualizados.")
-        if st.button("Limpiar log", key="clear_log"):
-            st.session_state.pipeline_log    = []
-            st.session_state.pipeline_result = None
-            st.rerun()
-    elif st.session_state.pipeline_result == "error":
-        st.error("El pipeline encontró un error. Revisa el log.")
-
-    st.divider()
-    st.caption("build_dictionary · extract_skills · load_adzuna · load_pdf_report · build_tendencias")
+        except subprocess.TimeoutExpired:
+            log_list.append(f"  ✗ Timeout (>10 min)")
+            result_holder["status"] = "error"
+            return
+        except Exception as e:
+            log_list.append(f"  ✗ Excepción: {e}")
+            result_holder["status"] = "error"
+            return
+    result_holder["status"] = "ok"
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -936,6 +802,68 @@ st.markdown(f"""
   </div>
 </div>
 """, unsafe_allow_html=True)
+
+# ── Barra de filtros horizontal (debajo del título) ───────────────────────────
+REGIONES_CO  = [
+    "Todas las regiones",
+    "Bogotá D.C.", "Antioquia", "Valle del Cauca", "Atlántico",
+    "Santander", "Cundinamarca", "Bolívar", "Nariño", "Tolima", "Meta",
+]
+REGIONES_INT = ["Global (Adzuna UK)", "Reino Unido", "Estados Unidos", "Europa", "Latinoamérica"]
+
+cat_opciones = ["técnica", "blanda", "conocimiento", "destreza"]
+
+with st.container():
+    st.markdown(
+        "<div style='background:#ffffff;border:1px solid #e2e8f0;border-radius:14px;"
+        "padding:16px 20px 10px;margin-bottom:18px;"
+        "box-shadow:0 1px 4px rgba(0,0,0,0.05);'>",
+        unsafe_allow_html=True,
+    )
+    st.markdown(
+        "<div style='font-size:0.7rem;font-weight:700;text-transform:uppercase;"
+        "letter-spacing:0.12em;color:#94a3b8;margin-bottom:10px;'>🔍 Filtros globales</div>",
+        unsafe_allow_html=True,
+    )
+
+    fc1, fc2, fc3, fc4, fc5 = st.columns([2, 2, 1, 2, 1])
+
+    with fc1:
+        fuentes_sel = st.multiselect(
+            "Fuentes de datos",
+            options=fuentes_disponibles or ["SPE", "Adzuna", "LinkedIn"],
+            default=fuentes_disponibles,
+            key="sidebar_fuentes",
+        )
+    with fc2:
+        cat_sel = st.multiselect(
+            "Categorías de skills",
+            options=cat_opciones,
+            default=cat_opciones,
+            key="sidebar_cats",
+        )
+    with fc3:
+        top_n = st.slider("Top N skills", 5, 40, 20, key="sidebar_topn")
+    with fc4:
+        ambito_sel = st.radio(
+            "Ámbito de análisis",
+            ["🇨🇴 Colombia (SPE)", "🌐 Internacional (Adzuna)", "📊 Ambos"],
+            key="sidebar_ambito",
+            horizontal=True,
+        )
+    with fc5:
+        if ambito_sel == "🇨🇴 Colombia (SPE)":
+            region_sel = st.selectbox("Departamento / Ciudad", REGIONES_CO, key="sidebar_region_co")
+            pais_sel = "Colombia"
+        elif ambito_sel == "🌐 Internacional (Adzuna)":
+            region_sel = st.selectbox("Región internacional", REGIONES_INT, key="sidebar_region_int")
+            pais_sel = "Internacional"
+        else:
+            region_sel = "Todas las regiones"
+            pais_sel = "Ambos"
+            st.caption("Región: todas")
+
+    st.markdown("</div>", unsafe_allow_html=True)
 
 col_h1, col_h2, col_h3, col_h4, col_h5, col_h6 = st.columns(6)
 col_h1.metric("Skills identificadas",   f"{total_skills:,}" if isinstance(total_skills, int) else total_skills)
