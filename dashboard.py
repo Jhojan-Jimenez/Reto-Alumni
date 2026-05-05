@@ -29,21 +29,23 @@ st.set_page_config(
 
 st.cache_data.clear()
 
-# ── Paleta de colores institucionales ─────────────────────────────────────────
-# Sidebar / barra:  #0d2769   Fondo principal: #f7f6eb   Filtros/acento: #2130cf
-C_NAVY   = "#0d2769"   # barra lateral
-C_BLUE   = "#2130cf"   # acento filtros, tabs activos, botones
-C_BG     = "#f7f6eb"   # fondo general
-C_TEAL   = "#00b4d8"   # charts secundarios
-C_GOLD   = "#f0c040"   # valores en KPIs
-C_GREEN  = "#22c55e"   # positivo / creciente (accesible)
-C_RED    = "#ef4444"   # negativo / decreciente
-C_PURPLE = "#7c3aed"   # destreza
-C_TEXT   = "#1a1a2e"   # texto principal sobre fondo claro
-C_MUTED  = "#4a5568"   # texto secundario
-PALETTE  = [C_BLUE, C_NAVY, C_TEAL, C_GOLD, C_GREEN, C_RED, C_PURPLE, "#fb923c"]
+# ── Paleta institucional UniSabana (basada en la imagen de referencia) ────────
+C_NAVY   = "#0d2455"   # sidebar y títulos principales (azul oscuro profundo)
+C_BLUE   = "#1a3a7c"   # acento secundario, hover, bordes activos
+C_GOLD   = "#c8952a"   # acento dorado (iconos KPI, "OBSERVATORIO LABORAL")
+C_BG     = "#f4f6fa"   # fondo general (gris muy suave, casi blanco)
+C_WHITE  = "#ffffff"   # tarjetas y paneles
+C_TEAL   = "#2563eb"   # barras de progreso, charts primarios
+C_GREEN  = "#16a34a"   # positivo / creciente
+C_RED    = "#dc2626"   # negativo / decreciente
+C_PURPLE = "#7c3aed"   # categoría destreza
+C_TEXT   = "#1e293b"   # texto principal
+C_MUTED  = "#64748b"   # texto secundario / subtítulos
+C_BORDER = "#e2e8f0"   # bordes suaves
+
+PALETTE  = [C_NAVY, C_TEAL, C_GOLD, C_GREEN, C_RED, C_PURPLE, "#0891b2", "#ea580c"]
 CAT_COLORS = {
-    "técnica":      C_BLUE,
+    "técnica":      C_TEAL,
     "blanda":       C_NAVY,
     "conocimiento": C_GREEN,
     "destreza":     C_PURPLE,
@@ -51,192 +53,496 @@ CAT_COLORS = {
 
 PLOTLY_LAYOUT = dict(
     paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(247,246,235,0.0)",
-    font=dict(color=C_TEXT, family="DM Sans"),
-    title_font=dict(family="Rajdhani", size=16, color=C_NAVY),
-    legend=dict(bgcolor="rgba(255,255,255,0.7)", bordercolor="#d1d5db", borderwidth=1),
+    plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(color=C_TEXT, family="Inter, sans-serif", size=12),
+    title_font=dict(family="Inter, sans-serif", size=14, color=C_NAVY),
+    legend=dict(bgcolor="rgba(255,255,255,0.9)", bordercolor=C_BORDER, borderwidth=1,
+                font=dict(size=11)),
     coloraxis_colorbar=dict(tickfont=dict(color=C_TEXT)),
-    xaxis=dict(gridcolor="#e5e7eb", zerolinecolor="#e5e7eb", color=C_MUTED),
-    yaxis=dict(gridcolor="#e5e7eb", zerolinecolor="#e5e7eb", color=C_MUTED),
+    xaxis=dict(gridcolor="#f1f5f9", zerolinecolor="#e2e8f0", color=C_MUTED,
+               tickfont=dict(size=11)),
+    yaxis=dict(gridcolor="#f1f5f9", zerolinecolor="#e2e8f0", color=C_MUTED,
+               tickfont=dict(size=11)),
+    margin=dict(t=40, b=20, l=20, r=20),
 )
 
-# CSS global — tema institucional claro UniSabana
+# ── CSS — réplica fiel del diseño institucional de la imagen ──────────────────
 st.markdown("""
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-  /* ── Fondo general ── */
+  /* ═══════════════════════════════════════════
+     BASE
+  ═══════════════════════════════════════════ */
   html, body,
   [data-testid="stAppViewContainer"],
-  [data-testid="stMain"] > div {
-    background: #f7f6eb !important;
-    color: #1a1a2e !important;
-    font-family: 'DM Sans', sans-serif;
+  [data-testid="stMain"],
+  [data-testid="stMain"] > div,
+  section.main > div {
+    background: #f4f6fa !important;
+    color: #1e293b !important;
+    font-family: 'Inter', sans-serif !important;
   }
 
-  /* ── Sidebar / barra ── */
-  [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #0d2769 0%, #091d52 100%) !important;
-    border-right: none;
+  /* Remove streamlit default padding */
+  [data-testid="stMain"] .block-container {
+    padding-top: 1.5rem !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    max-width: 100% !important;
   }
-  [data-testid="stSidebar"] * { color: #e8eeff !important; }
-  [data-testid="stSidebar"] h3 { color: #ffffff !important; font-family: 'Rajdhani', sans-serif !important; }
-  [data-testid="stSidebar"] .stButton > button {
-    background: #2130cf !important;
+
+  /* ═══════════════════════════════════════════
+     SIDEBAR — azul marino con logo
+  ═══════════════════════════════════════════ */
+  [data-testid="stSidebar"] {
+    background: #0d2455 !important;
+    border-right: none !important;
+    box-shadow: 4px 0 20px rgba(13,36,85,0.25) !important;
+  }
+  [data-testid="stSidebar"] * {
+    color: #cbd5e1 !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+  [data-testid="stSidebar"] h1,
+  [data-testid="stSidebar"] h2,
+  [data-testid="stSidebar"] h3 {
     color: #ffffff !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.01em !important;
+  }
+  /* Dividers en sidebar */
+  [data-testid="stSidebar"] hr {
+    border-color: rgba(255,255,255,0.1) !important;
+    margin: 12px 0 !important;
+  }
+  /* Radio buttons de navegación */
+  [data-testid="stSidebar"] [data-testid="stRadio"] label,
+  [data-testid="stSidebar"] [data-testid="stSelectbox"] label {
+    color: #94a3b8 !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+  }
+  /* Nav items — estilo del menú de la imagen */
+  [data-testid="stSidebar"] button[role="tab"],
+  [data-testid="stSidebar"] .stButton > button {
+    background: transparent !important;
     border: none !important;
+    color: #94a3b8 !important;
+    text-align: left !important;
+    padding: 10px 16px !important;
     border-radius: 8px !important;
-    font-weight: 600;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    width: 100% !important;
+    transition: all 0.15s ease !important;
   }
   [data-testid="stSidebar"] .stButton > button:hover {
-    background: #1a27b0 !important;
+    background: rgba(255,255,255,0.08) !important;
+    color: #ffffff !important;
   }
-  [data-testid="stSidebar"] hr { border-color: rgba(255,255,255,0.15) !important; }
-
-  /* ── Títulos ── */
-  h1, h2, h3 {
-    font-family: 'Rajdhani', sans-serif !important;
-    letter-spacing: 0.04em;
-    color: #0d2769 !important;
+  /* Caption / info en sidebar */
+  [data-testid="stSidebar"] [data-testid="stCaptionContainer"] p,
+  [data-testid="stSidebar"] small,
+  [data-testid="stSidebar"] p {
+    color: #64748b !important;
+    font-size: 0.78rem !important;
   }
 
-  /* ── KPI cards ── */
+  /* ═══════════════════════════════════════════
+     TIPOGRAFÍA PRINCIPAL
+  ═══════════════════════════════════════════ */
+  h1 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.75rem !important;
+    font-weight: 700 !important;
+    color: #0d2455 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 0.2rem !important;
+  }
+  h2 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    color: #0d2455 !important;
+    margin-bottom: 1rem !important;
+  }
+  h3, h4 {
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #0d2455 !important;
+  }
+  p, li { color: #475569 !important; font-size: 0.88rem !important; }
+
+  /* ═══════════════════════════════════════════
+     KPI METRIC CARDS — estilo de la imagen
+     Fondo blanco, borde suave, sin borde izquierdo de color
+  ═══════════════════════════════════════════ */
   [data-testid="stMetric"] {
-    background: #ffffff;
-    border: 1px solid #dde3f5;
-    border-left: 4px solid #2130cf;
-    border-radius: 12px;
-    padding: 16px 20px;
-    box-shadow: 0 2px 12px rgba(33,48,207,0.08);
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 14px !important;
+    padding: 20px 24px !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(13,36,85,0.05) !important;
+    transition: box-shadow 0.2s ease !important;
+  }
+  [data-testid="stMetric"]:hover {
+    box-shadow: 0 4px 20px rgba(13,36,85,0.12) !important;
   }
   [data-testid="stMetricLabel"] {
-    color: #4a5568 !important;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    color: #64748b !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
   }
   [data-testid="stMetricValue"] {
-    color: #0d2769 !important;
-    font-family: 'Rajdhani', sans-serif !important;
-    font-size: 2.1rem !important;
-    font-weight: 700;
+    color: #0d2455 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 1.9rem !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1 !important;
   }
-  [data-testid="stMetricDelta"] { color: #22c55e !important; }
+  [data-testid="stMetricDelta"] {
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+  }
+  [data-testid="stMetricDelta"][data-testid*="up"] { color: #16a34a !important; }
+  [data-testid="stMetricDelta"][data-testid*="down"] { color: #dc2626 !important; }
 
-  /* ── Tabs ── */
+  /* ═══════════════════════════════════════════
+     TABS — línea inferior azul como en la imagen
+  ═══════════════════════════════════════════ */
   [data-testid="stTabs"] {
-    background: #ffffff;
-    border-radius: 12px 12px 0 0;
-    border-bottom: 2px solid #dde3f5;
-    padding: 0 8px;
+    background: transparent !important;
+    border-bottom: 1px solid #e2e8f0 !important;
   }
   [data-testid="stTabs"] button {
-    font-family: 'Rajdhani', sans-serif !important;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    color: #4a5568 !important;
-    border-bottom: 3px solid transparent;
-    padding: 10px 18px;
-    transition: color 0.2s;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.01em !important;
+    color: #64748b !important;
+    padding: 10px 20px !important;
+    border-bottom: 2px solid transparent !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    transition: color 0.15s !important;
   }
-  [data-testid="stTabs"] button:hover { color: #2130cf !important; }
+  [data-testid="stTabs"] button:hover {
+    color: #0d2455 !important;
+    background: rgba(13,36,85,0.04) !important;
+  }
   [data-testid="stTabs"] button[aria-selected="true"] {
-    color: #2130cf !important;
-    border-bottom: 3px solid #2130cf !important;
+    color: #0d2455 !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid #0d2455 !important;
     background: transparent !important;
   }
 
-  /* ── Filtros: selectbox / multiselect / slider ── */
-  [data-testid="stSelectbox"] > div,
-  [data-testid="stMultiSelect"] > div {
+  /* ═══════════════════════════════════════════
+     SELECTBOX / FILTROS — borde azul marino suave
+  ═══════════════════════════════════════════ */
+  [data-testid="stSelectbox"] > div > div,
+  [data-testid="stMultiSelect"] > div > div {
     background: #ffffff !important;
-    border: 2px solid #2130cf !important;
-    border-radius: 8px;
-    color: #1a1a2e !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    color: #1e293b !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 0.88rem !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+  }
+  [data-testid="stSelectbox"] > div > div:focus-within,
+  [data-testid="stMultiSelect"] > div > div:focus-within {
+    border-color: #1a3a7c !important;
+    box-shadow: 0 0 0 3px rgba(26,58,124,0.12) !important;
   }
   [data-testid="stSelectbox"] label,
   [data-testid="stMultiSelect"] label,
-  [data-testid="stSlider"] label {
-    color: #0d2769 !important;
+  [data-testid="stSlider"] label,
+  [data-testid="stNumberInput"] label {
+    color: #374151 !important;
+    font-family: 'Inter', sans-serif !important;
     font-weight: 600 !important;
-    font-size: 0.82rem !important;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-size: 0.78rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.07em !important;
+    margin-bottom: 4px !important;
   }
-  [data-testid="stSlider"] > div > div > div { background: #2130cf !important; }
-  [data-testid="stSlider"] > div > div > div > div { background: #2130cf !important; border-color: #2130cf !important; }
+  /* Slider */
+  [data-testid="stSlider"] > div > div > div {
+    background: #1a3a7c !important;
+  }
+  [data-testid="stSlider"] > div > div > div > div {
+    background: #1a3a7c !important;
+    border-color: #1a3a7c !important;
+    box-shadow: 0 0 0 3px rgba(26,58,124,0.2) !important;
+  }
 
-  /* ── Divider ── */
-  hr { border-color: #dde3f5 !important; }
-
-  /* ── Dataframes ── */
-  [data-testid="stDataFrame"] {
-    border: 1px solid #dde3f5;
-    border-radius: 8px;
+  /* ═══════════════════════════════════════════
+     PANELES / CARDS — fondo blanco, sombra suave
+  ═══════════════════════════════════════════ */
+  .panel-card {
     background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05), 0 4px 16px rgba(13,36,85,0.04);
+    margin-bottom: 16px;
+  }
+  .panel-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #0d2455;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  /* ── Alertas ── */
-  [data-testid="stAlert"] {
-    background: #eef2ff !important;
-    border: 1px solid #c7d2fe !important;
-    border-radius: 10px;
-    color: #1a1a2e !important;
-  }
-
-  /* ── Badges de tendencia ── */
-  .badge-up   { background:#dcfce7; color:#166534; border:1px solid #86efac; border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
-  .badge-down { background:#fee2e2; color:#991b1b; border:1px solid #fca5a5; border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
-  .badge-flat { background:#f1f5f9; color:#475569; border:1px solid #cbd5e1;  border-radius:20px; padding:2px 10px; font-size:0.78rem; font-weight:600; }
-
-  /* ── Alerta emergente ── */
-  .alert-emergente {
-    background: #fff7ed;
-    border-left: 4px solid #f97316;
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-size: 0.85rem;
-    color: #7c2d12;
-    margin-bottom: 8px;
-  }
-
-  /* ── KPI insight card ── */
-  .insight-card {
+  /* ═══════════════════════════════════════════
+     KPI CARDS CON ÍCONO (estilo imagen)
+  ═══════════════════════════════════════════ */
+  .kpi-icon-card {
     background: #ffffff;
-    border: 1px solid #dde3f5;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .kpi-icon-card .kpi-icon {
+    width: 44px; height: 44px;
+    background: #fef3c7;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .kpi-icon-card .kpi-label {
+    font-size: 0.68rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: #94a3b8; margin-bottom: 2px;
+  }
+  .kpi-icon-card .kpi-value {
+    font-size: 1.6rem; font-weight: 700; color: #0d2455;
+    letter-spacing: -0.02em; line-height: 1;
+  }
+  .kpi-icon-card .kpi-sub {
+    font-size: 0.75rem; color: #64748b; margin-top: 4px;
+  }
+  .kpi-icon-card .kpi-badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 600;
+    padding: 2px 8px; border-radius: 20px; margin-top: 4px;
+  }
+  .badge-navy { background: #dbeafe; color: #1e3a8a; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+
+  /* ═══════════════════════════════════════════
+     BARRAS DE PROGRESO (Conocimientos clave / Estilos de trabajo)
+  ═══════════════════════════════════════════ */
+  .progress-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 10px;
+  }
+  .progress-label {
+    font-size: 0.82rem; color: #374151; font-weight: 500;
+    min-width: 200px; flex-shrink: 0;
+  }
+  .progress-bar-bg {
+    flex: 1; height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%; border-radius: 4px;
+    background: linear-gradient(90deg, #1a3a7c, #2563eb);
+  }
+  .progress-pct {
+    font-size: 0.8rem; font-weight: 700; color: #1a3a7c;
+    min-width: 36px; text-align: right;
+  }
+
+  /* ═══════════════════════════════════════════
+     TABLA DE OCUPACIONES RELACIONADAS
+  ═══════════════════════════════════════════ */
+  .related-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  .related-table th {
+    color: #94a3b8; font-weight: 600; text-transform: uppercase;
+    font-size: 0.68rem; letter-spacing: 0.08em;
+    padding: 8px 12px; border-bottom: 1px solid #e2e8f0; text-align: left;
+  }
+  .related-table td {
+    padding: 10px 12px; border-bottom: 1px solid #f1f5f9;
+    color: #374151;
+  }
+  .related-table tr:hover td { background: #f8fafc; }
+  .trend-arrow { color: #16a34a; font-weight: 700; }
+
+  /* ═══════════════════════════════════════════
+     DESCRIPCIÓN BOX OCUPACIÓN
+  ═══════════════════════════════════════════ */
+  .occ-desc-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
     border-radius: 12px;
     padding: 16px 20px;
-    margin-bottom: 12px;
-    box-shadow: 0 2px 8px rgba(13,39,105,0.06);
+    color: #475569;
+    font-size: 0.85rem;
+    line-height: 1.6;
   }
-  .insight-card .ic-title { font-family: 'Rajdhani',sans-serif; font-size:1rem; font-weight:700; color:#0d2769; }
-  .insight-card .ic-body  { font-size:0.85rem; color:#4a5568; margin-top:4px; }
 
-  /* ── Ocupación description box ── */
-  .occ-desc-box {
+  /* ═══════════════════════════════════════════
+     INSIGHT CARDS
+  ═══════════════════════════════════════════ */
+  .insight-card {
     background: #ffffff;
-    border: 1px solid #dde3f5;
-    border-left: 4px solid #0d2769;
-    border-radius: 10px;
-    padding: 16px;
-    color: #1a1a2e;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .insight-card .ic-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem; font-weight: 700; color: #0d2455; margin-bottom: 4px;
+  }
+  .insight-card .ic-body { font-size: 0.8rem; color: #64748b; line-height: 1.5; }
+
+  /* ═══════════════════════════════════════════
+     BADGES TENDENCIA
+  ═══════════════════════════════════════════ */
+  .badge-up   { background:#dcfce7; color:#166534; border:1px solid #bbf7d0; border-radius:20px; padding:2px 10px; font-size:0.72rem; font-weight:600; }
+  .badge-down { background:#fee2e2; color:#991b1b; border:1px solid #fecaca; border-radius:20px; padding:2px 10px; font-size:0.72rem; font-weight:600; }
+  .badge-flat { background:#f1f5f9; color:#475569; border:1px solid #e2e8f0;  border-radius:20px; padding:2px 10px; font-size:0.72rem; font-weight:600; }
+
+  /* ═══════════════════════════════════════════
+     ALERTA EMERGENTE
+  ═══════════════════════════════════════════ */
+  .alert-emergente {
+    background: #fff7ed; border-left: 3px solid #f97316;
+    border-radius: 8px; padding: 10px 16px;
+    font-size: 0.82rem; color: #7c2d12; margin-bottom: 8px;
   }
 
-  /* ── Plotly charts ── */
-  .js-plotly-plot .plotly { background: transparent !important; }
-
-  /* ── Expanders ── */
+  /* ═══════════════════════════════════════════
+     EXPANDERS
+  ═══════════════════════════════════════════ */
   [data-testid="stExpander"] {
-    border: 1px solid #dde3f5 !important;
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+  }
+  [data-testid="stExpander"] summary {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #0d2455 !important;
+  }
+
+  /* ═══════════════════════════════════════════
+     DIVIDERS
+  ═══════════════════════════════════════════ */
+  hr { border-color: #e2e8f0 !important; margin: 20px 0 !important; }
+
+  /* ═══════════════════════════════════════════
+     DATAFRAMES
+  ═══════════════════════════════════════════ */
+  [data-testid="stDataFrame"] {
+    border: 1px solid #e2e8f0 !important;
     border-radius: 10px !important;
     background: #ffffff !important;
+    overflow: hidden !important;
+  }
+
+  /* ═══════════════════════════════════════════
+     ALERTAS / INFO
+  ═══════════════════════════════════════════ */
+  [data-testid="stAlert"] {
+    background: #eff6ff !important;
+    border: 1px solid #bfdbfe !important;
+    border-radius: 10px !important;
+    color: #1e293b !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* ═══════════════════════════════════════════
+     PLOTLY
+  ═══════════════════════════════════════════ */
+  .js-plotly-plot .plotly { background: transparent !important; }
+
+  /* ═══════════════════════════════════════════
+     BOTONES
+  ═══════════════════════════════════════════ */
+  [data-testid="stBaseButton-primary"],
+  .stButton > button {
+    background: #0d2455 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 0.85rem !important;
+    padding: 8px 18px !important;
+    transition: background 0.15s !important;
+    box-shadow: 0 2px 8px rgba(13,36,85,0.2) !important;
+  }
+  .stButton > button:hover {
+    background: #1a3a7c !important;
+  }
+
+  /* ═══════════════════════════════════════════
+     FILE UPLOADER
+  ═══════════════════════════════════════════ */
+  [data-testid="stFileUploader"] {
+    background: #f8fafc !important;
+    border: 1.5px dashed #cbd5e1 !important;
+    border-radius: 12px !important;
+  }
+  [data-testid="stFileUploader"]:hover {
+    border-color: #1a3a7c !important;
+    background: #eff6ff !important;
+  }
+
+  /* ═══════════════════════════════════════════
+     NUMBER INPUT
+  ═══════════════════════════════════════════ */
+  [data-testid="stNumberInput"] input {
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 8px !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+  [data-testid="stNumberInput"] input:focus {
+    border-color: #1a3a7c !important;
+    box-shadow: 0 0 0 3px rgba(26,58,124,0.12) !important;
+  }
+
+  /* ═══════════════════════════════════════════
+     STATUS / SPINNER
+  ═══════════════════════════════════════════ */
+  [data-testid="stStatusWidget"] {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 10px !important;
   }
 </style>
 """, unsafe_allow_html=True)
 
 def apply_theme(fig, height=480):
-    fig.update_layout(height=height, **PLOTLY_LAYOUT)
+    layout = dict(PLOTLY_LAYOUT)
+    # Override polar chart radial axis colors for the new theme
+    fig.update_layout(height=height, **layout)
+    # Apply clean axis styling
+    fig.update_xaxes(showgrid=True, gridcolor="#f1f5f9", zeroline=False,
+                     tickfont=dict(size=11, color="#64748b"))
+    fig.update_yaxes(showgrid=True, gridcolor="#f1f5f9", zeroline=False,
+                     tickfont=dict(size=11, color="#64748b"))
     return fig
 
 
@@ -394,11 +700,28 @@ def _rango_spe_para_salario(salario_cop: int, spe_rangos: list) -> str:
 
 with st.sidebar:
     st.markdown("""
-    <div style='text-align:center; padding: 10px 0 20px'>
-      <div style='font-family:Rajdhani,sans-serif; font-size:1.5rem; font-weight:700; color:#ffffff; line-height:1.2'>
-        🎓 OBSERVATORIO<br>LABORAL
+    <div style='padding: 20px 8px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 8px;'>
+      <div style='display:flex; align-items:center; gap:10px; margin-bottom:10px;'>
+        <div style='width:40px; height:40px; background:#ffffff; border-radius:8px;
+                    display:flex; align-items:center; justify-content:center; flex-shrink:0;'>
+          <span style='font-size:1.2rem;'>🎓</span>
+        </div>
+        <div>
+          <div style='font-size:0.68rem; color:#94a3b8; font-weight:500; line-height:1;
+                      font-family:Inter,sans-serif; letter-spacing:0.04em;'>
+            Universidad de
+          </div>
+          <div style='font-size:1rem; color:#ffffff; font-weight:700; line-height:1.1;
+                      font-family:Inter,sans-serif; letter-spacing:-0.01em;'>
+            La Sabana
+          </div>
+        </div>
       </div>
-      <div style='font-size:0.75rem; color:#a5b4fc; margin-top:6px'>Universidad de La Sabana · 2026</div>
+      <div style='font-size:0.65rem; font-weight:700; letter-spacing:0.18em;
+                  color:#c8952a; font-family:Inter,sans-serif; text-transform:uppercase;
+                  padding-left:2px;'>
+        OBSERVATORIO LABORAL
+      </div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1356,28 +1679,129 @@ with tab_ocupacion:
     knowledge_df2= load_knowledge()
     jz_df2       = load_job_zones()
 
+    # ── Header de la pestaña ──────────────────────────────────────────────
+    st.markdown("""
+    <div style='margin-bottom:6px;'>
+      <h1 style='margin-bottom:4px;'>Perfil de Ocupación</h1>
+      <p style='color:#64748b; font-size:0.88rem; margin:0;'>
+        Conozca en detalle las competencias, conocimientos y características clave de cualquier ocupación.
+      </p>
+    </div>
+    """, unsafe_allow_html=True)
+
     occ_list = occ_data["Title"].sort_values().tolist()
-    selected = st.selectbox(
-        "Selecciona una ocupación", occ_list,
-        index=occ_list.index("Lawyers") if "Lawyers" in occ_list else 0,
-    )
+
+    col_sel, col_exp = st.columns([3, 1])
+    with col_sel:
+        st.markdown("<div style='font-size:0.78rem;font-weight:600;color:#374151;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:4px;'>Seleccione una ocupación</div>", unsafe_allow_html=True)
+        selected = st.selectbox(
+            "", occ_list, label_visibility="collapsed",
+            index=occ_list.index("Lawyers") if "Lawyers" in occ_list else 0,
+        )
+    with col_exp:
+        st.markdown("<div style='height:28px'></div>", unsafe_allow_html=True)
+        if st.button("⬇ Exportar informe", use_container_width=True):
+            st.info("Función de exportación disponible próximamente.")
 
     soc_code = occ_data[occ_data["Title"] == selected]["O*NET-SOC Code"].iloc[0]
     desc     = occ_data[occ_data["Title"] == selected]["Description"].iloc[0]
     jz_row   = jz_df2[jz_df2["O*NET-SOC Code"] == soc_code]
     jz_val   = int(jz_row["Job Zone"].iloc[0]) if not jz_row.empty else "N/A"
 
-    col1, col2 = st.columns([1, 3])
-    col1.metric("Job Zone", jz_val)
-    col1.metric("Código O*NET", soc_code)
-    col2.markdown(f"<div class='occ-desc-box'><b>📋 {selected}</b><br><br>{desc}</div>", unsafe_allow_html=True)
+    JZ_LABELS = {1:"Poca preparación",2:"Algo de preparación",
+                 3:"Preparación media",4:"Preparación alta",5:"Preparación extensa"}
+    jz_desc = JZ_LABELS.get(jz_val, "") if isinstance(jz_val, int) else ""
+
+    # Crecimiento proyectado desde O*NET si está disponible
+    growth_pct = "N/A"
+    try:
+        occ_trends = pd.read_excel(ONET / "Occupation Data.xlsx")
+        growth_row = occ_trends[occ_trends["O*NET-SOC Code"] == soc_code]
+        if not growth_row.empty and "2023-33 Employment Growth" in growth_row.columns:
+            gv = growth_row["2023-33 Employment Growth"].iloc[0]
+            growth_pct = f"{float(gv):.0f}%" if pd.notna(gv) else "N/A"
+    except Exception:
+        pass
+
+    # Salario GEIH si disponible
+    geih_data = load_geih_salarios()
+    sal_txt  = "Sin datos"
+    sal_sub  = ""
+    if geih_data and geih_data.get("tiene_geih"):
+        med = geih_data.get("meta", {}).get("salario_mediano_nacional")
+        if med:
+            sal_txt = f"${med:,.0f} COP"
+            sal_sub = "Mensual · mediana nacional GEIH"
+
+    # Nivel educativo típico
+    edu_map = {1:"Sin título",2:"Técnico",3:"Técnico/Tecnólogo",
+               4:"Profesional",5:"Posgrado"}
+    edu_txt = edu_map.get(jz_val, "Profesional") if isinstance(jz_val, int) else "N/A"
+    edu_sub_map = {
+        1:"Bachillerato o cursos cortos",2:"Certificación técnica",
+        3:"Tecnológico o técnico profesional",
+        4:"Título universitario en áreas relacionadas",5:"Especialización o maestría",
+    }
+    edu_sub = edu_sub_map.get(jz_val, "") if isinstance(jz_val, int) else ""
+
+    # ── KPI cards con íconos (estilo imagen) ─────────────────────────────
+    k1, k2, k3, k4 = st.columns(4)
+    with k1:
+        st.markdown(f"""
+        <div class='kpi-icon-card'>
+          <div class='kpi-icon'>🏢</div>
+          <div>
+            <div class='kpi-label'>JOB ZONE</div>
+            <div class='kpi-value'>{jz_val}</div>
+            <span class='kpi-badge badge-navy'>{jz_desc}</span>
+            <div class='kpi-sub' style='margin-top:6px;'>Requiere {jz_desc.lower()} y experiencia</div>
+          </div>
+        </div>""", unsafe_allow_html=True)
+    with k2:
+        st.markdown(f"""
+        <div class='kpi-icon-card'>
+          <div class='kpi-icon' style='background:#dcfce7;'>📈</div>
+          <div>
+            <div class='kpi-label'>CRECIMIENTO PROYECTADO</div>
+            <div class='kpi-value'>{growth_pct}</div>
+            <div class='kpi-sub'>2023 – 2033</div>
+          </div>
+        </div>""", unsafe_allow_html=True)
+    with k3:
+        st.markdown(f"""
+        <div class='kpi-icon-card'>
+          <div class='kpi-icon' style='background:#fef9c3;'>💰</div>
+          <div>
+            <div class='kpi-label'>SALARIO MEDIANO</div>
+            <div class='kpi-value' style='font-size:1.25rem;'>{sal_txt}</div>
+            <div class='kpi-sub'>{sal_sub}</div>
+          </div>
+        </div>""", unsafe_allow_html=True)
+    with k4:
+        st.markdown(f"""
+        <div class='kpi-icon-card'>
+          <div class='kpi-icon' style='background:#ede9fe;'>🎓</div>
+          <div>
+            <div class='kpi-label'>NIVEL EDUCATIVO TÍPICO</div>
+            <div class='kpi-value' style='font-size:1.1rem; letter-spacing:-0.01em;'>{edu_txt}</div>
+            <div class='kpi-sub'>{edu_sub}</div>
+          </div>
+        </div>""", unsafe_allow_html=True)
+
+    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+
+    # Descripción de la ocupación (colapsable)
+    with st.expander(f"📋 Descripción — {selected}", expanded=False):
+        st.markdown(f"<div class='occ-desc-box'>{desc}</div>", unsafe_allow_html=True)
+        st.caption(f"Código O*NET: {soc_code}")
 
     st.markdown("---")
     col_a, col_b = st.columns(2)
 
     with col_a:
-        st.markdown("#### Perfil RIASEC")
+        st.markdown("<div class='panel-title'>🧭 Perfil RIASEC</div>", unsafe_allow_html=True)
         riasec_cats = ["Realistic","Investigative","Artistic","Social","Enterprising","Conventional"]
+        riasec_es   = ["Realista","Investigador","Artístico","Social","Emprendedor","Convencional"]
         riasec_df = interests_df[
             (interests_df["O*NET-SOC Code"] == soc_code) &
             (interests_df["Scale ID"] == "OI") &
@@ -1387,17 +1811,27 @@ with tab_ocupacion:
             st.info("Sin datos RIASEC.")
         else:
             vals = riasec_df.set_index("Element Name")["Data Value"].reindex(riasec_cats, fill_value=0)
+            labels_bilingual = [f"{e}\n({r})" for e,r in zip(riasec_es, riasec_cats)]
             fig = go.Figure(go.Scatterpolar(
                 r=vals.values.tolist() + [vals.values[0]],
-                theta=riasec_cats + [riasec_cats[0]],
-                fill="toself", line_color=C_TEAL,
-                fillcolor=f"rgba(0,180,216,0.18)",
+                theta=labels_bilingual + [labels_bilingual[0]],
+                fill="toself", line_color=C_NAVY, line_width=2,
+                fillcolor="rgba(13,36,85,0.1)",
+                name="Afinidad de la ocupación",
             ))
-            fig.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#d1d5db"), bgcolor="rgba(0,0,0,0)"))
+            fig.update_layout(
+                polar=dict(
+                    radialaxis=dict(range=[0,7], gridcolor="#e2e8f0", tickfont=dict(size=9, color="#94a3b8")),
+                    angularaxis=dict(tickfont=dict(size=10, color="#374151")),
+                    bgcolor="rgba(0,0,0,0)",
+                ),
+                showlegend=True,
+                legend=dict(orientation="h", y=-0.1, font=dict(size=10)),
+            )
             st.plotly_chart(apply_theme(fig, 400), use_container_width=True)
 
     with col_b:
-        st.markdown("#### Top 10 Skills")
+        st.markdown("<div class='panel-title'>⚡ Top 10 Skills</div>", unsafe_allow_html=True)
         skill_occ = skills_df2[
             (skills_df2["O*NET-SOC Code"] == soc_code) &
             (skills_df2["Scale ID"] == "IM")
@@ -1410,25 +1844,87 @@ with tab_ocupacion:
             sv = skill_occ["Data Value"].tolist()
             fig2 = go.Figure(go.Scatterpolar(
                 r=sv + [sv[0]], theta=sn + [sn[0]],
-                fill="toself", line_color=C_BLUE,
-                fillcolor="rgba(33,48,207,0.12)",
+                fill="toself", line_color=C_TEAL, line_width=2,
+                fillcolor="rgba(37,99,235,0.1)",
+                name="Nivel de importancia",
             ))
-            fig2.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#d1d5db"), bgcolor="rgba(0,0,0,0)"))
+            fig2.update_layout(
+                polar=dict(
+                    radialaxis=dict(range=[0,7], gridcolor="#e2e8f0", tickfont=dict(size=9, color="#94a3b8")),
+                    angularaxis=dict(tickfont=dict(size=10, color="#374151")),
+                    bgcolor="rgba(0,0,0,0)",
+                ),
+                showlegend=True,
+                legend=dict(orientation="h", y=-0.1, font=dict(size=10)),
+            )
+            fig2.update_layout(polar=dict(radialaxis=dict(range=[0, 7], gridcolor="#e2e8f0"), bgcolor="rgba(0,0,0,0)"))
             st.plotly_chart(apply_theme(fig2, 400), use_container_width=True)
 
-    st.markdown("#### Estilos de trabajo")
-    ws_occ = styles_df[
-        (styles_df["O*NET-SOC Code"] == soc_code) & (styles_df["Scale ID"] == "WI")
-    ].sort_values("Data Value", ascending=False)
-    if not ws_occ.empty:
-        fig3 = px.bar(
-            ws_occ, x="Data Value", y="Element Name", orientation="h",
-            color="Data Value", color_continuous_scale=["#eef2ff", C_BLUE],
-            labels={"Data Value": "Importancia", "Element Name": ""},
-        )
-        fig3.update_layout(yaxis={"categoryorder": "total ascending"}, showlegend=False,
-                           margin=dict(l=200))
-        st.plotly_chart(apply_theme(fig3, 400), use_container_width=True)
+    st.markdown("---")
+
+    col_know, col_styles = st.columns(2)
+
+    with col_know:
+        st.markdown("<div class='panel-title'>📚 Conocimientos clave</div>", unsafe_allow_html=True)
+        know_occ = knowledge_df[
+            (knowledge_df["O*NET-SOC Code"] == soc_code) & (knowledge_df["Scale ID"] == "IM")
+        ].sort_values("Data Value", ascending=False).head(8)
+
+        if know_occ.empty:
+            st.info("Sin datos de conocimientos.")
+        else:
+            max_val = know_occ["Data Value"].max()
+            html_bars = ""
+            for _, row in know_occ.iterrows():
+                pct = int(row["Data Value"] / 7 * 100)
+                html_bars += f"""
+                <div class='progress-row'>
+                  <div class='progress-label'>{row['Element Name']}</div>
+                  <div class='progress-bar-bg'>
+                    <div class='progress-bar-fill' style='width:{pct}%'></div>
+                  </div>
+                  <div class='progress-pct'>{pct}%</div>
+                </div>"""
+            st.markdown(f"<div style='padding:4px 0'>{html_bars}</div>", unsafe_allow_html=True)
+
+    with col_styles:
+        st.markdown("<div class='panel-title'>💼 Estilos de trabajo</div>", unsafe_allow_html=True)
+        ws_occ = styles_df[
+            (styles_df["O*NET-SOC Code"] == soc_code) & (styles_df["Scale ID"] == "WI")
+        ].sort_values("Data Value", ascending=False).head(8)
+
+        if ws_occ.empty:
+            st.info("Sin datos de estilos de trabajo.")
+        else:
+            STYLE_LABELS_ES = {
+                "Achievement/Effort": "Logro y esfuerzo",
+                "Persistence": "Persistencia", "Initiative": "Iniciativa",
+                "Leadership": "Liderazgo", "Cooperation": "Trabajo en equipo",
+                "Concern for Others": "Atención al detalle",
+                "Social Orientation": "Orientación social",
+                "Self Control": "Autocontrol",
+                "Stress Tolerance": "Tolerancia al estrés",
+                "Adaptability/Flexibility": "Adaptabilidad",
+                "Dependability": "Confiabilidad",
+                "Attention to Detail": "Atención al detalle",
+                "Integrity": "Integridad",
+                "Independence": "Independencia",
+                "Innovation": "Innovación",
+                "Analytical Thinking": "Pensamiento analítico",
+            }
+            html_bars = ""
+            for _, row in ws_occ.iterrows():
+                pct = int(row["Data Value"] / 7 * 100)
+                label = STYLE_LABELS_ES.get(row["Element Name"], row["Element Name"])
+                html_bars += f"""
+                <div class='progress-row'>
+                  <div class='progress-label'>{label}</div>
+                  <div class='progress-bar-bg'>
+                    <div class='progress-bar-fill' style='width:{pct}%'></div>
+                  </div>
+                  <div class='progress-pct'>{pct}%</div>
+                </div>"""
+            st.markdown(f"<div style='padding:4px 0'>{html_bars}</div>", unsafe_allow_html=True)
 
     st.markdown("#### Ocupaciones relacionadas")
     related_df = load_related()
