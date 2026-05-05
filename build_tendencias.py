@@ -118,7 +118,7 @@ def cargar_skills_base(diccionario: dict, anio_base: int) -> list[dict]:
     Si el único dato disponible es este ancla → la skill quedará "estable",
     que es el comportamiento correcto cuando no hay evidencia de cambio.
     """
-    ANIO_ANCLA = 2020   # año fijo de referencia para fuentes estructurales
+    ANIO_ANCLA = 2019   # año ancla separado de los datos simulados (que arrancan en 2020)
     registros = []
     for skill in diccionario["blandas"]["terminos_es"]:
         registros.append({
@@ -225,15 +225,48 @@ def cargar_skills_pdf(anio_fallback: int) -> list[dict]:
 # 4. Consolidar historial
 # ─────────────────────────────────────────────────────────────────────────────
 
+def construir_mapping_en_es(diccionario: dict) -> dict:
+    """
+    Construye un mapa de normalización: nombre_en_inglés → nombre_en_español.
+
+    Esto permite que 'Critical Thinking' (Adzuna/PDF en inglés) y
+    'pensamiento crítico' (SPE en español) se consoliden como la misma skill,
+    acumulando puntos en múltiples años y permitiendo calcular tendencias.
+    """
+    mapping = {}
+    # Soft skills O*NET: mapping_en = {es_term: en_term} → invertir a en → es
+    for es_term, en_term in diccionario["blandas"]["mapping_en"].items():
+        mapping[en_term.lower()] = es_term
+        mapping[es_term.lower()] = es_term
+    # Tech skills (iguales en ambos idiomas — normaliza capitalización)
+    for skill in diccionario["tecnicas"]["terminos"]:
+        mapping[skill.lower()] = skill
+    # Ocupacol (español)
+    for skill in diccionario["ocupacol"]["conocimientos"] + diccionario["ocupacol"]["destrezas"]:
+        mapping[skill.lower()] = skill
+    return mapping
+
+
+_SKILL_MAPPING: dict = {}   # se inicializa en main()
+
+
+def normalizar_skill_nombre(skill: str) -> str:
+    """Retorna el nombre canónico de una skill (español, capitalización estándar)."""
+    return _SKILL_MAPPING.get(skill.lower().strip(), skill)
+
+
 def consolidar_historial(registros: list[dict]) -> dict:
     """
     Agrupa todos los registros por skill → año → {menciones, fuentes}.
+
+    Normaliza los nombres para unificar variantes EN/ES:
+      'Critical Thinking' + 'pensamiento crítico' → 'pensamiento crítico'
+      'python' → 'Python'
     """
-    # historial[skill][anio] = {menciones: int, fuentes: set}
     historial = defaultdict(lambda: defaultdict(lambda: {"menciones": 0, "fuentes": set()}))
 
     for r in registros:
-        skill = r["skill"]
+        skill = normalizar_skill_nombre(r["skill"])   # ← unifica EN↔ES
         anio  = str(r["anio"])
         historial[skill][anio]["menciones"] += r["menciones"]
         historial[skill][anio]["fuentes"].add(r["fuente"])
@@ -260,51 +293,57 @@ def calcular_tendencia(historial_skill: dict) -> tuple[str, float]:
     Calcula si una skill tiene tendencia creciente, estable o decreciente.
 
     Método:
-    - Si hay 1 solo año → "estable" (no hay datos suficientes)
-    - Si hay 2+ años → regresión lineal sobre menciones normalizadas por año
-      - pendiente > umbral_positivo  → "creciente"
-      - pendiente < umbral_negativo  → "decreciente"
-      - entre umbrales               → "estable"
-
-    El score_tendencia (0-1) indica la fuerza de la señal.
+    - Excluye el año ancla ONET (2019, menciones=1) del cálculo de pendiente,
+      ya que ese valor artificial distorsiona la regresión.
+    - Si quedan < 2 años reales → "estable"
+    - Regresión lineal ponderada (años recientes tienen más peso)
     """
-    anios_ordenados = sorted(historial_skill.keys())
+    ANIO_ANCLA_EXCLUIR = "2019"
+
+    # Filtrar el año ancla estructural para no distorsionar la pendiente
+    anios_reales = {a: v for a, v in historial_skill.items()
+                    if a != ANIO_ANCLA_EXCLUIR and v["menciones"] > 1}
+
+    # Si no quedan datos reales, usar todo (comportamiento de fallback)
+    if len(anios_reales) < 2:
+        anios_reales = historial_skill
+
+    anios_ordenados = sorted(anios_reales.keys())
 
     if len(anios_ordenados) < 2:
         return "estable", 0.5
 
-    # Vector X (años normalizados 0..1) e Y (menciones)
     x = list(range(len(anios_ordenados)))
-    y = [historial_skill[a]["menciones"] for a in anios_ordenados]
+    y = [anios_reales[a]["menciones"] for a in anios_ordenados]
 
-    n    = len(x)
-    sx   = sum(x)
-    sy   = sum(y)
-    sxy  = sum(xi * yi for xi, yi in zip(x, y))
-    sxx  = sum(xi ** 2 for xi in x)
+    # Ponderación: años recientes pesan más (peso = posición + 1)
+    w = [xi + 1 for xi in x]
+    sw   = sum(w)
+    swx  = sum(wi * xi for wi, xi in zip(w, x))
+    swy  = sum(wi * yi for wi, yi in zip(w, y))
+    swxx = sum(wi * xi * xi for wi, xi in zip(w, x))
+    swxy = sum(wi * xi * yi for wi, xi, yi in zip(w, x, y))
 
-    # Pendiente de regresión lineal mínimos cuadrados
-    denominador = (n * sxx - sx ** 2)
+    denominador = sw * swxx - swx ** 2
     if denominador == 0:
         return "estable", 0.5
 
-    pendiente = (n * sxy - sx * sy) / denominador
+    pendiente = (sw * swxy - swx * swy) / denominador
 
-    # Normalizar pendiente respecto al promedio de Y para comparabilidad
-    promedio_y = sy / n if sy else 1
-    pendiente_norm = pendiente / promedio_y if promedio_y else 0
+    # Normalizar pendiente respecto a la media ponderada de Y
+    media_y = swy / sw if sw else 1
+    pendiente_norm = pendiente / media_y if media_y else 0
 
-    # Umbrales: con pocos puntos (2-3 años) la pendiente normalizada es pequeña.
-    # Umbral de 0.05 detecta cambios reales sin ser demasiado ruidoso.
-    if pendiente_norm > 0.05:
+    UMBRAL = 0.08
+    if pendiente_norm > UMBRAL:
         score = min(1.0, 0.5 + pendiente_norm * 2)
         return "creciente", round(score, 3)
-    elif pendiente_norm < -0.05:
+    elif pendiente_norm < -UMBRAL:
         score = min(1.0, 0.5 + abs(pendiente_norm) * 2)
         return "decreciente", round(score, 3)
     else:
-        score = 0.5 - abs(pendiente_norm) / 0.05 * 0.3
-        return "estable", round(max(0.2, score), 3)
+        score = max(0.2, 0.5 - abs(pendiente_norm) / UMBRAL * 0.3)
+        return "estable", round(score, 3)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -421,7 +460,12 @@ def main():
     diccionario = cargar_diccionario()
     print(f"  Skills en diccionario: {len(diccionario['busqueda_rapida'])}")
 
-    print(f"\n[2/5] Cargando fuentes base (O*NET + Ocupacol) → año {anio_base}...")
+    # Inicializar mapping EN→ES para normalización de nombres
+    global _SKILL_MAPPING
+    _SKILL_MAPPING = construir_mapping_en_es(diccionario)
+    print(f"  Mapping EN↔ES construido: {len(_SKILL_MAPPING)} entradas")
+
+    print(f"\n[2/5] Cargando fuentes base (O*NET + Ocupacol) → año ancla 2019...")
     registros = cargar_skills_base(diccionario, anio_base)
     print(f"  Registros base: {len(registros)}")
 
