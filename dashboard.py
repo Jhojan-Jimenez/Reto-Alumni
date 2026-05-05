@@ -694,13 +694,61 @@ def _rango_spe_para_salario(salario_cop: int, spe_rangos: list) -> str:
     return "Fuera de rango"
 
 
-# ══════════════════════════════════════════════════════════════════════════════
-# SIDEBAR
-# ══════════════════════════════════════════════════════════════════════════════
 
 # ══════════════════════════════════════════════════════════════════════════════
 # SIDEBAR — Navegación de secciones
 # ══════════════════════════════════════════════════════════════════════════════
+
+# Variables globales necesarias antes del sidebar y del header
+all_freq = load_all_freq_sources()
+fuentes_disponibles = sorted(all_freq["fuente"].unique().tolist()) if all_freq is not None else []
+
+# Estado pipeline
+if "pipeline_running" not in st.session_state:
+    st.session_state.pipeline_running = False
+if "pipeline_log" not in st.session_state:
+    st.session_state.pipeline_log = []
+if "pipeline_result" not in st.session_state:
+    st.session_state.pipeline_result = None
+
+PIPELINE_STEPS = [
+    ("Diccionario de skills",       f"{sys.executable} build_dictionary.py"),
+    ("Descarga Adzuna",             f"{sys.executable} load_adzuna.py"),
+    ("Extracción skills Adzuna",    f"{sys.executable} extract_skills.py data/processed/adzuna_sample.csv descripcion id_oferta"),
+    ("Descarga LinkedIn",           f"{sys.executable} load_linkedin.py"),
+    ("Extracción skills LinkedIn",  f"{sys.executable} extract_skills.py data/processed/linkedin_sample.csv descripcion id_oferta --idioma en"),
+    ("Cálculo de tendencias",       f"{sys.executable} build_tendencias.py"),
+    ("Salarios COP (GEIH)",         f"{sys.executable} load_geih_salarios.py"),
+]
+
+def _run_pipeline_bg(steps, log_list, result_holder):
+    """Corre el pipeline en un hilo background y escribe al log compartido."""
+    project_dir = str(Path(__file__).parent)
+    for nombre, cmd in steps:
+        log_list.append(f"▶ {nombre}...")
+        try:
+            proc = subprocess.run(
+                cmd, shell=True, capture_output=True, text=True,
+                timeout=600, cwd=project_dir,
+            )
+            if proc.returncode == 0:
+                log_list.append(f"  ✓ Completado")
+            else:
+                log_list.append(f"  ✗ Error (código {proc.returncode})")
+                if proc.stderr.strip():
+                    for ln in proc.stderr.strip().splitlines()[-5:]:
+                        log_list.append(f"    {ln}")
+                result_holder["status"] = "error"
+                return
+        except subprocess.TimeoutExpired:
+            log_list.append(f"  ✗ Timeout (>10 min)")
+            result_holder["status"] = "error"
+            return
+        except Exception as e:
+            log_list.append(f"  ✗ Excepción: {e}")
+            result_holder["status"] = "error"
+            return
+    result_holder["status"] = "ok"
 
 SECCIONES = [
     ("🇨🇴", "Mercado Real"),
