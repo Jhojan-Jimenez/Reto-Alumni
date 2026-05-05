@@ -47,7 +47,6 @@ CAT_COLORS = {
     "blanda":       C_NAVY,
     "conocimiento": C_GREEN,
     "destreza":     C_PURPLE,
-    "desconocida":  C_MUTED,   # fallback para skills sin categoría asignada
 }
 
 PLOTLY_LAYOUT = dict(
@@ -328,9 +327,8 @@ def load_all_freq_sources():
 @st.cache_data(ttl=60)
 def load_pdf_reports():
     """Carga todos los JSONs de skills extraídos de PDFs."""
-    base = Path(__file__).parent
     pdf_reports = []
-    for json_file in (base / PROCESSED).glob("pdf_skills_*.json"):
+    for json_file in PROCESSED.glob("pdf_skills_*.json"):
         try:
             with open(json_file, encoding="utf-8") as f:
                 data = json.load(f)
@@ -492,11 +490,13 @@ with st.sidebar:
 
     def _run_pipeline_bg(steps, log_list, result_holder):
         """Corre el pipeline en un hilo background y escribe al log compartido."""
+        project_dir = str(Path(__file__).parent)
         for nombre, cmd in steps:
             log_list.append(f"▶ {nombre}...")
             try:
                 proc = subprocess.run(
-                    cmd, shell=True, capture_output=True, text=True, timeout=600
+                    cmd, shell=True, capture_output=True, text=True,
+                    timeout=600, cwd=project_dir,
                 )
                 if proc.returncode == 0:
                     log_list.append(f"  ✓ Completado")
@@ -1117,25 +1117,35 @@ with tab_pdfs:
                             f' --salida "{salida_json}"'
                         )
 
-                        # cwd: directorio del propio dashboard.py para que las
-                        # rutas relativas de load_pdf_reports.py resuelvan igual
-                        # que al correr desde terminal.
-                        project_dir = str(Path(__file__).parent)
                         proc = subprocess.run(
                             cmd, shell=True, capture_output=True,
-                            text=True, timeout=300,
-                            cwd=project_dir,
+                            text=True, timeout=300
                         )
 
                         # Limpiar archivo temporal
                         Path(tmp_path).unlink(missing_ok=True)
 
                         if proc.returncode == 0:
-                            status_pdf.update(label="✅ PDF procesado correctamente", state="complete")
-                            st.success(f"Skills extraídas y guardadas en `{salida_json}`")
+                            status_pdf.update(label="✅ PDF procesado — recalculando tendencias...", state="running")
                             if proc.stdout.strip():
                                 with st.expander("Ver log de extracción"):
                                     st.code(proc.stdout, language="bash")
+
+                            # Recalcular tendencias automáticamente con el nuevo PDF
+                            proc_tend = subprocess.run(
+                                f'{sys.executable} build_tendencias.py',
+                                shell=True, capture_output=True,
+                                text=True, timeout=120,
+                                cwd=project_dir,
+                            )
+                            if proc_tend.returncode == 0:
+                                status_pdf.update(label="✅ PDF procesado y tendencias actualizadas", state="complete")
+                                st.success(f"Skills extraídas en `{salida_json}` · Tendencias recalculadas ✓")
+                            else:
+                                status_pdf.update(label="⚠️ PDF procesado, error al recalcular tendencias", state="complete")
+                                st.warning("PDF procesado, pero hubo un error al recalcular tendencias:")
+                                st.code(proc_tend.stderr or proc_tend.stdout, language="bash")
+
                             # Refrescar datos sin caché
                             st.cache_data.clear()
                             st.rerun()

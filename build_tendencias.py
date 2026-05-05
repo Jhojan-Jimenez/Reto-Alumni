@@ -65,27 +65,19 @@ def normalizar(texto: str) -> str:
 
 
 def cargar_diccionario() -> dict:
-    if not DICT_PATH.exists():
-        raise FileNotFoundError(
-            f"Diccionario de skills no encontrado en: {DICT_PATH}\n"
-            "Ejecuta primero: python build_dictionary.py"
-        )
     with open(DICT_PATH, encoding="utf-8") as f:
         return json.load(f)
 
 
-def get_categoria(skill: str, diccionario: dict,
-                  _cache: dict = {}) -> str:
-    """Clasifica una skill. Construye los sets de lookup una sola vez."""
-    if not _cache:
-        _cache["blandas"]   = {normalizar(s) for s in diccionario["blandas"]["terminos_es"]}
-        _cache["tecnicas"]  = {normalizar(s) for s in diccionario["tecnicas"]["terminos"]}
-        _cache["conocimientos"] = set(diccionario["ocupacol"]["conocimientos"])
-
+def get_categoria(skill: str, diccionario: dict) -> str:
     s_n = normalizar(skill)
-    if s_n in _cache["blandas"]:        return "blanda"
-    if s_n in _cache["tecnicas"]:       return "técnica"
-    if skill in _cache["conocimientos"]: return "conocimiento"
+    blandas_norm  = {normalizar(s) for s in diccionario["blandas"]["terminos_es"]}
+    tecnicas_norm = {normalizar(s) for s in diccionario["tecnicas"]["terminos"]}
+    conocimientos = set(diccionario["ocupacol"]["conocimientos"])
+
+    if s_n in blandas_norm:    return "blanda"
+    if s_n in tecnicas_norm:   return "técnica"
+    if skill in conocimientos: return "conocimiento"
     return "destreza"
 
 
@@ -115,31 +107,40 @@ def detectar_fuente_de_archivo(nombre: str) -> str:
 
 def cargar_skills_base(diccionario: dict, anio_base: int) -> list[dict]:
     """
-    O*NET y Ocupacol son fuentes estructurales — no tienen frecuencia real,
-    solo señalan la presencia de una skill en ese año.
-    Les asignamos menciones=1 como señal de existencia, no de volumen.
+    O*NET y Ocupacol son fuentes estructurales: indican qué skills existen
+    pero no su volumen real de demanda.
+
+    Las registramos en un año ancla fijo (2020) con menciones=1 como línea base.
+    Esto permite que cuando lleguen datos reales de PDFs o CSVs en años
+    posteriores, la regresión lineal tenga dos o más puntos y pueda detectar
+    pendiente (creciente / decreciente).
+
+    Si el único dato disponible es este ancla → la skill quedará "estable",
+    que es el comportamiento correcto cuando no hay evidencia de cambio.
     """
+    ANIO_ANCLA = 2020   # año fijo de referencia para fuentes estructurales
     registros = []
     for skill in diccionario["blandas"]["terminos_es"]:
         registros.append({
-            "skill": skill, "anio": anio_base,
+            "skill": skill, "anio": ANIO_ANCLA,
             "menciones": 1, "fuente": "ONET"
         })
     for skill in diccionario["tecnicas"]["terminos"]:
         registros.append({
-            "skill": skill, "anio": anio_base,
+            "skill": skill, "anio": ANIO_ANCLA,
             "menciones": 1, "fuente": "ONET"
         })
     for skill in diccionario["ocupacol"]["conocimientos"]:
         registros.append({
-            "skill": skill, "anio": anio_base,
+            "skill": skill, "anio": ANIO_ANCLA,
             "menciones": 1, "fuente": "Ocupacol"
         })
     for skill in diccionario["ocupacol"]["destrezas"]:
         registros.append({
-            "skill": skill, "anio": anio_base,
+            "skill": skill, "anio": ANIO_ANCLA,
             "menciones": 1, "fuente": "Ocupacol"
         })
+    print(f"  Año ancla para fuentes base: {ANIO_ANCLA}")
     return registros
 
 
@@ -293,15 +294,16 @@ def calcular_tendencia(historial_skill: dict) -> tuple[str, float]:
     promedio_y = sy / n if sy else 1
     pendiente_norm = pendiente / promedio_y if promedio_y else 0
 
-    # Umbrales empíricos
-    if pendiente_norm > 0.15:
-        score = min(1.0, 0.5 + pendiente_norm)
+    # Umbrales: con pocos puntos (2-3 años) la pendiente normalizada es pequeña.
+    # Umbral de 0.05 detecta cambios reales sin ser demasiado ruidoso.
+    if pendiente_norm > 0.05:
+        score = min(1.0, 0.5 + pendiente_norm * 2)
         return "creciente", round(score, 3)
-    elif pendiente_norm < -0.15:
-        score = min(1.0, 0.5 + abs(pendiente_norm))
+    elif pendiente_norm < -0.05:
+        score = min(1.0, 0.5 + abs(pendiente_norm) * 2)
         return "decreciente", round(score, 3)
     else:
-        score = 0.5 - abs(pendiente_norm) / 0.15 * 0.3
+        score = 0.5 - abs(pendiente_norm) / 0.05 * 0.3
         return "estable", round(max(0.2, score), 3)
 
 
