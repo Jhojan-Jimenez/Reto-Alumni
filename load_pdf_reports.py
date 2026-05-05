@@ -354,6 +354,11 @@ def normalizar(texto: str) -> str:
 
 
 def cargar_diccionario() -> dict:
+    if not DICT_PATH.exists():
+        raise FileNotFoundError(
+            f"Diccionario de skills no encontrado en: {DICT_PATH}\n"
+            "Asegúrate de tener el archivo data/processed/diccionario_skills.json"
+        )
     with open(DICT_PATH, encoding="utf-8") as f:
         return json.load(f)
 
@@ -518,7 +523,13 @@ def main():
     print(f"\n[2/4] Detectando año del reporte...")
     anio = args.anio or detectar_anio(texto, ruta_pdf.name, meta_docai)
     if anio is None:
-        anio = int(input("  No se detectó el año. Ingrésalo manualmente: ").strip())
+        # Si se llama desde Streamlit (no hay terminal interactiva), usar año actual
+        if not sys.stdin.isatty():
+            anio = datetime.now().year
+            print(f"  [!] No se detectó el año. Se usará el año actual: {anio}")
+            print(f"      Puedes especificarlo con --anio <año> para mayor precisión.")
+        else:
+            anio = int(input("  No se detectó el año. Ingrésalo manualmente: ").strip())
 
     print(f"\n[3/4] Extrayendo skills del texto (idioma: {args.idioma.upper()})...")
     diccionario = cargar_diccionario()

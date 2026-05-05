@@ -1108,7 +1108,7 @@ with tab_pdfs:
                             PROCESSED / f"pdf_skills_{fuente_input.lower()}_{anio_input}.json"
                         )
                         cmd = (
-                            f'{sys.executable} Load_PDF_report.py "{tmp_path}"'
+                            f'{sys.executable} load_pdf_reports.py "{tmp_path}"'
                             f' --fuente "{fuente_input}"'
                             f' --anio {anio_input}'
                             f' --idioma {idioma_input}'
