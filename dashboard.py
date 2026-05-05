@@ -3538,6 +3538,11 @@ if tab_reportes:
     )
 
     # ── Excel ──────────────────────────────────────────────────────────────
+    # Definir df_empl_rep aquí para que esté disponible tanto en Excel como en HTML
+    df_empl_rep = pd.DataFrame([
+        {"Programa": p, **v} for p, v in datos_empl.items() if p != "Todos los programas"
+    ])
+
     buf_xl = io.BytesIO()
     with pd.ExcelWriter(buf_xl, engine="openpyxl") as writer:
         datos_export.to_excel(writer, sheet_name="Resumen", index=False)
@@ -3555,9 +3560,6 @@ if tab_reportes:
         df_skills_rep.to_excel(writer, sheet_name="Skills", index=False)
 
         # Hoja de empleabilidad
-        df_empl_rep = pd.DataFrame([
-            {"Programa": p, **v} for p, v in datos_empl.items() if p != "Todos los programas"
-        ])
         df_empl_rep.to_excel(writer, sheet_name="Empleabilidad", index=False)
 
     buf_xl.seek(0)
