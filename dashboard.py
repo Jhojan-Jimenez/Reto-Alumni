@@ -3,7 +3,6 @@ Observatorio Laboral – Universidad de La Sabana
 Dashboard interactivo: O*NET · SPE Colombia · Adzuna · PDF Reports · Tendencias
 """
 
-import io
 import json
 import sys
 import subprocess
@@ -48,6 +47,7 @@ CAT_COLORS = {
     "blanda":       C_NAVY,
     "conocimiento": C_GREEN,
     "destreza":     C_PURPLE,
+    "desconocida":  C_MUTED,   # fallback para skills sin categoría asignada
 }
 
 PLOTLY_LAYOUT = dict(
@@ -328,8 +328,9 @@ def load_all_freq_sources():
 @st.cache_data(ttl=60)
 def load_pdf_reports():
     """Carga todos los JSONs de skills extraídos de PDFs."""
+    base = Path(__file__).parent
     pdf_reports = []
-    for json_file in PROCESSED.glob("pdf_skills_*.json"):
+    for json_file in (base / PROCESSED).glob("pdf_skills_*.json"):
         try:
             with open(json_file, encoding="utf-8") as f:
                 data = json.load(f)
@@ -481,7 +482,7 @@ with st.sidebar:
 
     PIPELINE_STEPS = [
         ("Diccionario de skills",       f"{sys.executable} build_dictionary.py"),
-        ("Descarga Adzuna",             f"{sys.executable} Load_adzuna.py"),
+        ("Descarga Adzuna",             f"{sys.executable} load_adzuna.py"),
         ("Extracción skills Adzuna",    f"{sys.executable} extract_skills.py data/processed/adzuna_sample.csv descripcion id_oferta"),
         ("Descarga LinkedIn",           f"{sys.executable} load_linkedin.py"),
         ("Extracción skills LinkedIn",  f"{sys.executable} extract_skills.py data/processed/linkedin_sample.csv descripcion id_oferta --idioma en"),
@@ -1116,9 +1117,14 @@ with tab_pdfs:
                             f' --salida "{salida_json}"'
                         )
 
+                        # cwd: directorio del propio dashboard.py para que las
+                        # rutas relativas de load_pdf_reports.py resuelvan igual
+                        # que al correr desde terminal.
+                        project_dir = str(Path(__file__).parent)
                         proc = subprocess.run(
                             cmd, shell=True, capture_output=True,
-                            text=True, timeout=300
+                            text=True, timeout=300,
+                            cwd=project_dir,
                         )
 
                         # Limpiar archivo temporal
