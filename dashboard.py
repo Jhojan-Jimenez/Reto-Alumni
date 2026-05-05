@@ -1926,8 +1926,8 @@ if tab_ocupacion:
 
     with col_know:
         st.markdown("<div class='panel-title'>📚 Conocimientos clave</div>", unsafe_allow_html=True)
-        know_occ = knowledge_df[
-            (knowledge_df["O*NET-SOC Code"] == soc_code) & (knowledge_df["Scale ID"] == "IM")
+        know_occ = knowledge_df2[
+            (knowledge_df2["O*NET-SOC Code"] == soc_code) & (knowledge_df2["Scale ID"] == "IM")
         ].sort_values("Data Value", ascending=False).head(8)
 
         if know_occ.empty:
