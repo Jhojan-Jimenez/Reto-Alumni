@@ -766,6 +766,24 @@ if "seccion_activa" not in st.session_state:
     st.session_state.seccion_activa = "Mercado Real"
 
 with st.sidebar:
+    st.markdown(
+        """
+        <style>
+        div[data-testid="stSidebar"] button {
+            font-family: Inter, sans-serif !important;
+            font-size: 0.98rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.01em !important;
+            text-align: left !important;
+        }
+        div[data-testid="stSidebar"] button span {
+            font-family: Inter, sans-serif !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
     st.markdown("""
     <div style='padding: 20px 8px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 8px;'>
       <div style='display:flex; align-items:center; gap:10px; margin-bottom:10px;'>
